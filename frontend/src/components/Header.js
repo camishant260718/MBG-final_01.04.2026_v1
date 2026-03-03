@@ -13,6 +13,7 @@ const Header = () => {
 
   const navLinks = [
     { label: 'About', href: '#about-me' },
+    { label: 'Skills', href: '#skills' },
     { label: 'Experience', href: '#experience' },
     { label: 'Education', href: '#education' },
   ];
