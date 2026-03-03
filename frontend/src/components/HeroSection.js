@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Camera } from 'lucide-react';
 
 const HeroSection = () => {
   const [visible, setVisible] = useState(false);
@@ -26,27 +26,26 @@ const HeroSection = () => {
         overflow: 'hidden',
       }}
     >
-      {/* Subtle warm background panel */}
+      {/* Subtle right-panel background */}
       <div
         style={{
           position: 'absolute',
           top: 0,
           right: 0,
-          width: '45%',
+          width: '33%',
           height: '100%',
-          background: 'linear-gradient(135deg, #FAFAF7 0%, #F5F2EA 100%)',
-          clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0% 100%)',
+          background: 'linear-gradient(160deg, #F7F4EE 0%, #EDE8D8 100%)',
           zIndex: 0,
         }}
       />
 
-      {/* Gold vertical accent line */}
+      {/* Gold left accent */}
       <div
         style={{
           position: 'absolute',
-          left: '0',
-          top: '20%',
-          height: '60%',
+          left: 0,
+          top: '25%',
+          height: '50%',
           width: '3px',
           background: 'linear-gradient(to bottom, transparent, #C9A84C, transparent)',
           zIndex: 1,
@@ -57,15 +56,25 @@ const HeroSection = () => {
         style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '7rem 2rem 5rem',
+          padding: '8rem 2rem 5rem',
           position: 'relative',
           zIndex: 2,
           width: '100%',
           boxSizing: 'border-box',
         }}
       >
-        <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
-          {/* Left: Text content */}
+        {/* ── 3-column grid ─────────────────────────────────────────── */}
+        <div
+          className="hero-3col"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1.15fr 0.85fr 1fr',
+            gap: '2.5rem',
+            alignItems: 'center',
+          }}
+        >
+
+          {/* ── Column 1: Heading & text ──────────────────────────── */}
           <div>
             {/* Tags */}
             <div
@@ -83,14 +92,14 @@ const HeroSection = () => {
                 <span
                   key={tag}
                   style={{
-                    fontSize: '11px',
+                    fontSize: '10.5px',
                     fontWeight: '600',
-                    letterSpacing: '1.5px',
+                    letterSpacing: '1.2px',
                     textTransform: 'uppercase',
                     color: '#C9A84C',
                     border: '1px solid #C9A84C',
                     borderRadius: '2px',
-                    padding: '4px 12px',
+                    padding: '4px 11px',
                     backgroundColor: 'rgba(201,168,76,0.06)',
                   }}
                 >
@@ -103,7 +112,7 @@ const HeroSection = () => {
             <h1
               style={{
                 fontFamily: "'Poppins', sans-serif",
-                fontSize: 'clamp(2.4rem, 4.5vw, 3.75rem)',
+                fontSize: 'clamp(2.2rem, 3.8vw, 3.4rem)',
                 fontWeight: '700',
                 color: '#0F2244',
                 lineHeight: '1.15',
@@ -116,7 +125,7 @@ const HeroSection = () => {
             >
               From Numbers
               <br />
-              <span style={{ color: '#0F2244', fontStyle: 'italic', fontWeight: '300' }}>
+              <span style={{ fontStyle: 'italic', fontWeight: '300', color: '#0F2244' }}>
                 to Narratives.
               </span>
             </h1>
@@ -125,24 +134,22 @@ const HeroSection = () => {
             <div
               style={{
                 height: '2px',
-                width: visible ? '80px' : '0px',
+                width: visible ? '70px' : '0px',
                 backgroundColor: '#C9A84C',
-                marginBottom: '2rem',
-                transition: 'width 0.6s ease 0.2s',
+                marginBottom: '1.75rem',
+                transition: 'width 0.7s ease 0.2s',
               }}
             />
 
             {/* Body text */}
             <p
               style={{
-                fontSize: '15px',
-                fontWeight: '400',
+                fontSize: '14.5px',
                 color: '#4A5568',
                 lineHeight: '1.85',
-                maxWidth: '520px',
-                marginBottom: '1.25rem',
+                marginBottom: '1rem',
                 opacity: visible ? 1 : 0,
-                transform: visible ? 'translateY(0)' : 'translateY(20px)',
+                transform: visible ? 'translateY(0)' : 'translateY(12px)',
                 transition: 'opacity 0.6s ease 0.25s, transform 0.6s ease 0.25s',
               }}
             >
@@ -152,14 +159,12 @@ const HeroSection = () => {
             </p>
             <p
               style={{
-                fontSize: '15px',
-                fontWeight: '400',
+                fontSize: '14.5px',
                 color: '#4A5568',
                 lineHeight: '1.85',
-                maxWidth: '520px',
-                marginBottom: '2.5rem',
+                marginBottom: '2rem',
                 opacity: visible ? 1 : 0,
-                transform: visible ? 'translateY(0)' : 'translateY(20px)',
+                transform: visible ? 'translateY(0)' : 'translateY(12px)',
                 transition: 'opacity 0.6s ease 0.35s, transform 0.6s ease 0.35s',
               }}
             >
@@ -172,10 +177,10 @@ const HeroSection = () => {
             <div
               style={{
                 display: 'flex',
-                gap: '1rem',
+                gap: '0.875rem',
                 flexWrap: 'wrap',
                 opacity: visible ? 1 : 0,
-                transform: visible ? 'translateY(0)' : 'translateY(20px)',
+                transform: visible ? 'translateY(0)' : 'translateY(12px)',
                 transition: 'opacity 0.6s ease 0.45s, transform 0.6s ease 0.45s',
               }}
             >
@@ -185,9 +190,9 @@ const HeroSection = () => {
                   backgroundColor: '#0F2244',
                   color: '#FFFFFF',
                   border: 'none',
-                  padding: '14px 36px',
-                  fontSize: '13px',
-                  fontWeight: '600',
+                  padding: '13px 32px',
+                  fontSize: '12.5px',
+                  fontWeight: '700',
                   letterSpacing: '1px',
                   textTransform: 'uppercase',
                   cursor: 'pointer',
@@ -212,9 +217,9 @@ const HeroSection = () => {
                   backgroundColor: 'transparent',
                   color: '#0F2244',
                   border: '1.5px solid #0F2244',
-                  padding: '13px 36px',
-                  fontSize: '13px',
-                  fontWeight: '600',
+                  padding: '12px 32px',
+                  fontSize: '12.5px',
+                  fontWeight: '700',
                   letterSpacing: '1px',
                   textTransform: 'uppercase',
                   cursor: 'pointer',
@@ -238,21 +243,38 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right: Stats */}
+          {/* ── Column 2: Stats ───────────────────────────────────── */}
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '1.5rem',
+              gap: '1.25rem',
               opacity: visible ? 1 : 0,
-              transform: visible ? 'translateX(0)' : 'translateX(30px)',
+              transform: visible ? 'translateY(0)' : 'translateY(20px)',
               transition: 'opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s',
             }}
           >
             {[
-              { number: '13+', label: 'Years of Experience', sub: 'Across utilities, infrastructure & diversified industries' },
-              { number: '6', label: 'Organizations Contributed', sub: 'From CA firms to DEWA subsidiaries in UAE & India' },
-              { number: 'IFRS', label: 'Compliance Expert', sub: 'International Financial Reporting Standards specialist' },
+              {
+                number: '13+',
+                label: 'Years of Experience',
+                sub: 'Utilities, infrastructure & diversified industries',
+              },
+              {
+                number: '6',
+                label: 'Organizations',
+                sub: 'From CA firms to DEWA subsidiaries in UAE & India',
+              },
+              {
+                number: 'IFRS',
+                label: 'Compliance Expert',
+                sub: 'International Financial Reporting Standards',
+              },
+              {
+                number: 'CA',
+                label: 'Chartered Accountant',
+                sub: 'Institute of Chartered Accountants of India',
+              },
             ].map((stat, i) => (
               <div
                 key={i}
@@ -260,34 +282,158 @@ const HeroSection = () => {
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #E8E4DC',
                   borderLeft: '3px solid #C9A84C',
-                  padding: '1.5rem 2rem',
+                  padding: '1.1rem 1.4rem',
                   borderRadius: '4px',
-                  boxShadow: '0 2px 12px rgba(15,34,68,0.05)',
+                  boxShadow: '0 2px 10px rgba(15,34,68,0.05)',
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   cursor: 'default',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateX(6px)';
-                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(15,34,68,0.1)';
+                  e.currentTarget.style.transform = 'translateX(5px)';
+                  e.currentTarget.style.boxShadow = '0 4px 18px rgba(15,34,68,0.1)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateX(0)';
-                  e.currentTarget.style.boxShadow = '0 2px 12px rgba(15,34,68,0.05)';
+                  e.currentTarget.style.boxShadow = '0 2px 10px rgba(15,34,68,0.05)';
                 }}
               >
-                <div style={{ fontSize: '2rem', fontWeight: '700', color: '#0F2244', letterSpacing: '-1px', lineHeight: '1.1', marginBottom: '0.25rem' }}>
+                <div
+                  style={{
+                    fontSize: '1.7rem',
+                    fontWeight: '700',
+                    color: '#0F2244',
+                    letterSpacing: '-0.5px',
+                    lineHeight: '1.1',
+                    marginBottom: '0.2rem',
+                  }}
+                >
                   {stat.number}
                 </div>
-                <div style={{ fontSize: '14px', fontWeight: '600', color: '#0F2244', marginBottom: '0.25rem' }}>
+                <div style={{ fontSize: '13px', fontWeight: '600', color: '#0F2244', marginBottom: '0.15rem' }}>
                   {stat.label}
                 </div>
-                <div style={{ fontSize: '12.5px', color: '#6B7280', lineHeight: '1.5' }}>
+                <div style={{ fontSize: '11.5px', color: '#6B7280', lineHeight: '1.45' }}>
                   {stat.sub}
                 </div>
               </div>
             ))}
           </div>
+
+          {/* ── Column 3: Photo ───────────────────────────────────── */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              opacity: visible ? 1 : 0,
+              transform: visible ? 'translateX(0)' : 'translateX(24px)',
+              transition: 'opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s',
+            }}
+          >
+            {/* Photo frame */}
+            <div
+              style={{
+                position: 'relative',
+                width: '100%',
+                maxWidth: '280px',
+              }}
+            >
+              {/* Gold corner accents */}
+              <div style={{ position: 'absolute', top: '-8px', left: '-8px', width: '28px', height: '28px', borderTop: '2.5px solid #C9A84C', borderLeft: '2.5px solid #C9A84C', borderRadius: '1px', zIndex: 3 }} />
+              <div style={{ position: 'absolute', top: '-8px', right: '-8px', width: '28px', height: '28px', borderTop: '2.5px solid #C9A84C', borderRight: '2.5px solid #C9A84C', borderRadius: '1px', zIndex: 3 }} />
+              <div style={{ position: 'absolute', bottom: '-8px', left: '-8px', width: '28px', height: '28px', borderBottom: '2.5px solid #C9A84C', borderLeft: '2.5px solid #C9A84C', borderRadius: '1px', zIndex: 3 }} />
+              <div style={{ position: 'absolute', bottom: '-8px', right: '-8px', width: '28px', height: '28px', borderBottom: '2.5px solid #C9A84C', borderRight: '2.5px solid #C9A84C', borderRadius: '1px', zIndex: 3 }} />
+
+              {/* Main photo area */}
+              <div
+                style={{
+                  width: '100%',
+                  aspectRatio: '3/4',
+                  background: 'linear-gradient(155deg, #1B3260 0%, #0F2244 50%, #162D56 100%)',
+                  borderRadius: '4px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.75rem',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(201,168,76,0.15)',
+                }}
+              >
+                {/* Subtle pattern overlay */}
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  backgroundImage: 'radial-gradient(circle at 30% 20%, rgba(201,168,76,0.06) 0%, transparent 60%), radial-gradient(circle at 70% 80%, rgba(201,168,76,0.04) 0%, transparent 50%)',
+                  pointerEvents: 'none',
+                }} />
+
+                {/* Large MG monogram */}
+                <div
+                  style={{
+                    width: '90px',
+                    height: '90px',
+                    borderRadius: '50%',
+                    border: '2px solid rgba(201,168,76,0.5)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '28px',
+                    fontWeight: '700',
+                    color: '#C9A84C',
+                    letterSpacing: '1px',
+                    backgroundColor: 'rgba(201,168,76,0.08)',
+                    marginBottom: '0.25rem',
+                  }}
+                >
+                  MG
+                </div>
+
+                <div style={{ textAlign: 'center', padding: '0 1.5rem' }}>
+                  <div style={{ fontSize: '16px', fontWeight: '700', color: '#FFFFFF', letterSpacing: '0.3px', marginBottom: '0.25rem' }}>
+                    Mishant Gandhi
+                  </div>
+                  <div style={{ fontSize: '11.5px', color: 'rgba(255,255,255,0.5)', lineHeight: '1.5' }}>
+                    Chartered Accountant
+                    <br />Dubai, UAE
+                  </div>
+                </div>
+
+                {/* Photo upload hint */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '1rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '5px',
+                    backgroundColor: 'rgba(201,168,76,0.12)',
+                    border: '1px dashed rgba(201,168,76,0.35)',
+                    borderRadius: '4px',
+                    padding: '5px 12px',
+                  }}
+                >
+                  <Camera size={12} style={{ color: 'rgba(201,168,76,0.7)' }} />
+                  <span style={{ fontSize: '10px', color: 'rgba(201,168,76,0.7)', letterSpacing: '0.5px' }}>
+                    Add Profile Photo
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Name below photo */}
+            <div style={{ marginTop: '1.25rem', textAlign: 'center' }}>
+              <div style={{ fontSize: '13px', fontWeight: '600', color: '#0F2244', letterSpacing: '0.3px' }}>
+                Mishant Gandhi
+              </div>
+              <div style={{ fontSize: '11.5px', color: '#9CA3AF', marginTop: '2px' }}>
+                CA · CS · Dubai, UAE
+              </div>
+            </div>
+          </div>
+
         </div>
+        {/* ── End 3-col grid ────────────────────────────────────────── */}
       </div>
 
       {/* Scroll indicator */}
@@ -306,27 +452,37 @@ const HeroSection = () => {
           flexDirection: 'column',
           alignItems: 'center',
           gap: '4px',
-          opacity: 0.45,
+          opacity: 0.4,
           transition: 'opacity 0.3s ease',
           zIndex: 2,
         }}
         onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
-        onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.45')}
+        onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.4')}
       >
-        <span style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', fontWeight: '500' }}>Scroll</span>
-        <ChevronDown size={16} className="scroll-bounce" />
+        <span style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', fontWeight: '500' }}>
+          Scroll
+        </span>
+        <ChevronDown size={15} className="scroll-bounce" />
       </button>
 
       <style>{`
         @keyframes scrollBounce {
           0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(5px); }
+          50%       { transform: translateY(5px); }
         }
         .scroll-bounce { animation: scrollBounce 2s infinite; }
-        @media (max-width: 768px) {
-          .hero-grid {
+
+        @media (max-width: 1024px) {
+          .hero-3col {
+            grid-template-columns: 1fr 1fr !important;
+          }
+          .hero-3col > :last-child {
+            display: none !important;
+          }
+        }
+        @media (max-width: 680px) {
+          .hero-3col {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
           }
         }
       `}</style>
