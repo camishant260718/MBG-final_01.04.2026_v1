@@ -12,7 +12,7 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { label: 'About', href: '#about' },
+    { label: 'About', href: '#about-me' },
     { label: 'Experience', href: '#experience' },
     { label: 'Education', href: '#education' },
   ];

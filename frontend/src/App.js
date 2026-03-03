@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import WorkedWithSection from "./components/WorkedWithSection";
+import AboutSection from "./components/AboutSection";
 import ExperienceSection from "./components/ExperienceSection";
 import { EducationSection, ContactSection } from "./components/EducationContact";
 import CustomCursor from "./components/CustomCursor";
@@ -60,6 +61,7 @@ function App() {
       <Header />
       <HeroSection />
       <WorkedWithSection />
+      <AboutSection />
       <ExperienceSection />
       <EducationSection />
       <ContactSection />

@@ -210,11 +210,11 @@ export const ContactSection = () => {
     boxSizing: 'border-box',
     backgroundColor: 'transparent',
     border: 'none',
-    borderBottom: '1.5px solid #D1CCC0',
+    borderBottom: '1.5px solid rgba(255,255,255,0.2)',
     padding: '10px 0 10px 28px',
     fontSize: '14px',
     fontFamily: "'Poppins', sans-serif",
-    color: '#1A1A2E',
+    color: '#FFFFFF',
     outline: 'none',
     transition: 'border-color 0.3s ease',
   };
@@ -223,7 +223,7 @@ export const ContactSection = () => {
     <section
       id="connect"
       style={{
-        backgroundColor: '#FAFAF8',
+        backgroundColor: '#0F2244',
         padding: '7rem 2rem',
         position: 'relative',
         overflow: 'hidden',
@@ -251,14 +251,14 @@ export const ContactSection = () => {
           <div>
             <p style={{
               fontSize: '11px', fontWeight: '700', letterSpacing: '3px',
-              textTransform: 'uppercase', color: '#9CA3AF', margin: '0 0 1.25rem',
+              textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', margin: '0 0 1.25rem',
             }}>
               Contact Us
             </p>
             <h2 style={{
               fontFamily: "'Poppins', sans-serif",
               fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-              fontWeight: '800', color: '#0F2244',
+              fontWeight: '800', color: '#FFFFFF',
               lineHeight: '1.1', margin: '0 0 2.5rem',
               letterSpacing: '-0.5px',
             }}>
@@ -267,36 +267,36 @@ export const ContactSection = () => {
 
             {/* Name row (no subheading) */}
             <div style={{ marginBottom: '2rem' }}>
-              <div style={{ fontSize: '16px', fontWeight: '700', color: '#0F2244', marginBottom: '0.125rem' }}>
+              <div style={{ fontSize: '16px', fontWeight: '700', color: '#FFFFFF', marginBottom: '0.125rem' }}>
                 Mishant Gandhi
               </div>
             </div>
 
             {/* Phone */}
             <div style={{ marginBottom: '0.5rem' }}>
-              <div style={{ fontSize: '11px', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: '600', marginBottom: '4px' }}>
+              <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: '600', marginBottom: '4px' }}>
                 Contact us
               </div>
-              <a href="tel:+971525076563" style={{ fontSize: '15px', color: '#0F2244', fontWeight: '500', textDecoration: 'none', display: 'block' }}>
+              <a href="tel:+971525076563" style={{ fontSize: '15px', color: '#C9A84C', fontWeight: '500', textDecoration: 'none', display: 'block' }}>
                 +971 52 507 6563
               </a>
             </div>
-            <div style={{ height: '1px', backgroundColor: '#E2DDD6', margin: '1.25rem 0' }} />
+            <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.1)', margin: '1.25rem 0' }} />
 
             {/* Email */}
             <div style={{ marginBottom: '0.5rem' }}>
-              <div style={{ fontSize: '11px', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: '600', marginBottom: '4px' }}>
+              <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: '600', marginBottom: '4px' }}>
                 Email
               </div>
-              <a href="mailto:mishant.gandhi@gmail.com" style={{ fontSize: '14.5px', color: '#0F2244', fontWeight: '500', textDecoration: 'none', display: 'block' }}>
+              <a href="mailto:mishant.gandhi@gmail.com" style={{ fontSize: '14.5px', color: '#C9A84C', fontWeight: '500', textDecoration: 'none', display: 'block' }}>
                 mishant.gandhi@gmail.com
               </a>
             </div>
-            <div style={{ height: '1px', backgroundColor: '#E2DDD6', margin: '1.25rem 0' }} />
+            <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.1)', margin: '1.25rem 0' }} />
 
             {/* Social */}
             <div>
-              <div style={{ fontSize: '11px', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: '600', marginBottom: '0.875rem' }}>
+              <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: '600', marginBottom: '0.875rem' }}>
                 Follow us
               </div>
               <a
@@ -305,23 +305,23 @@ export const ContactSection = () => {
                 rel="noopener noreferrer"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: '8px',
-                  color: '#0F2244', textDecoration: 'none',
+                  color: '#FFFFFF', textDecoration: 'none',
                   fontSize: '13px', fontWeight: '600',
                   padding: '8px 16px',
-                  border: '1.5px solid #0F2244',
+                  border: '1.5px solid rgba(201,168,76,0.4)',
                   borderRadius: '4px',
-                  transition: 'background-color 0.3s ease, color 0.3s ease',
+                  transition: 'background-color 0.3s ease, border-color 0.3s ease',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#0F2244';
-                  e.currentTarget.style.color = '#C9A84C';
+                  e.currentTarget.style.backgroundColor = 'rgba(201,168,76,0.12)';
+                  e.currentTarget.style.borderColor = '#C9A84C';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = '#0F2244';
+                  e.currentTarget.style.borderColor = 'rgba(201,168,76,0.4)';
                 }}
               >
-                <Linkedin size={15} />
+                <Linkedin size={15} style={{ color: '#C9A84C' }} />
                 LinkedIn
               </a>
             </div>
@@ -366,18 +366,18 @@ export const ContactSection = () => {
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                 {/* Full Name */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '0.5rem' }}>
+                  <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: 'rgba(255,255,255,0.7)', marginBottom: '0.5rem' }}>
                     Full Name
                   </label>
                   <div style={{ position: 'relative' }}>
-                    <User size={14} style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: '#9CA3AF' }} />
+                    <User size={14} style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.35)' }} />
                     <input
                       type="text"
                       placeholder="Enter your full name"
                       value={form.name}
                       onChange={(e) => handleChange('name', e.target.value)}
                       style={{ ...inputBase, borderBottomColor: errors.name ? '#e05c5c' : '#D1CCC0' }}
-                      onFocus={(e) => (e.target.style.borderBottomColor = '#0F2244')}
+                      onFocus={(e) => (e.target.style.borderBottomColor = '#C9A84C')}
                       onBlur={(e) => (e.target.style.borderBottomColor = errors.name ? '#e05c5c' : '#D1CCC0')}
                     />
                   </div>
@@ -388,18 +388,18 @@ export const ContactSection = () => {
                 <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem' }}>
                   {/* Email */}
                   <div>
-                    <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '0.5rem' }}>
+                    <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: 'rgba(255,255,255,0.7)', marginBottom: '0.5rem' }}>
                       Email
                     </label>
                     <div style={{ position: 'relative' }}>
-                      <Mail size={14} style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: '#9CA3AF' }} />
+                      <Mail size={14} style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.35)' }} />
                       <input
                         type="email"
                         placeholder="Enter your email"
                         value={form.email}
                         onChange={(e) => handleChange('email', e.target.value)}
                         style={{ ...inputBase, borderBottomColor: errors.email ? '#e05c5c' : '#D1CCC0' }}
-                        onFocus={(e) => (e.target.style.borderBottomColor = '#0F2244')}
+                        onFocus={(e) => (e.target.style.borderBottomColor = '#C9A84C')}
                         onBlur={(e) => (e.target.style.borderBottomColor = errors.email ? '#e05c5c' : '#D1CCC0')}
                       />
                     </div>
@@ -408,18 +408,18 @@ export const ContactSection = () => {
 
                   {/* Phone */}
                   <div>
-                    <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '0.5rem' }}>
+                    <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: 'rgba(255,255,255,0.7)', marginBottom: '0.5rem' }}>
                       Phone
                     </label>
                     <div style={{ position: 'relative' }}>
-                      <Phone size={14} style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: '#9CA3AF' }} />
+                      <Phone size={14} style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.35)' }} />
                       <input
                         type="tel"
                         placeholder="Enter your phone number"
                         value={form.phone}
                         onChange={(e) => handleChange('phone', e.target.value)}
                         style={inputBase}
-                        onFocus={(e) => (e.target.style.borderBottomColor = '#0F2244')}
+                        onFocus={(e) => (e.target.style.borderBottomColor = '#C9A84C')}
                         onBlur={(e) => (e.target.style.borderBottomColor = '#D1CCC0')}
                       />
                     </div>
@@ -428,18 +428,18 @@ export const ContactSection = () => {
 
                 {/* Location */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '0.5rem' }}>
+                  <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: 'rgba(255,255,255,0.7)', marginBottom: '0.5rem' }}>
                     Your Location
                   </label>
                   <div style={{ position: 'relative' }}>
-                    <MapPin size={14} style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: '#9CA3AF' }} />
+                    <MapPin size={14} style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.35)' }} />
                     <input
                       type="text"
                       placeholder="City, Country"
                       value={form.location}
                       onChange={(e) => handleChange('location', e.target.value)}
                       style={inputBase}
-                      onFocus={(e) => (e.target.style.borderBottomColor = '#0F2244')}
+                      onFocus={(e) => (e.target.style.borderBottomColor = '#C9A84C')}
                       onBlur={(e) => (e.target.style.borderBottomColor = '#D1CCC0')}
                     />
                   </div>
@@ -447,11 +447,11 @@ export const ContactSection = () => {
 
                 {/* Message */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '0.5rem' }}>
+                  <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: 'rgba(255,255,255,0.7)', marginBottom: '0.5rem' }}>
                     Send Message
                   </label>
                   <div style={{ position: 'relative' }}>
-                    <MessageSquare size={14} style={{ position: 'absolute', left: 0, top: '14px', color: '#9CA3AF' }} />
+                    <MessageSquare size={14} style={{ position: 'absolute', left: 0, top: '14px', color: 'rgba(255,255,255,0.35)' }} />
                     <textarea
                       placeholder="Enter your message..."
                       value={form.message}
@@ -464,7 +464,7 @@ export const ContactSection = () => {
                         paddingTop: '10px',
                         borderBottom: '1.5px solid #D1CCC0',
                       }}
-                      onFocus={(e) => (e.target.style.borderBottomColor = '#0F2244')}
+                      onFocus={(e) => (e.target.style.borderBottomColor = '#C9A84C')}
                       onBlur={(e) => (e.target.style.borderBottomColor = '#D1CCC0')}
                     />
                   </div>
