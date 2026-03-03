@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GraduationCap, MapPin, Phone, Mail, Linkedin, BookOpen, Send, CheckCircle, User } from 'lucide-react';
+import { GraduationCap, MapPin, Phone, Mail, Linkedin, BookOpen, User, CheckCircle, MessageSquare } from 'lucide-react';
 
 /* ─── Education Section ─────────────────────────────────────────────────── */
 
@@ -180,7 +180,7 @@ export const EducationSection = () => {
 /* ─── Contact Section ────────────────────────────────────────────────────── */
 
 export const ContactSection = () => {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', location: '' });
+  const [form, setForm] = useState({ name: '', phone: '', email: '', location: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -205,369 +205,304 @@ export const ContactSection = () => {
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: '' }));
   };
 
-  const contactItems = [
-    { icon: Phone, label: 'Phone', value: '+971 52 507 6563', href: 'tel:+971525076563' },
-    { icon: Mail, label: 'Email', value: 'mishant.gandhi@gmail.com', href: 'mailto:mishant.gandhi@gmail.com' },
-    { icon: MapPin, label: 'Location', value: 'Dubai, United Arab Emirates', href: null },
-  ];
+  const inputBase = {
+    width: '100%',
+    boxSizing: 'border-box',
+    backgroundColor: 'transparent',
+    border: 'none',
+    borderBottom: '1.5px solid #D1CCC0',
+    padding: '10px 0 10px 28px',
+    fontSize: '14px',
+    fontFamily: "'Poppins', sans-serif",
+    color: '#1A1A2E',
+    outline: 'none',
+    transition: 'border-color 0.3s ease',
+  };
 
   return (
     <section
       id="connect"
       style={{
-        backgroundColor: '#0F2244',
+        backgroundColor: '#FAFAF8',
         padding: '7rem 2rem',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Decorative rings */}
-      <div style={{ position: 'absolute', top: '-30%', right: '-6%', width: '480px', height: '480px', borderRadius: '50%', border: '1px solid rgba(201,168,76,0.07)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: '-20%', left: '-4%', width: '340px', height: '340px', borderRadius: '50%', border: '1px solid rgba(201,168,76,0.05)', pointerEvents: 'none' }} />
+      {/* Decorative top-left ellipse accent matching cursor style */}
+      <div style={{
+        position: 'absolute', top: '3rem', left: '2rem',
+        width: '60px', height: '60px',
+        borderRadius: '50%', border: '2px solid #0F2244',
+        opacity: 0.12, pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute', top: '3.75rem', left: '2.75rem',
+        width: '12px', height: '12px', borderRadius: '50%',
+        backgroundColor: '#E87340', opacity: 0.25, pointerEvents: 'none',
+      }} />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        {/* Section heading */}
-        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-          <p style={{ fontSize: '11px', fontWeight: '600', letterSpacing: '3px', textTransform: 'uppercase', color: '#C9A84C', margin: '0 0 0.75rem' }}>
-            Get In Touch
-          </p>
-          <h2 style={{
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: 'clamp(1.75rem, 3vw, 2.75rem)',
-            fontWeight: '700', color: '#FFFFFF', margin: '0 0 1rem',
-          }}>
-            Let's Connect
-          </h2>
-          <div style={{ height: '2px', width: '60px', backgroundColor: '#C9A84C', margin: '0 auto' }} />
-        </div>
-
-        {/* Two-column layout */}
         <div
           className="connect-grid"
-          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem', alignItems: 'start' }}
+          style={{ display: 'grid', gridTemplateColumns: '1fr 2.2fr', gap: '5rem', alignItems: 'start' }}
         >
-          {/* ── LEFT: Mishant's Info ───────────────────────────────────── */}
+          {/* ── LEFT: Info panel ───────────────────────────────────── */}
           <div>
-            {/* Identity card */}
-            <div style={{
-              backgroundColor: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(201,168,76,0.2)',
-              borderRadius: '10px',
-              padding: '2rem',
-              marginBottom: '1.25rem',
+            <p style={{
+              fontSize: '11px', fontWeight: '700', letterSpacing: '3px',
+              textTransform: 'uppercase', color: '#9CA3AF', margin: '0 0 1.25rem',
             }}>
-              {/* Avatar / monogram */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginBottom: '1.5rem' }}>
-                <div style={{
-                  width: '64px', height: '64px',
-                  border: '2px solid #C9A84C',
-                  borderRadius: '50%',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '20px', fontWeight: '700', color: '#C9A84C',
-                  backgroundColor: 'rgba(201,168,76,0.08)',
-                  flexShrink: 0,
-                }}>
-                  MG
-                </div>
-                <div>
-                  <div style={{ fontSize: '18px', fontWeight: '700', color: '#FFFFFF', lineHeight: '1.2' }}>
-                    Mishant Gandhi
-                  </div>
-                  <div style={{ fontSize: '12.5px', color: '#C9A84C', marginTop: '3px', fontWeight: '500' }}>
-                    CA · Finance Leader · Dubai, UAE
-                  </div>
-                </div>
-              </div>
+              Contact Us
+            </p>
+            <h2 style={{
+              fontFamily: "'Poppins', sans-serif",
+              fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+              fontWeight: '800', color: '#0F2244',
+              lineHeight: '1.1', margin: '0 0 2.5rem',
+              letterSpacing: '-0.5px',
+            }}>
+              Let's<br />Connect
+            </h2>
 
-              {/* Divider */}
-              <div style={{ height: '1px', backgroundColor: 'rgba(201,168,76,0.15)', marginBottom: '1.5rem' }} />
-
-              {/* Contact details */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                {contactItems.map((item, i) => {
-                  const Icon = item.icon;
-                  const Tag = item.href ? 'a' : 'div';
-                  return (
-                    <Tag
-                      key={i}
-                      href={item.href || undefined}
-                      style={{
-                        display: 'flex', alignItems: 'center', gap: '0.875rem',
-                        textDecoration: 'none', cursor: item.href ? 'pointer' : 'default',
-                      }}
-                    >
-                      <div style={{
-                        width: '36px', height: '36px',
-                        backgroundColor: 'rgba(201,168,76,0.1)',
-                        borderRadius: '6px',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        flexShrink: 0,
-                      }}>
-                        <Icon size={16} style={{ color: '#C9A84C' }} />
-                      </div>
-                      <div>
-                        <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1px' }}>
-                          {item.label}
-                        </div>
-                        <div style={{ fontSize: '13px', color: '#FFFFFF', fontWeight: '500' }}>
-                          {item.value}
-                        </div>
-                      </div>
-                    </Tag>
-                  );
-                })}
+            {/* Name row (no subheading) */}
+            <div style={{ marginBottom: '2rem' }}>
+              <div style={{ fontSize: '16px', fontWeight: '700', color: '#0F2244', marginBottom: '0.125rem' }}>
+                Mishant Gandhi
               </div>
             </div>
 
-            {/* LinkedIn button */}
-            <a
-              href="https://www.linkedin.com/in/camishant-0525076563"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.75rem',
-                width: '100%',
-                padding: '1rem',
-                backgroundColor: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(201,168,76,0.25)',
-                borderRadius: '8px',
-                textDecoration: 'none',
-                color: '#FFFFFF',
-                fontSize: '13.5px',
-                fontWeight: '600',
-                letterSpacing: '0.3px',
-                transition: 'background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease',
-                boxSizing: 'border-box',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(201,168,76,0.12)';
-                e.currentTarget.style.borderColor = '#C9A84C';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)';
-                e.currentTarget.style.borderColor = 'rgba(201,168,76,0.25)';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              <Linkedin size={18} style={{ color: '#C9A84C' }} />
-              Connect on LinkedIn
-            </a>
+            {/* Phone */}
+            <div style={{ marginBottom: '0.5rem' }}>
+              <div style={{ fontSize: '11px', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: '600', marginBottom: '4px' }}>
+                Contact us
+              </div>
+              <a href="tel:+971525076563" style={{ fontSize: '15px', color: '#0F2244', fontWeight: '500', textDecoration: 'none', display: 'block' }}>
+                +971 52 507 6563
+              </a>
+            </div>
+            <div style={{ height: '1px', backgroundColor: '#E2DDD6', margin: '1.25rem 0' }} />
+
+            {/* Email */}
+            <div style={{ marginBottom: '0.5rem' }}>
+              <div style={{ fontSize: '11px', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: '600', marginBottom: '4px' }}>
+                Email
+              </div>
+              <a href="mailto:mishant.gandhi@gmail.com" style={{ fontSize: '14.5px', color: '#0F2244', fontWeight: '500', textDecoration: 'none', display: 'block' }}>
+                mishant.gandhi@gmail.com
+              </a>
+            </div>
+            <div style={{ height: '1px', backgroundColor: '#E2DDD6', margin: '1.25rem 0' }} />
+
+            {/* Social */}
+            <div>
+              <div style={{ fontSize: '11px', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: '600', marginBottom: '0.875rem' }}>
+                Follow us
+              </div>
+              <a
+                href="https://www.linkedin.com/in/camishant-0525076563"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '8px',
+                  color: '#0F2244', textDecoration: 'none',
+                  fontSize: '13px', fontWeight: '600',
+                  padding: '8px 16px',
+                  border: '1.5px solid #0F2244',
+                  borderRadius: '4px',
+                  transition: 'background-color 0.3s ease, color 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#0F2244';
+                  e.currentTarget.style.color = '#C9A84C';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#0F2244';
+                }}
+              >
+                <Linkedin size={15} />
+                LinkedIn
+              </a>
+            </div>
           </div>
 
-          {/* ── RIGHT: Contact Form ────────────────────────────────────── */}
-          <div style={{
-            backgroundColor: 'rgba(255,255,255,0.05)',
-            border: '1px solid rgba(201,168,76,0.2)',
-            borderRadius: '10px',
-            padding: '2rem',
-          }}>
+          {/* ── RIGHT: Form ────────────────────────────────────────── */}
+          <div style={{ paddingTop: '3.5rem' }}>
             {submitted ? (
-              /* Success state */
-              <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
+              <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
                 <div style={{
-                  width: '72px', height: '72px',
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(201,168,76,0.12)',
+                  width: '72px', height: '72px', borderRadius: '50%',
                   border: '2px solid #C9A84C',
+                  backgroundColor: 'rgba(201,168,76,0.08)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   margin: '0 auto 1.5rem',
                 }}>
                   <CheckCircle size={32} style={{ color: '#C9A84C' }} />
                 </div>
-                <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#FFFFFF', margin: '0 0 0.75rem' }}>
+                <h3 style={{ fontSize: '22px', fontWeight: '700', color: '#0F2244', margin: '0 0 0.75rem' }}>
                   Message Sent!
                 </h3>
-                <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', lineHeight: '1.7', margin: '0 0 1.5rem' }}>
+                <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.7', margin: '0 0 2rem' }}>
                   Thank you for reaching out. Mishant will get back to you shortly.
                 </p>
                 <button
-                  onClick={() => { setSubmitted(false); setForm({ name: '', phone: '', email: '', location: '' }); }}
+                  onClick={() => { setSubmitted(false); setForm({ name: '', phone: '', email: '', location: '', message: '' }); }}
                   style={{
-                    backgroundColor: 'transparent',
-                    border: '1.5px solid rgba(201,168,76,0.5)',
-                    color: '#C9A84C',
-                    padding: '10px 28px',
-                    borderRadius: '4px',
-                    fontSize: '13px',
-                    fontWeight: '600',
-                    cursor: 'pointer',
+                    backgroundColor: '#0F2244', color: '#FFFFFF',
+                    border: 'none', padding: '12px 32px',
+                    borderRadius: '50px', fontSize: '13.5px',
+                    fontWeight: '600', cursor: 'pointer',
                     fontFamily: "'Poppins', sans-serif",
-                    transition: 'background-color 0.3s ease, border-color 0.3s ease',
+                    transition: 'background-color 0.3s ease',
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = 'rgba(201,168,76,0.1)';
-                    e.currentTarget.style.borderColor = '#C9A84C';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'transparent';
-                    e.currentTarget.style.borderColor = 'rgba(201,168,76,0.5)';
-                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#C9A84C')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#0F2244')}
                 >
                   Send Another
                 </button>
               </div>
             ) : (
-              <>
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <h3 style={{ fontSize: '17px', fontWeight: '700', color: '#FFFFFF', margin: '0 0 0.4rem' }}>
-                    Send a Message
-                  </h3>
-                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', margin: 0, lineHeight: '1.5' }}>
-                    Fill out the form and I'll be in touch soon.
-                  </p>
-                </div>
-
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  {/* Name */}
-                  <div>
-                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '600', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '6px' }}>
-                      Full Name *
-                    </label>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                {/* Full Name */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '0.5rem' }}>
+                    Full Name
+                  </label>
+                  <div style={{ position: 'relative' }}>
+                    <User size={14} style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: '#9CA3AF' }} />
                     <input
                       type="text"
-                      placeholder="Your full name"
+                      placeholder="Enter your full name"
                       value={form.name}
                       onChange={(e) => handleChange('name', e.target.value)}
-                      style={{
-                        width: '100%', boxSizing: 'border-box',
-                        padding: '12px 14px',
-                        backgroundColor: 'rgba(255,255,255,0.06)',
-                        border: `1px solid ${errors.name ? '#e05c5c' : 'rgba(201,168,76,0.2)'}`,
-                        borderRadius: '6px',
-                        color: '#FFFFFF',
-                        fontSize: '13.5px',
-                        fontFamily: "'Poppins', sans-serif",
-                        outline: 'none',
-                        transition: 'border-color 0.3s ease',
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = '#C9A84C')}
-                      onBlur={(e) => (e.target.style.borderColor = errors.name ? '#e05c5c' : 'rgba(201,168,76,0.2)')}
+                      style={{ ...inputBase, borderBottomColor: errors.name ? '#e05c5c' : '#D1CCC0' }}
+                      onFocus={(e) => (e.target.style.borderBottomColor = '#0F2244')}
+                      onBlur={(e) => (e.target.style.borderBottomColor = errors.name ? '#e05c5c' : '#D1CCC0')}
                     />
-                    {errors.name && <div style={{ fontSize: '11.5px', color: '#e05c5c', marginTop: '4px' }}>{errors.name}</div>}
+                  </div>
+                  {errors.name && <div style={{ fontSize: '11.5px', color: '#e05c5c', marginTop: '4px' }}>{errors.name}</div>}
+                </div>
+
+                {/* Email + Phone row */}
+                <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem' }}>
+                  {/* Email */}
+                  <div>
+                    <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '0.5rem' }}>
+                      Email
+                    </label>
+                    <div style={{ position: 'relative' }}>
+                      <Mail size={14} style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: '#9CA3AF' }} />
+                      <input
+                        type="email"
+                        placeholder="Enter your email"
+                        value={form.email}
+                        onChange={(e) => handleChange('email', e.target.value)}
+                        style={{ ...inputBase, borderBottomColor: errors.email ? '#e05c5c' : '#D1CCC0' }}
+                        onFocus={(e) => (e.target.style.borderBottomColor = '#0F2244')}
+                        onBlur={(e) => (e.target.style.borderBottomColor = errors.email ? '#e05c5c' : '#D1CCC0')}
+                      />
+                    </div>
+                    {errors.email && <div style={{ fontSize: '11.5px', color: '#e05c5c', marginTop: '4px' }}>{errors.email}</div>}
                   </div>
 
                   {/* Phone */}
                   <div>
-                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '600', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '6px' }}>
-                      Phone Number
+                    <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '0.5rem' }}>
+                      Phone
                     </label>
-                    <input
-                      type="tel"
-                      placeholder="+971 XX XXX XXXX"
-                      value={form.phone}
-                      onChange={(e) => handleChange('phone', e.target.value)}
-                      style={{
-                        width: '100%', boxSizing: 'border-box',
-                        padding: '12px 14px',
-                        backgroundColor: 'rgba(255,255,255,0.06)',
-                        border: '1px solid rgba(201,168,76,0.2)',
-                        borderRadius: '6px',
-                        color: '#FFFFFF',
-                        fontSize: '13.5px',
-                        fontFamily: "'Poppins', sans-serif",
-                        outline: 'none',
-                        transition: 'border-color 0.3s ease',
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = '#C9A84C')}
-                      onBlur={(e) => (e.target.style.borderColor = 'rgba(201,168,76,0.2)')}
-                    />
+                    <div style={{ position: 'relative' }}>
+                      <Phone size={14} style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: '#9CA3AF' }} />
+                      <input
+                        type="tel"
+                        placeholder="Enter your phone number"
+                        value={form.phone}
+                        onChange={(e) => handleChange('phone', e.target.value)}
+                        style={inputBase}
+                        onFocus={(e) => (e.target.style.borderBottomColor = '#0F2244')}
+                        onBlur={(e) => (e.target.style.borderBottomColor = '#D1CCC0')}
+                      />
+                    </div>
                   </div>
+                </div>
 
-                  {/* Email */}
-                  <div>
-                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '600', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '6px' }}>
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="you@example.com"
-                      value={form.email}
-                      onChange={(e) => handleChange('email', e.target.value)}
-                      style={{
-                        width: '100%', boxSizing: 'border-box',
-                        padding: '12px 14px',
-                        backgroundColor: 'rgba(255,255,255,0.06)',
-                        border: `1px solid ${errors.email ? '#e05c5c' : 'rgba(201,168,76,0.2)'}`,
-                        borderRadius: '6px',
-                        color: '#FFFFFF',
-                        fontSize: '13.5px',
-                        fontFamily: "'Poppins', sans-serif",
-                        outline: 'none',
-                        transition: 'border-color 0.3s ease',
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = '#C9A84C')}
-                      onBlur={(e) => (e.target.style.borderColor = errors.email ? '#e05c5c' : 'rgba(201,168,76,0.2)')}
-                    />
-                    {errors.email && <div style={{ fontSize: '11.5px', color: '#e05c5c', marginTop: '4px' }}>{errors.email}</div>}
-                  </div>
-
-                  {/* Location */}
-                  <div>
-                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '600', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '6px' }}>
-                      Your Location
-                    </label>
+                {/* Location */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '0.5rem' }}>
+                    Your Location
+                  </label>
+                  <div style={{ position: 'relative' }}>
+                    <MapPin size={14} style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', color: '#9CA3AF' }} />
                     <input
                       type="text"
                       placeholder="City, Country"
                       value={form.location}
                       onChange={(e) => handleChange('location', e.target.value)}
-                      style={{
-                        width: '100%', boxSizing: 'border-box',
-                        padding: '12px 14px',
-                        backgroundColor: 'rgba(255,255,255,0.06)',
-                        border: '1px solid rgba(201,168,76,0.2)',
-                        borderRadius: '6px',
-                        color: '#FFFFFF',
-                        fontSize: '13.5px',
-                        fontFamily: "'Poppins', sans-serif",
-                        outline: 'none',
-                        transition: 'border-color 0.3s ease',
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = '#C9A84C')}
-                      onBlur={(e) => (e.target.style.borderColor = 'rgba(201,168,76,0.2)')}
+                      style={inputBase}
+                      onFocus={(e) => (e.target.style.borderBottomColor = '#0F2244')}
+                      onBlur={(e) => (e.target.style.borderBottomColor = '#D1CCC0')}
                     />
                   </div>
+                </div>
 
-                  {/* Submit */}
+                {/* Message */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '0.5rem' }}>
+                    Send Message
+                  </label>
+                  <div style={{ position: 'relative' }}>
+                    <MessageSquare size={14} style={{ position: 'absolute', left: 0, top: '14px', color: '#9CA3AF' }} />
+                    <textarea
+                      placeholder="Enter your message..."
+                      value={form.message}
+                      onChange={(e) => handleChange('message', e.target.value)}
+                      rows={4}
+                      style={{
+                        ...inputBase,
+                        resize: 'vertical',
+                        minHeight: '100px',
+                        paddingTop: '10px',
+                        borderBottom: '1.5px solid #D1CCC0',
+                      }}
+                      onFocus={(e) => (e.target.style.borderBottomColor = '#0F2244')}
+                      onBlur={(e) => (e.target.style.borderBottomColor = '#D1CCC0')}
+                    />
+                  </div>
+                </div>
+
+                {/* Submit */}
+                <div>
                   <button
                     type="submit"
                     style={{
-                      marginTop: '0.25rem',
-                      width: '100%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '0.625rem',
-                      padding: '13px',
                       backgroundColor: '#C9A84C',
-                      border: 'none',
-                      borderRadius: '6px',
                       color: '#0F2244',
-                      fontSize: '13.5px',
+                      border: 'none',
+                      padding: '14px 48px',
+                      borderRadius: '50px',
+                      fontSize: '14px',
                       fontWeight: '700',
-                      letterSpacing: '0.5px',
                       cursor: 'pointer',
                       fontFamily: "'Poppins', sans-serif",
-                      transition: 'background-color 0.3s ease, transform 0.2s ease',
+                      letterSpacing: '0.3px',
+                      transition: 'background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease',
+                      boxShadow: '0 4px 14px rgba(201,168,76,0.3)',
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = '#B8963E';
                       e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(201,168,76,0.4)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = '#C9A84C';
                       e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 4px 14px rgba(201,168,76,0.3)';
                     }}
                   >
-                    <Send size={15} />
-                    Send Message
+                    Submit Now
                   </button>
-                </form>
-              </>
+                </div>
+              </form>
             )}
           </div>
         </div>
@@ -575,9 +510,11 @@ export const ContactSection = () => {
 
       <style>{`
         @media (max-width: 900px) {
-          .connect-grid { grid-template-columns: 1fr !important; }
+          .connect-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+          .form-row { grid-template-columns: 1fr !important; }
         }
-        input::placeholder { color: rgba(255,255,255,0.25) !important; }
+        input::placeholder, textarea::placeholder { color: #B0AAA0 !important; }
+        textarea { font-family: 'Poppins', sans-serif !important; }
       `}</style>
     </section>
   );

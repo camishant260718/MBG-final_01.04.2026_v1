@@ -5,6 +5,7 @@ import HeroSection from "./components/HeroSection";
 import WorkedWithSection from "./components/WorkedWithSection";
 import ExperienceSection from "./components/ExperienceSection";
 import { EducationSection, ContactSection } from "./components/EducationContact";
+import CustomCursor from "./components/CustomCursor";
 
 const Footer = () => (
   <footer
@@ -55,6 +56,7 @@ const Footer = () => (
 function App() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif" }}>
+      <CustomCursor />
       <Header />
       <HeroSection />
       <WorkedWithSection />
