@@ -169,30 +169,69 @@ const HeroSection = () => {
             </button>
           </div>
 
-          {/* Social proof row */}
+          {/* LinkedIn stats row */}
           <div style={{
-            display: 'flex', alignItems: 'center', gap: '1rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
             opacity: visible ? 1 : 0,
             transition: 'opacity 0.6s ease 0.55s',
+            flexWrap: 'wrap',
           }}>
-            {/* Stacked initials avatars */}
-            <div style={{ display: 'flex' }}>
-              {['DW', 'AF', 'EP', 'RC'].map((init, i) => (
-                <div key={i} style={{
-                  width: '36px', height: '36px', borderRadius: '50%',
-                  backgroundColor: ['#0891B2','#059669','#DC2626','#7C3AED'][i],
-                  border: '2.5px solid #131F33',
-                  marginLeft: i === 0 ? 0 : '-10px',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '10px', fontWeight: '700', color: '#FFFFFF',
-                  letterSpacing: '0.3px',
-                }}>{init}</div>
-              ))}
-            </div>
-            <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: '1.4' }}>
-              Contributed to <strong style={{ color: 'rgba(255,255,255,0.8)' }}>6 organizations</strong>
-              <br />across UAE & India
-            </p>
+            <a
+              href="https://www.linkedin.com/in/camishant-0525076563"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#C9A84C',
+                textDecoration: 'underline',
+                textDecorationColor: 'rgba(201,168,76,0.5)',
+                textUnderlineOffset: '3px',
+                letterSpacing: '0.1px',
+                transition: 'color 0.25s ease, text-decoration-color 0.25s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#FFFFFF';
+                e.currentTarget.style.textDecorationColor = 'rgba(255,255,255,0.6)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#C9A84C';
+                e.currentTarget.style.textDecorationColor = 'rgba(201,168,76,0.5)';
+              }}
+            >
+              3,214 followers
+            </a>
+            <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: '14px' }}>·</span>
+            <a
+              href="https://www.linkedin.com/in/camishant-0525076563"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#C9A84C',
+                textDecoration: 'underline',
+                textDecorationColor: 'rgba(201,168,76,0.5)',
+                textUnderlineOffset: '3px',
+                letterSpacing: '0.1px',
+                transition: 'color 0.25s ease, text-decoration-color 0.25s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#FFFFFF';
+                e.currentTarget.style.textDecorationColor = 'rgba(255,255,255,0.6)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#C9A84C';
+                e.currentTarget.style.textDecorationColor = 'rgba(201,168,76,0.5)';
+              }}
+            >
+              500+ connections
+            </a>
+            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', marginLeft: '4px' }}>
+              on LinkedIn
+            </span>
           </div>
         </div>
 
