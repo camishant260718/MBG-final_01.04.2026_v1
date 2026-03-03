@@ -11,7 +11,7 @@ const experiences = [
     years: '2024 — Present',
     role: 'Sr. Manager — Finance, Accounts & Taxation',
     description:
-      "Lead strategic finance for DEWA's clean energy and infrastructure projects — managing energy audits, contract reviews, internal & statutory audits, and 5–10 year business projections supporting DEWA's sustainability and growth agenda.",
+      "Complete financial reporting and internal & external audit management for DEWA's subsidiary. Stakeholder reporting, corporate governance, and regulatory compliance including VAT returns and refunds.",
   },
   {
     Icon: Wrench,
