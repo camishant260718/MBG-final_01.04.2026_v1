@@ -4,9 +4,9 @@ const companies = [
   { name: 'Dubai Electricity & Water Authority', short: 'DEWA', logo: 'https://logo.clearbit.com/dewa.gov.ae', country: 'Dubai, UAE' },
   { name: 'Al-Futtaim Engineering & Technologies', short: 'AFE', logo: 'https://logo.clearbit.com/alfuttaim.com', country: 'Dubai, UAE' },
   { name: 'Essar Projects Limited', short: 'EPL', logo: 'https://logo.clearbit.com/essar.com', country: 'Dubai, UAE' },
+  { name: 'UAE Investor Family Office', short: 'UIF', logo: null, country: 'Dubai, UAE' },
   { name: 'Reliance Communications', short: 'RCL', logo: 'https://logo.clearbit.com/rcom.co.in', country: 'Mumbai, India' },
-  { name: 'Golden Desert Investments LLC', short: 'GDI', logo: null, country: 'UAE' },
-  { name: 'M.J. Khilawala & Co.', short: 'MJK', logo: null, country: 'Mumbai, India' },
+  { name: 'GOLS Academy', short: 'GLS', logo: null, country: 'Mumbai, India' },
 ];
 
 const LogoItem = ({ company }) => {
