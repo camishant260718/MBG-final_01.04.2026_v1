@@ -1,65 +1,77 @@
 import React from 'react';
-import { Building2, Wrench, HardHat, Radio, TrendingUp, FileText } from 'lucide-react';
+import { Building2, Wrench, Zap, Radio, Briefcase, GraduationCap } from 'lucide-react';
 
 const experiences = [
   {
-    Icon: Building2,
+    Icon: Zap,
     color: '#0891B2',
-    company: 'DEWA Subsidiary',
-    years: '2019 — Present',
-    role: 'Finance Manager',
+    company: 'Dubai Electricity and Water Authority',
+    location: 'Dubai, UAE',
+    displayName: 'Dubai Electricity & Water Authority',
+    years: '2024 — Present',
+    role: 'Senior Manager — Finance, Accounts & Corporate Taxation',
     description:
-      'Leading financial reporting, IFRS compliance, and strategic financial planning. Driving automation, Power BI dashboards and performance excellence for a key utility subsidiary.',
+      "Lead strategic finance for DEWA's clean energy and infrastructure projects — managing energy audits, contract reviews, internal & statutory audits, and 5–10 year business projections supporting DEWA's sustainability and growth agenda.",
   },
   {
     Icon: Wrench,
     color: '#059669',
-    company: 'Al-Futtaim Engineering & Technologies',
-    years: '2016 — 2019',
-    role: 'Senior Finance Manager',
+    company: 'Al Futtaim Engineering and Technologies',
+    location: 'Dubai, UAE',
+    displayName: 'Al Futtaim Engineering & Technologies',
+    years: '2022 — 2024',
+    role: 'Revenue Controller',
     description:
-      "Oversaw group consolidation, FP&A, and ERP rollout across multiple business units within Al-Futtaim's engineering and technology division.",
+      'In-country valuations and reports for UAE and Qatar businesses. Managed internal, half-year, interim, and external audit assignments, plus Contractors Classification certification for Abu Dhabi government opportunities.',
   },
   {
-    Icon: HardHat,
+    Icon: Building2,
     color: '#C9A84C',
-    company: 'Essar Projects Limited',
-    years: '2014 — 2016',
-    role: 'Finance Manager',
+    company: 'Essar Group',
+    location: 'India',
+    displayName: 'Essar Group',
+    years: '2017 — 2021',
+    role: 'Sr. Manager — Financial Analysis, Reporting & Group Consolidation',
     description:
-      'Managed project finance, cost controls, and compliance reporting for large-scale infrastructure and EPC projects across the GCC and Indian markets.',
+      'Financial consolidation and reporting, secretarial compliance and corporate governance across the Essar Group.',
   },
   {
-    Icon: Radio,
-    color: '#7C3AED',
-    company: 'Reliance Communications',
-    years: '2012 — 2014',
-    role: 'Finance Executive',
-    description:
-      'Handled statutory financial reporting, internal controls, and regulatory compliance in the telecom sector for one of India\'s largest network operators.',
-  },
-  {
-    Icon: TrendingUp,
+    Icon: Briefcase,
     color: '#DC2626',
-    company: 'Golden Desert Investments LLC',
-    years: '2011 — 2012',
-    role: 'Finance Analyst',
+    company: 'UAE Investor Family Office',
+    location: 'UAE',
+    displayName: 'UAE Investor Family Office',
+    years: '2016 — 2017',
+    role: 'Finance Manager',
     description:
       'Supported investment analysis, financial modelling, and feasibility studies for real estate and diversified investment portfolios based in UAE.',
   },
   {
-    Icon: FileText,
-    color: '#0F2244',
-    company: 'M.J. Khilawala & Co.',
-    years: '2008 — 2011',
-    role: 'Article Trainee / CA',
+    Icon: Radio,
+    color: '#7C3AED',
+    company: 'Reliance Communication Ltd.',
+    location: 'India',
+    displayName: 'Reliance Communication Ltd.',
+    years: '2015 — 2016',
+    role: 'Assistant Manager — Finance and Accounts',
     description:
-      "Completed Chartered Accountancy articleship covering statutory audit, direct & indirect tax compliance, and financial advisory across diverse client industries.",
+      "Handled statutory financial reporting, internal controls, and regulatory compliance in the telecom sector for one of India's largest network operators.",
+  },
+  {
+    Icon: GraduationCap,
+    color: '#0F2244',
+    company: 'GOLS Academy',
+    location: 'India',
+    displayName: 'GOLS Academy',
+    years: '2012 — 2014',
+    role: 'Accounts Manager',
+    description:
+      'Managed Government Grant accounting, working capital, MIS, cash flow, budgetary analysis, fixed assets and logistics operations.',
   },
 ];
 
 const ExpCard = ({ exp }) => {
-  const { Icon, color, company, years, role, description } = exp;
+  const { Icon, color, company, location, displayName, years, role, description } = exp;
   const [hovered, setHovered] = React.useState(false);
 
   return (
@@ -81,24 +93,33 @@ const ExpCard = ({ exp }) => {
         gap: '1.5rem',
       }}
     >
-      {/* Top row: Icon + company name + years */}
+      {/* Top row: Icon + company + years */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
         <div style={{
           width: '44px', height: '44px',
           borderRadius: '10px',
-          backgroundColor: `${color}15`,
+          backgroundColor: `${color}18`,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           flexShrink: 0,
-          transition: 'background-color 0.3s ease',
         }}>
           <Icon size={22} style={{ color }} />
         </div>
-        <div>
-          <div style={{ fontSize: '13.5px', fontWeight: '600', color: '#0F2244', lineHeight: '1.3' }}>
-            {company.length > 26 ? company.substring(0, 26) + '…' : company}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{
+            fontSize: '12.5px', fontWeight: '600', color: '#0F2244',
+            lineHeight: '1.3', whiteSpace: 'nowrap',
+            overflow: 'hidden', textOverflow: 'ellipsis',
+          }}>
+            {company}
           </div>
-          <div style={{ fontSize: '11.5px', color: '#9CA3AF', marginTop: '1px' }}>
-            {years}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
+            <span style={{ fontSize: '11px', color: '#9CA3AF' }}>{years}</span>
+            {location && (
+              <>
+                <span style={{ fontSize: '11px', color: '#D1D5DB' }}>·</span>
+                <span style={{ fontSize: '11px', color: '#9CA3AF' }}>{location}</span>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -106,18 +127,18 @@ const ExpCard = ({ exp }) => {
       {/* Divider */}
       <div style={{ height: '1px', backgroundColor: '#F0EDE6' }} />
 
-      {/* Bottom: Company name (large) + role + desc */}
+      {/* Bottom: Display name + role + desc */}
       <div>
         <div style={{
-          fontSize: '1.1rem', fontWeight: '700', color: '#0F2244',
-          margin: '0 0 0.25rem', lineHeight: '1.3',
+          fontSize: '1rem', fontWeight: '700', color: '#0F2244',
+          margin: '0 0 0.3rem', lineHeight: '1.35',
         }}>
-          {company.split(' ').slice(0, 2).join(' ')}
+          {displayName}
         </div>
         <div style={{
-          fontSize: '11.5px', fontWeight: '600',
+          fontSize: '11px', fontWeight: '600',
           color: color, textTransform: 'uppercase',
-          letterSpacing: '0.8px', marginBottom: '0.75rem',
+          letterSpacing: '0.7px', marginBottom: '0.75rem',
         }}>
           {role}
         </div>
