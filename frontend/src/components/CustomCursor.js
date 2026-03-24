@@ -1,71 +1,93 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const CustomCursor = () => {
-  const [pos, setPos] = useState({ x: -100, y: -100 });
-  const [isPointer, setIsPointer] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
+  const dotRef   = useRef(null);
+  const ringRef  = useRef(null);
+  const mouse    = useRef({ x: -200, y: -200 });
+  const ring     = useRef({ x: -200, y: -200 });
+  const raf      = useRef(null);
+  const [hidden, setHidden] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
-    const move = (e) => setPos({ x: e.clientX, y: e.clientY });
+    const lerp = (a, b, t) => a + (b - a) * t;
 
-    const checkPointer = () => {
-      const el = document.elementFromPoint(pos.x, pos.y);
-      if (el) {
-        const style = window.getComputedStyle(el).cursor;
-        setIsPointer(style === 'pointer');
-      }
+    const onMove = (e) => {
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
     };
+    const onLeave  = () => setHidden(true);
+    const onEnter  = () => setHidden(false);
+    const onDown   = () => setClicked(true);
+    const onUp     = () => setClicked(false);
 
-    const onMouseLeave = () => setIsHidden(true);
-    const onMouseEnter = () => setIsHidden(false);
+    window.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseleave', onLeave);
+    document.addEventListener('mouseenter', onEnter);
+    window.addEventListener('mousedown', onDown);
+    window.addEventListener('mouseup', onUp);
 
-    window.addEventListener('mousemove', move);
-    window.addEventListener('mousemove', checkPointer);
-    document.documentElement.addEventListener('mouseleave', onMouseLeave);
-    document.documentElement.addEventListener('mouseenter', onMouseEnter);
+    const animate = () => {
+      ring.current.x = lerp(ring.current.x, mouse.current.x, 0.1);
+      ring.current.y = lerp(ring.current.y, mouse.current.y, 0.1);
+
+      if (dotRef.current) {
+        dotRef.current.style.left  = `${mouse.current.x}px`;
+        dotRef.current.style.top   = `${mouse.current.y}px`;
+      }
+      if (ringRef.current) {
+        ringRef.current.style.left = `${ring.current.x}px`;
+        ringRef.current.style.top  = `${ring.current.y}px`;
+      }
+      raf.current = requestAnimationFrame(animate);
+    };
+    raf.current = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener('mousemove', move);
-      window.removeEventListener('mousemove', checkPointer);
-      document.documentElement.removeEventListener('mouseleave', onMouseLeave);
-      document.documentElement.removeEventListener('mouseenter', onMouseEnter);
+      window.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseleave', onLeave);
+      document.removeEventListener('mouseenter', onEnter);
+      window.removeEventListener('mousedown', onDown);
+      window.removeEventListener('mouseup', onUp);
+      cancelAnimationFrame(raf.current);
     };
-  }, [pos.x, pos.y]);
+  }, []);
 
-  /* Outer ring size: 44px normal, 56px on pointer (interactive hover) */
-  const outerSize = isPointer ? 52 : 44;
-  const dotSize = isPointer ? 10 : 8;
+  const base = {
+    position: 'fixed',
+    borderRadius: '50%',
+    pointerEvents: 'none',
+    zIndex: 99999,
+    transform: 'translate(-50%, -50%)',
+    opacity: hidden ? 0 : 1,
+    transition: 'opacity 0.3s ease',
+  };
 
   return (
     <>
-      {/* Outer ring */}
+      {/* Outer ring — lags behind (RAF lerp via ref, no transition on position) */}
       <div
+        ref={ringRef}
         style={{
-          position: 'fixed',
-          top: pos.y - outerSize / 2,
-          left: pos.x - outerSize / 2,
-          width: outerSize,
-          height: outerSize,
-          borderRadius: '50%',
+          ...base,
+          width: clicked ? '36px' : '44px',
+          height: clicked ? '36px' : '44px',
           border: '2px solid #0F2244',
-          pointerEvents: 'none',
-          zIndex: 99999,
-          opacity: isHidden ? 0 : 1,
-          transition: 'width 0.18s ease, height 0.18s ease, top 0.06s linear, left 0.06s linear, opacity 0.3s ease',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          transition: 'opacity 0.3s ease, width 0.2s ease, height 0.2s ease',
         }}
       >
-        {/* Inner dot */}
+        {/* Inner orange dot — centered inside ring */}
         <div
+          ref={dotRef}
           style={{
-            width: dotSize,
-            height: dotSize,
+            position: 'absolute',
+            top: '50%', left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: clicked ? '12px' : '8px',
+            height: clicked ? '12px' : '8px',
             borderRadius: '50%',
             backgroundColor: '#E87340',
-            transition: 'width 0.18s ease, height 0.18s ease',
-            flexShrink: 0,
+            transition: 'width 0.2s ease, height 0.2s ease',
           }}
         />
       </div>

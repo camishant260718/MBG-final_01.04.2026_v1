@@ -39,7 +39,7 @@ const experiences = [
     Icon: Briefcase,
     color: '#DC2626',
     company: 'UAE Investor Family Office',
-    location: 'UAE',
+    location: 'Dubai, UAE',
     displayName: 'UAE Investor Family Office',
     years: '2016 — 2017',
     role: 'Finance Manager',
@@ -139,6 +139,7 @@ const ExpCard = ({ exp }) => {
           fontSize: '11px', fontWeight: '600',
           color: color, textTransform: 'uppercase',
           letterSpacing: '0.7px', marginBottom: '0.75rem',
+          wordBreak: 'break-word', overflowWrap: 'break-word',
         }}>
           {role}
         </div>
@@ -200,6 +201,7 @@ const ExperienceSection = () => {
         }
         @media (max-width: 640px) {
           .exp-card-grid { grid-template-columns: 1fr !important; }
+          .exp-card { padding: 1.4rem !important; }
         }
       `}</style>
     </section>
