@@ -1,180 +1,249 @@
-import React from 'react';
-import { CheckCircle, ArrowRight, Camera } from 'lucide-react';
+import React, { useState } from 'react';
 
-const highlights = [
-  '13+ years of experience in financial leadership',
-  'Served across 6 global organizations in UAE & India',
-  'IFRS specialist with SAP & Microsoft D365 expertise',
+const quadrants = [
+  {
+    num: '01',
+    title: 'Financial Control',
+    desc: 'Bringing discipline to financial systems (Establishing strong controls, governance, and reporting frameworks to ensure accuracy, compliance, and reliability).',
+  },
+  {
+    num: '02',
+    title: 'Group Consolidation',
+    desc: 'Managing complexity with structure (Overseeing multi-entity financials, intercompany reconciliations, and group reporting with clarity and consistency).',
+  },
+  {
+    num: '03',
+    title: 'Performance & Planning',
+    desc: 'Driving business decisions with insight (Building budgets, forecasts, and performance analysis that enable management to act with confidence).',
+  },
+  {
+    num: '04',
+    title: 'Process & Transformation',
+    desc: 'Designing finance that scales (Improving systems, automating workflows, and strengthening processes to create efficient and future-ready finance functions).',
+  },
 ];
 
-const AboutSection = () => {
-  const scrollTo = (href) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+const QuadrantCard = ({ item, position }) => {
+  const [hovered, setHovered] = useState(false);
 
+  const isTop = position < 2;
+  const isLeft = position % 2 === 0;
+
+  return (
+    <div
+      data-testid={`quadrant-${item.num}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        padding: '2rem 1.75rem',
+        borderBottom: isTop ? '1px solid rgba(27,58,92,0.15)' : 'none',
+        borderRight: isLeft ? '1px solid rgba(27,58,92,0.15)' : 'none',
+        backgroundColor: hovered ? 'rgba(27,58,92,0.08)' : 'transparent',
+        transform: hovered ? 'scale(1.02)' : 'scale(1)',
+        boxShadow: hovered ? '0 8px 30px rgba(27,58,92,0.12)' : 'none',
+        transition: 'background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease',
+        cursor: 'default',
+        position: 'relative',
+        zIndex: hovered ? 2 : 1,
+      }}
+    >
+      <span
+        style={{
+          fontFamily: "'Playfair Display', serif",
+          fontStyle: 'italic',
+          fontSize: '28px',
+          fontWeight: '500',
+          color: '#1B3A5C',
+          display: 'block',
+          marginBottom: '0.75rem',
+          opacity: 0.7,
+        }}
+      >
+        {item.num}
+      </span>
+      <h3
+        style={{
+          fontFamily: "'Poppins', sans-serif",
+          fontSize: '17px',
+          fontWeight: '700',
+          color: '#1B3A5C',
+          margin: '0 0 1rem',
+        }}
+      >
+        {item.title}
+      </h3>
+      <p
+        style={{
+          fontFamily: "'Poppins', sans-serif",
+          fontSize: '13.5px',
+          color: '#4A5568',
+          lineHeight: '1.75',
+          margin: 0,
+        }}
+      >
+        {item.desc}
+      </p>
+    </div>
+  );
+};
+
+const AboutSection = () => {
   return (
     <section
       id="about-me"
-      style={{ backgroundColor: '#ECEAE3', padding: '7rem 2rem' }}
+      data-testid="about-section"
+      style={{ backgroundColor: '#DAE6EF', padding: '5rem 2rem' }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        {/* Section label + heading */}
-        <div style={{ marginBottom: '4rem' }}>
-          <p style={{
-            fontSize: '11px', fontWeight: '700',
-            letterSpacing: '2.5px', textTransform: 'uppercase',
-            color: '#9CA3AF', margin: '0 0 0.6rem',
-          }}>
-            [ MEET MISHANT ]
-          </p>
-          <h2 style={{
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: 'clamp(2.2rem, 4vw, 3rem)',
-            fontWeight: '800', color: '#0F2244',
-            margin: 0, letterSpacing: '-0.5px',
-          }}>
-            About Me
-          </h2>
-        </div>
-
-        {/* Two-column layout */}
+      <div
+        className="about-grid"
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 0,
+          borderRadius: '8px',
+          overflow: 'hidden',
+        }}
+      >
+        {/* LEFT: Intro text */}
         <div
-          className="about-grid"
           style={{
-            display: 'grid',
-            gridTemplateColumns: '0.85fr 1.15fr',
-            gap: '5rem',
-            alignItems: 'center',
+            padding: '3rem 3rem 3rem 2.5rem',
+            borderRight: '1px solid rgba(27,58,92,0.15)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
           }}
         >
-          {/* Left: Photo */}
-          <div style={{ position: 'relative' }}>
-            <div style={{
-              width: '100%',
-              aspectRatio: '4/5',
-              backgroundColor: '#D8D4CB',
-              borderRadius: '8px',
-              overflow: 'hidden',
-              position: 'relative',
-              boxShadow: '8px 8px 0 #C9A84C',
-            }}>
-              {/* Placeholder */}
-              <div style={{
-                width: '100%', height: '100%',
-                display: 'flex', flexDirection: 'column',
-                alignItems: 'center', justifyContent: 'center',
-                gap: '1rem',
-                background: 'linear-gradient(160deg, #1C2B42 0%, #0F2244 100%)',
-              }}>
-                <div style={{
-                  width: '90px', height: '90px',
-                  borderRadius: '50%',
-                  border: '2px solid rgba(201,168,76,0.5)',
-                  backgroundColor: 'rgba(201,168,76,0.1)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '26px', fontWeight: '700', color: '#C9A84C',
-                }}>MG</div>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '15px', fontWeight: '600', color: '#FFFFFF' }}>Mishant Gandhi</div>
-                  <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>Dubai, UAE</div>
-                </div>
-                <div style={{
-                  display: 'flex', alignItems: 'center', gap: '6px',
-                  backgroundColor: 'rgba(201,168,76,0.1)',
-                  border: '1px dashed rgba(201,168,76,0.35)',
-                  borderRadius: '4px', padding: '6px 14px',
-                  marginTop: '0.5rem',
-                }}>
-                  <Camera size={12} style={{ color: 'rgba(201,168,76,0.7)' }} />
-                  <span style={{ fontSize: '10px', color: 'rgba(201,168,76,0.7)', letterSpacing: '0.5px' }}>
-                    Add Profile Photo
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Gold accent stripe */}
-            <div style={{
-              position: 'absolute', bottom: '-16px', left: '16px',
-              right: '-8px', height: '3px',
-              background: 'linear-gradient(to right, #C9A84C, transparent)',
-              borderRadius: '2px',
-            }} />
-          </div>
-
-          {/* Right: Content */}
           <div>
-            {/* Big quote */}
-            <h3 style={{
-              fontFamily: "'Poppins', sans-serif",
-              fontSize: 'clamp(1.3rem, 2.5vw, 1.75rem)',
-              fontWeight: '700', color: '#0F2244',
-              lineHeight: '1.45',
-              margin: '0 0 1.5rem',
-              letterSpacing: '-0.2px',
-            }}>
-              My goal is to transform financial data into strategic insights that drive sharper leadership decisions.
-            </h3>
-
-            {/* Body text */}
-            <p style={{
-              fontSize: '15px', color: '#4A5568',
-              lineHeight: '1.9', margin: '0 0 2.5rem',
-            }}>
-              I'm <strong style={{ color: '#0F2244' }}>Mishant Gandhi</strong>, a finance professional with over 13 years
-              of experience spanning utilities, infrastructure, telecom, and investment sectors across
-              UAE and India. I believe finance is not just about accuracy — it's about <em>insight</em>.
-              I transform finance functions into strategic partners that help leadership teams make
-              sharper, data-backed decisions.
-            </p>
-
-            {/* Checkpoints */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem', marginBottom: '2.5rem' }}>
-              {highlights.map((item, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-                  <CheckCircle
-                    size={18}
-                    style={{ color: '#C9A84C', flexShrink: 0, marginTop: '1px' }}
-                  />
-                  <span style={{ fontSize: '14.5px', color: '#374151', lineHeight: '1.5' }}>{item}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <button
-              onClick={() => scrollTo('#connect')}
+            {/* Section label */}
+            <div
               style={{
-                backgroundColor: '#C9A84C', color: '#0F2244',
-                border: 'none', padding: '14px 36px',
-                borderRadius: '50px', fontSize: '14px',
-                fontWeight: '700', cursor: 'pointer',
-                fontFamily: "'Poppins', sans-serif",
-                display: 'inline-flex', alignItems: 'center', gap: '8px',
-                transition: 'background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease',
-                boxShadow: '0 4px 16px rgba(201,168,76,0.25)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#B8963E';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(201,168,76,0.35)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#C9A84C';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(201,168,76,0.25)';
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                marginBottom: '2rem',
               }}
             >
-              Let's Collaborate <ArrowRight size={16} />
-            </button>
+              <span
+                style={{
+                  width: '40px',
+                  height: '2px',
+                  backgroundColor: '#1B3A5C',
+                  display: 'inline-block',
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: '12px',
+                  fontWeight: '700',
+                  letterSpacing: '2.5px',
+                  textTransform: 'uppercase',
+                  color: '#1B3A5C',
+                }}
+              >
+                About Mishant
+              </span>
+            </div>
+
+            {/* Main heading */}
+            <h2
+              data-testid="about-heading"
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
+                fontWeight: '800',
+                color: '#1B3A5C',
+                lineHeight: '1.35',
+                margin: '0 0 2rem',
+                letterSpacing: '-0.3px',
+              }}
+            >
+              I am a finance professional driven by clarity, precision, and impact.
+            </h2>
+
+            {/* Body paragraphs */}
+            <p
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: '15px',
+                color: '#3A4A5C',
+                lineHeight: '1.8',
+                margin: '0 0 1.25rem',
+              }}
+            >
+              With over a decade of experience in IFRS, financial consolidation, and
+              reporting, I bring structure to complex financial environments.
+            </p>
+            <p
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: '15px',
+                color: '#3A4A5C',
+                lineHeight: '1.8',
+                margin: '0 0 1.25rem',
+              }}
+            >
+              I translate data into clear, decision-ready insights that support business
+              strategy and performance.
+            </p>
+            <p
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: '15px',
+                color: '#3A4A5C',
+                lineHeight: '1.8',
+                margin: '0 0 2rem',
+              }}
+            >
+              My approach is collaborative, partnering with stakeholders
+              to turn numbers into meaningful outcomes.
+            </p>
           </div>
+
+          {/* Scroll to explore */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#1B3A5C',
+                letterSpacing: '0.3px',
+              }}
+            >
+              ······· Scroll to explore
+            </span>
+          </div>
+        </div>
+
+        {/* RIGHT: 2x2 Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gridTemplateRows: '1fr 1fr',
+          }}
+        >
+          {quadrants.map((item, i) => (
+            <QuadrantCard key={item.num} item={item} position={i} />
+          ))}
         </div>
       </div>
 
       <style>{`
         @media (max-width: 900px) {
-          .about-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+          .about-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
     </section>
