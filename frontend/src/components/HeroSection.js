@@ -114,6 +114,23 @@ const HeroSection = () => {
               I'm a senior finance professional based in Dubai, UAE, specialising in
               translating complex financial data into concise, decision-ready insights.
             </p>
+
+            <p
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontStyle: 'italic',
+                fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
+                color: '#1B3A5C',
+                lineHeight: '1.7',
+                margin: '0 0 1rem',
+                maxWidth: '500px',
+                borderLeft: '3px solid #E8B931',
+                paddingLeft: '16px',
+              }}
+            >
+              I believe finance is not just about accuracy — it's about <strong style={{ fontWeight: '700' }}>insight</strong>.
+            </p>
+
             <p
               style={{
                 fontSize: '15px',
