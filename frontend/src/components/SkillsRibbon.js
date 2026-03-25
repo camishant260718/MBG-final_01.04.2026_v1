@@ -23,10 +23,10 @@ const SkillsRibbon = () => {
     <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5rem' }}>
       <span
         style={{
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: "'Poppins', sans-serif",
           fontStyle: 'italic',
           fontSize: 'clamp(16px, 2vw, 20px)',
-          color: '#C6AD8F',
+          color: '#679436',
           whiteSpace: 'nowrap',
           letterSpacing: '0.5px',
         }}
@@ -50,7 +50,7 @@ const SkillsRibbon = () => {
     <section
       data-testid="skills-ribbon"
       style={{
-        backgroundColor: '#425664',
+        backgroundColor: '#05668d',
         padding: '1.75rem 0',
         overflow: 'hidden',
         position: 'relative',

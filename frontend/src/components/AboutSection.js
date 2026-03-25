@@ -49,11 +49,11 @@ const QuadrantCard = ({ item, position }) => {
     >
       <span
         style={{
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: "'Poppins', sans-serif",
           fontStyle: 'italic',
           fontSize: '28px',
           fontWeight: '500',
-          color: hovered ? '#E8B931' : '#C6AD8F',
+          color: hovered ? '#E8B931' : '#679436',
           display: 'block',
           marginBottom: '0.75rem',
           transition: 'color 0.3s ease',
@@ -94,7 +94,7 @@ const AboutSection = () => {
     <section
       id="about-me"
       data-testid="about-section"
-      style={{ backgroundColor: '#EDE9E3', padding: '5rem 2rem' }}
+      style={{ backgroundColor: '#E8F0E4', padding: '5rem 2rem' }}
     >
       <div
         className="about-grid"
@@ -132,7 +132,7 @@ const AboutSection = () => {
                 style={{
                   width: '40px',
                   height: '2px',
-                  backgroundColor: '#425664',
+                  backgroundColor: '#05668d',
                   display: 'inline-block',
                 }}
               />
@@ -143,7 +143,7 @@ const AboutSection = () => {
                   fontWeight: '700',
                   letterSpacing: '2.5px',
                   textTransform: 'uppercase',
-                  color: '#425664',
+                  color: '#05668d',
                 }}
               >
                 About Mishant
@@ -157,7 +157,7 @@ const AboutSection = () => {
                 fontFamily: "'Poppins', sans-serif",
                 fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
                 fontWeight: '800',
-                color: '#425664',
+                color: '#05668d',
                 lineHeight: '1.35',
                 margin: '0 0 2rem',
                 letterSpacing: '-0.3px',
@@ -232,11 +232,11 @@ const AboutSection = () => {
         >
           <span
             style={{
-              fontFamily: "'Playfair Display', serif",
+              fontFamily: "'Poppins', sans-serif",
               fontStyle: 'italic',
               fontSize: '15px',
               fontWeight: '500',
-              color: '#C6AD8F',
+              color: '#679436',
               letterSpacing: '0.3px',
             }}
           >

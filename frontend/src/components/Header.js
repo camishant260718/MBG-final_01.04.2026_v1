@@ -39,7 +39,7 @@ const Header = () => {
           left: 0,
           right: 0,
           zIndex: 1000,
-          backgroundColor: '#425664',
+          backgroundColor: '#05668d',
           boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.25)' : 'none',
           transition: 'box-shadow 0.4s ease',
           padding: '0 2rem',
@@ -72,14 +72,14 @@ const Header = () => {
                 width: '10px',
                 height: '10px',
                 borderRadius: '50%',
-                backgroundColor: '#C6AD8F',
+                backgroundColor: '#679436',
                 display: 'inline-block',
                 flexShrink: 0,
               }}
             />
             <span
               style={{
-                fontFamily: "'Dancing Script', cursive",
+                fontFamily: "'Poppins', sans-serif",
                 fontSize: '22px',
                 fontWeight: '700',
                 color: '#FFFFFF',
@@ -164,7 +164,7 @@ const Header = () => {
             right: 0,
             bottom: 0,
             zIndex: 999,
-            backgroundColor: '#425664',
+            backgroundColor: '#05668d',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -214,7 +214,7 @@ const Header = () => {
             onClick={(e) => scrollTo(e, '#connect')}
             style={{
               textDecoration: 'none',
-              color: '#C6AD8F',
+              color: '#679436',
               fontFamily: "'Poppins', sans-serif",
               fontSize: '24px',
               fontWeight: '600',
