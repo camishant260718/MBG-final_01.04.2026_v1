@@ -261,6 +261,61 @@ const HeroSection = () => {
               Send a Message
             </button>
           </div>
+
+          {/* LinkedIn stats */}
+          <div
+            data-testid="hero-linkedin-stats"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              flexWrap: 'wrap',
+              opacity: visible ? 1 : 0,
+              transition: 'opacity 0.6s ease 0.55s',
+            }}
+          >
+            <a
+              href="https://www.linkedin.com/in/camishant-0525076563"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '14px',
+                fontWeight: '700',
+                color: '#1B3A5C',
+                textDecoration: 'underline',
+                textUnderlineOffset: '3px',
+                fontFamily: "'Poppins', sans-serif",
+              }}
+            >
+              3,214 followers
+            </a>
+            <span style={{ color: '#8A8577', fontSize: '14px' }}>·</span>
+            <a
+              href="https://www.linkedin.com/in/camishant-0525076563"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '14px',
+                fontWeight: '700',
+                color: '#1B3A5C',
+                textDecoration: 'underline',
+                textUnderlineOffset: '3px',
+                fontFamily: "'Poppins', sans-serif",
+              }}
+            >
+              500+ connections
+            </a>
+            <span
+              style={{
+                fontSize: '13px',
+                color: '#8A8577',
+                marginLeft: '4px',
+                fontFamily: "'Poppins', sans-serif",
+              }}
+            >
+              on LinkedIn
+            </span>
+          </div>
         </div>
 
         {/* RIGHT: Photo placeholder */}
@@ -299,70 +354,6 @@ const HeroSection = () => {
               Photo in .PNG format.
             </p>
           </div>
-        </div>
-      </div>
-
-      {/* LinkedIn stats bar */}
-      <div
-        data-testid="hero-linkedin-bar"
-        style={{
-          backgroundColor: '#1B3A5C',
-          padding: '12px 2rem',
-          opacity: visible ? 1 : 0,
-          transition: 'opacity 0.6s ease 0.6s',
-        }}
-      >
-        <div
-          style={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            flexWrap: 'wrap',
-          }}
-        >
-          <a
-            href="https://www.linkedin.com/in/camishant-0525076563"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              fontSize: '14px',
-              fontWeight: '700',
-              color: '#E8B931',
-              textDecoration: 'underline',
-              textUnderlineOffset: '3px',
-              fontFamily: "'Poppins', sans-serif",
-            }}
-          >
-            3,214 followers
-          </a>
-          <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px' }}>·</span>
-          <a
-            href="https://www.linkedin.com/in/camishant-0525076563"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              fontSize: '14px',
-              fontWeight: '700',
-              color: '#E8B931',
-              textDecoration: 'underline',
-              textUnderlineOffset: '3px',
-              fontFamily: "'Poppins', sans-serif",
-            }}
-          >
-            500+ connections
-          </a>
-          <span
-            style={{
-              fontSize: '13px',
-              color: 'rgba(255,255,255,0.5)',
-              marginLeft: '4px',
-              fontFamily: "'Poppins', sans-serif",
-            }}
-          >
-            on LinkedIn
-          </span>
         </div>
       </div>
 

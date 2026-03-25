@@ -26,7 +26,7 @@ const SkillsRibbon = () => {
           fontFamily: "'Playfair Display', serif",
           fontStyle: 'italic',
           fontSize: 'clamp(16px, 2vw, 20px)',
-          color: '#8A8577',
+          color: '#E8B931',
           whiteSpace: 'nowrap',
           letterSpacing: '0.5px',
         }}
@@ -38,7 +38,7 @@ const SkillsRibbon = () => {
           width: '6px',
           height: '6px',
           borderRadius: '50%',
-          backgroundColor: '#D4845A',
+          backgroundColor: '#FFFFFF',
           display: 'inline-block',
           flexShrink: 0,
         }}
@@ -50,9 +50,7 @@ const SkillsRibbon = () => {
     <section
       data-testid="skills-ribbon"
       style={{
-        backgroundColor: '#FAF6EE',
-        borderTop: '1px solid #E8E4DC',
-        borderBottom: '1px solid #E8E4DC',
+        backgroundColor: '#1B3A5C',
         padding: '1.75rem 0',
         overflow: 'hidden',
         position: 'relative',

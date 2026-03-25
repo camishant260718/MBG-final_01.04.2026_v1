@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import SkillsRibbon from "./components/SkillsRibbon";
-import WorkedWithSection from "./components/WorkedWithSection";
+
 import AboutSection from "./components/AboutSection";
 import SkillsSection from "./components/SkillsSection";
 import ExperienceSection from "./components/ExperienceSection";
@@ -61,7 +61,6 @@ function App() {
       <Header />
       <HeroSection />
       <SkillsRibbon />
-      <WorkedWithSection />
       <AboutSection />
       <SkillsSection />
       <ExperienceSection />
