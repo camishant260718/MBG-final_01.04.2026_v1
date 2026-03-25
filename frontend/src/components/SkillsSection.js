@@ -5,18 +5,18 @@ import {
 } from 'lucide-react';
 
 const skills = [
-  { icon: BarChart2,     title: 'Financial Reporting & IFRS',      desc: 'End-to-end IFRS-compliant financial reporting across multiple entities' },
-  { icon: TrendingUp,    title: 'Budgeting & Forecasting',          desc: 'Annual budgets, rolling forecasts & meaningful variance analysis' },
-  { icon: FileCheck,     title: 'Group Consolidation & Audit',      desc: 'Multi-entity consolidations and statutory audit coordination' },
-  { icon: PieChart,      title: 'Financial Planning & Analysis',    desc: 'FP&A delivering strategic & operational insights to leadership' },
-  { icon: LayoutDashboard, title: 'Power BI & Dashboarding',        desc: 'Real-time business intelligence dashboards for decision-making' },
-  { icon: Database,      title: 'ERP Implementation (SAP, D365)',   desc: 'SAP and Microsoft Dynamics 365 finance module rollouts' },
-  { icon: Users,         title: 'Business Partnering',              desc: 'Trusted strategic finance partner to cross-functional leadership teams' },
-  { icon: Search,        title: 'Feasibility Studies',              desc: 'Investment viability analysis and multi-year financial projections' },
-  { icon: Shield,        title: 'Internal Controls',                desc: 'Robust internal control framework design and implementation' },
-  { icon: Scale,         title: 'Corporate Compliance',             desc: 'Regulatory reporting and corporate governance oversight' },
-  { icon: DollarSign,    title: 'Cost Optimization',                desc: 'Structural cost reduction programs and operational efficiency' },
-  { icon: Target,        title: 'Strategic Decision Support',       desc: 'Data-backed financial insights driving C-suite decisions' },
+  { icon: BarChart2,     title: 'Financial Reporting & IFRS',      desc: 'End-to-end IFRS-compliant financial reporting across multiple entities', pct: 95 },
+  { icon: TrendingUp,    title: 'Budgeting & Forecasting',          desc: 'Annual budgets, rolling forecasts & meaningful variance analysis', pct: 90 },
+  { icon: FileCheck,     title: 'Group Consolidation & Audit',      desc: 'Multi-entity consolidations and statutory audit coordination', pct: 92 },
+  { icon: PieChart,      title: 'Financial Planning & Analysis',    desc: 'FP&A delivering strategic & operational insights to leadership', pct: 88 },
+  { icon: LayoutDashboard, title: 'Power BI & Dashboarding',        desc: 'Real-time business intelligence dashboards for decision-making', pct: 85 },
+  { icon: Database,      title: 'ERP Implementation (SAP, D365)',   desc: 'SAP and Microsoft Dynamics 365 finance module rollouts', pct: 87 },
+  { icon: Users,         title: 'Business Partnering',              desc: 'Trusted strategic finance partner to cross-functional leadership teams', pct: 90 },
+  { icon: Search,        title: 'Feasibility Studies',              desc: 'Investment viability analysis and multi-year financial projections', pct: 86 },
+  { icon: Shield,        title: 'Internal Controls',                desc: 'Robust internal control framework design and implementation', pct: 88 },
+  { icon: Scale,         title: 'Corporate Compliance',             desc: 'Regulatory reporting and corporate governance oversight', pct: 85 },
+  { icon: DollarSign,    title: 'Cost Optimization',                desc: 'Structural cost reduction programs and operational efficiency', pct: 89 },
+  { icon: Target,        title: 'Strategic Decision Support',       desc: 'Data-backed financial insights driving C-suite decisions', pct: 91 },
 ];
 
 const SkillCard = ({ skill }) => {
@@ -29,9 +29,7 @@ const SkillCard = ({ skill }) => {
       onMouseLeave={() => setHovered(false)}
       style={{
         display: 'flex',
-        alignItems: 'flex-start',
-        gap: '1rem',
-        padding: '1.4rem 1.5rem',
+        flexDirection: 'column',
         backgroundColor: hovered ? '#0F2244' : '#FFFFFF',
         border: '1px solid',
         borderColor: hovered ? '#0F2244' : '#EAE7E0',
@@ -42,8 +40,10 @@ const SkillCard = ({ skill }) => {
         transition: 'background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease',
         transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
         cursor: 'default',
+        overflow: 'hidden',
       }}
     >
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', padding: '1.4rem 1.5rem' }}>
       {/* Icon container */}
       <div
         style={{
@@ -84,6 +84,22 @@ const SkillCard = ({ skill }) => {
         }}>
           {skill.desc}
         </p>
+      </div>
+      </div>
+
+      {/* Bottom progress bar */}
+      <div style={{
+        height: '3px',
+        backgroundColor: hovered ? 'rgba(255,255,255,0.1)' : '#F0EDE6',
+        marginTop: 'auto',
+      }}>
+        <div style={{
+          height: '100%',
+          width: `${skill.pct}%`,
+          backgroundColor: hovered ? '#C9A84C' : '#1B3A5C',
+          borderRadius: '0 2px 2px 0',
+          transition: 'background-color 0.3s ease',
+        }} />
       </div>
     </div>
   );
