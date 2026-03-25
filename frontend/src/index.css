@@ -13,9 +13,7 @@ html {
     scroll-behavior: smooth;
 }
 
-* {
-    cursor: none !important;
-}
+/* cleared */
 
 code {
     font-family:
