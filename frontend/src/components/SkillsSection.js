@@ -30,13 +30,13 @@ const SkillCard = ({ skill }) => {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: hovered ? '#2161a1' : '#FFFFFF',
+        backgroundColor: hovered ? '#425664' : '#FFFFFF',
         border: '1px solid',
-        borderColor: hovered ? '#2161a1' : '#E5E7EB',
+        borderColor: hovered ? '#425664' : '#E5E7EB',
         borderRadius: '6px',
         boxShadow: hovered
-          ? '0 8px 24px rgba(33,97,161,0.15)'
-          : '0 1px 4px rgba(33,97,161,0.04)',
+          ? '0 8px 24px rgba(66,86,100,0.15)'
+          : '0 1px 4px rgba(66,86,100,0.04)',
         transition: 'background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease',
         transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
         cursor: 'default',
@@ -58,7 +58,7 @@ const SkillCard = ({ skill }) => {
         <Icon
           size={19}
           style={{
-            color: '#C9A84C',
+            color: '#C6AD8F',
             transition: 'transform 0.3s ease',
             transform: hovered ? 'scale(1.15)' : 'scale(1)',
           }}
@@ -69,7 +69,7 @@ const SkillCard = ({ skill }) => {
       <div>
         <h3 style={{
           fontSize: '13.5px', fontWeight: '600',
-          color: hovered ? '#FFFFFF' : '#2161a1',
+          color: hovered ? '#FFFFFF' : '#425664',
           margin: '0 0 0.3rem',
           lineHeight: '1.3',
           transition: 'color 0.3s ease',
@@ -96,7 +96,7 @@ const SkillCard = ({ skill }) => {
         <div style={{
           height: '100%',
           width: `${skill.pct}%`,
-          backgroundColor: hovered ? '#C9A84C' : '#1B3A5C',
+          backgroundColor: hovered ? '#C6AD8F' : '#1B3A5C',
           borderRadius: '0 2px 2px 0',
           transition: 'background-color 0.3s ease',
         }} />
@@ -136,13 +136,13 @@ const SkillsSection = () => {
               <h2 style={{
                 fontFamily: "'Poppins', sans-serif",
                 fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-                fontWeight: '800', color: '#2161a1',
+                fontWeight: '800', color: '#425664',
                 margin: '0 0 0.75rem',
                 letterSpacing: '-0.4px',
               }}>
                 Areas of Expertise
               </h2>
-              <div style={{ height: '2px', width: '60px', backgroundColor: '#C9A84C' }} />
+              <div style={{ height: '2px', width: '60px', backgroundColor: '#C6AD8F' }} />
             </div>
             <p style={{
               fontSize: '13px', color: '#9CA3AF',
