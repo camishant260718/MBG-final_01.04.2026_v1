@@ -174,20 +174,9 @@ const AboutSection = () => {
                 margin: '0 0 1.25rem',
               }}
             >
-              With over a decade of experience in IFRS, financial consolidation, and
-              reporting, I bring structure to complex financial environments.
-            </p>
-            <p
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: '15px',
-                color: '#3A4A5C',
-                lineHeight: '1.8',
-                margin: '0 0 1.25rem',
-              }}
-            >
-              I translate data into clear, decision-ready insights that support business
-              strategy and performance.
+              I bring clarity and structure to complex financial environments.
+              With over a decade of experience in IFRS, consolidation, and reporting,
+              I transform financial data into insights that drive business decisions.
             </p>
             <p
               style={{
@@ -198,31 +187,41 @@ const AboutSection = () => {
                 margin: '0 0 2rem',
               }}
             >
-              My approach is collaborative, partnering with stakeholders
-              to turn numbers into meaningful outcomes.
+              My focus is on moving beyond reporting to enable performance, control,
+              and strategic alignment. I work closely with stakeholders to turn financial
+              information into outcomes that matter.
             </p>
           </div>
 
           {/* Scroll to explore */}
-          <div
+          <a
+            href="#skills"
+            onClick={(e) => {
+              e.preventDefault();
+              const el = document.querySelector('#skills');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
+              textDecoration: 'none',
+              marginTop: '1rem',
             }}
           >
             <span
               style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: '14px',
-                fontWeight: '600',
-                color: '#1B3A5C',
+                fontFamily: "'Playfair Display', serif",
+                fontStyle: 'italic',
+                fontSize: '15px',
+                fontWeight: '500',
+                color: '#C9A84C',
                 letterSpacing: '0.3px',
               }}
             >
               ······· Scroll to explore
             </span>
-          </div>
+          </a>
         </div>
 
         {/* RIGHT: 2x2 Grid */}
