@@ -53,7 +53,7 @@ const QuadrantCard = ({ item, position }) => {
           fontStyle: 'italic',
           fontSize: '28px',
           fontWeight: '500',
-          color: hovered ? '#E8B931' : '#679436',
+          color: hovered ? '#E8B931' : '#B8860B',
           display: 'block',
           marginBottom: '0.75rem',
           transition: 'color 0.3s ease',
@@ -94,7 +94,7 @@ const AboutSection = () => {
     <section
       id="about-me"
       data-testid="about-section"
-      style={{ backgroundColor: '#E8F0E4', padding: '5rem 2rem' }}
+      style={{ backgroundColor: '#efece6', padding: '5rem 2rem' }}
     >
       <div
         className="about-grid"
@@ -132,7 +132,7 @@ const AboutSection = () => {
                 style={{
                   width: '40px',
                   height: '2px',
-                  backgroundColor: '#05668d',
+                  backgroundColor: '#003554',
                   display: 'inline-block',
                 }}
               />
@@ -143,7 +143,7 @@ const AboutSection = () => {
                   fontWeight: '700',
                   letterSpacing: '2.5px',
                   textTransform: 'uppercase',
-                  color: '#05668d',
+                  color: '#003554',
                 }}
               >
                 About Mishant
@@ -157,7 +157,7 @@ const AboutSection = () => {
                 fontFamily: "'Poppins', sans-serif",
                 fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
                 fontWeight: '800',
-                color: '#05668d',
+                color: '#003554',
                 lineHeight: '1.35',
                 margin: '0 0 2rem',
                 letterSpacing: '-0.3px',
@@ -236,7 +236,7 @@ const AboutSection = () => {
               fontStyle: 'italic',
               fontSize: '15px',
               fontWeight: '500',
-              color: '#679436',
+              color: '#B8860B',
               letterSpacing: '0.3px',
             }}
           >

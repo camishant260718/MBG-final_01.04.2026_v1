@@ -39,7 +39,7 @@ const Header = () => {
           left: 0,
           right: 0,
           zIndex: 1000,
-          backgroundColor: '#05668d',
+          backgroundColor: '#003554',
           boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.25)' : 'none',
           transition: 'box-shadow 0.4s ease',
           padding: '0 2rem',
@@ -72,7 +72,7 @@ const Header = () => {
                 width: '10px',
                 height: '10px',
                 borderRadius: '50%',
-                backgroundColor: '#679436',
+                backgroundColor: '#B8860B',
                 display: 'inline-block',
                 flexShrink: 0,
               }}
@@ -164,7 +164,7 @@ const Header = () => {
             right: 0,
             bottom: 0,
             zIndex: 999,
-            backgroundColor: '#05668d',
+            backgroundColor: '#003554',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -214,7 +214,7 @@ const Header = () => {
             onClick={(e) => scrollTo(e, '#connect')}
             style={{
               textDecoration: 'none',
-              color: '#679436',
+              color: '#B8860B',
               fontFamily: "'Poppins', sans-serif",
               fontSize: '24px',
               fontWeight: '600',

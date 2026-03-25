@@ -19,7 +19,7 @@ const HeroSection = () => {
       data-testid="hero-section"
       style={{
         minHeight: '100vh',
-        backgroundColor: '#ebf2fa',
+        backgroundColor: '#f5f1ed',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -51,7 +51,7 @@ const HeroSection = () => {
               fontFamily: "'Poppins', sans-serif",
               fontStyle: 'italic',
               fontSize: '16px',
-              color: '#05668d',
+              color: '#003554',
               margin: '0 0 1.5rem',
               opacity: visible ? 1 : 0,
               transform: visible ? 'translateY(0)' : 'translateY(10px)',
@@ -68,7 +68,7 @@ const HeroSection = () => {
               fontFamily: "'Poppins', sans-serif",
               fontSize: 'clamp(2.8rem, 5.5vw, 4.5rem)',
               fontWeight: '700',
-              color: '#05668d',
+              color: '#003554',
               lineHeight: '1.1',
               margin: '0 0 0.5rem',
               letterSpacing: '-0.5px',
@@ -85,7 +85,7 @@ const HeroSection = () => {
             style={{
               width: '200px',
               height: '4px',
-              backgroundColor: '#679436',
+              backgroundColor: '#B8860B',
               borderRadius: '2px',
               marginBottom: '2rem',
               opacity: visible ? 1 : 0,
@@ -120,11 +120,11 @@ const HeroSection = () => {
                 fontFamily: "'Poppins', sans-serif",
                 fontStyle: 'italic',
                 fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
-                color: '#05668d',
+                color: '#003554',
                 lineHeight: '1.7',
                 margin: '0 0 1rem',
                 maxWidth: '500px',
-                borderLeft: '3px solid #679436',
+                borderLeft: '3px solid #B8860B',
                 paddingLeft: '16px',
               }}
             >
@@ -142,7 +142,7 @@ const HeroSection = () => {
               }}
             >
               I've had the pleasure to work with companies such as{' '}
-              <strong style={{ color: '#05668d', fontWeight: '700' }}>Al Futtaim, Reliance, Essar, Phoenix Group (UAE)</strong>,
+              <strong style={{ color: '#003554', fontWeight: '700' }}>Al Futtaim, Reliance, Essar, Phoenix Group (UAE)</strong>,
               Investors family offices, and many more. Currently, I'm working with Dubai based Public Utility.
             </p>
           </div>
@@ -162,7 +162,7 @@ const HeroSection = () => {
             <button
               data-testid="hero-ca-btn"
               style={{
-                backgroundColor: '#05668d',
+                backgroundColor: '#003554',
                 color: '#FFFFFF',
                 border: 'none',
                 padding: '12px 28px',
@@ -174,11 +174,11 @@ const HeroSection = () => {
                 transition: 'background-color 0.3s ease, transform 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#679436';
+                e.currentTarget.style.backgroundColor = '#B8860B';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#05668d';
+                e.currentTarget.style.backgroundColor = '#003554';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
@@ -187,7 +187,7 @@ const HeroSection = () => {
             <button
               data-testid="hero-cs-btn"
               style={{
-                backgroundColor: '#05668d',
+                backgroundColor: '#003554',
                 color: '#FFFFFF',
                 border: 'none',
                 padding: '12px 28px',
@@ -199,11 +199,11 @@ const HeroSection = () => {
                 transition: 'background-color 0.3s ease, transform 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#679436';
+                e.currentTarget.style.backgroundColor = '#B8860B';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#05668d';
+                e.currentTarget.style.backgroundColor = '#003554';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
@@ -224,7 +224,7 @@ const HeroSection = () => {
               data-testid="hero-send-message-btn"
               onClick={() => scrollTo('#connect')}
               style={{
-                backgroundColor: '#05668d',
+                backgroundColor: '#003554',
                 color: '#FFFFFF',
                 border: 'none',
                 padding: '10px 22px',
@@ -241,11 +241,11 @@ const HeroSection = () => {
                 transition: 'background-color 0.3s ease, transform 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#05668d';
+                e.currentTarget.style.backgroundColor = '#003554';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#05668d';
+                e.currentTarget.style.backgroundColor = '#003554';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
@@ -254,7 +254,7 @@ const HeroSection = () => {
                   width: '8px',
                   height: '8px',
                   borderRadius: '50%',
-                  backgroundColor: '#679436',
+                  backgroundColor: '#B8860B',
                   display: 'inline-block',
                 }}
               />
@@ -281,7 +281,7 @@ const HeroSection = () => {
               style={{
                 fontSize: '14px',
                 fontWeight: '700',
-                color: '#05668d',
+                color: '#003554',
                 textDecoration: 'underline',
                 textUnderlineOffset: '3px',
                 fontFamily: "'Poppins', sans-serif",
@@ -297,7 +297,7 @@ const HeroSection = () => {
               style={{
                 fontSize: '14px',
                 fontWeight: '700',
-                color: '#05668d',
+                color: '#003554',
                 textDecoration: 'underline',
                 textUnderlineOffset: '3px',
                 fontFamily: "'Poppins', sans-serif",

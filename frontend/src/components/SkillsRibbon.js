@@ -26,7 +26,7 @@ const SkillsRibbon = () => {
           fontFamily: "'Poppins', sans-serif",
           fontStyle: 'italic',
           fontSize: 'clamp(16px, 2vw, 20px)',
-          color: '#679436',
+          color: '#B8860B',
           whiteSpace: 'nowrap',
           letterSpacing: '0.5px',
         }}
@@ -50,7 +50,7 @@ const SkillsRibbon = () => {
     <section
       data-testid="skills-ribbon"
       style={{
-        backgroundColor: '#05668d',
+        backgroundColor: '#003554',
         padding: '1.75rem 0',
         overflow: 'hidden',
         position: 'relative',

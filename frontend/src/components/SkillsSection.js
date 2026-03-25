@@ -30,9 +30,9 @@ const SkillCard = ({ skill }) => {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: hovered ? '#05668d' : '#FFFFFF',
+        backgroundColor: hovered ? '#003554' : '#FFFFFF',
         border: '1px solid',
-        borderColor: hovered ? '#05668d' : '#E5E7EB',
+        borderColor: hovered ? '#003554' : '#E5E7EB',
         borderRadius: '6px',
         boxShadow: hovered
           ? '0 8px 24px rgba(66,86,100,0.15)'
@@ -58,7 +58,7 @@ const SkillCard = ({ skill }) => {
         <Icon
           size={19}
           style={{
-            color: '#679436',
+            color: '#B8860B',
             transition: 'transform 0.3s ease',
             transform: hovered ? 'scale(1.15)' : 'scale(1)',
           }}
@@ -69,7 +69,7 @@ const SkillCard = ({ skill }) => {
       <div>
         <h3 style={{
           fontSize: '13.5px', fontWeight: '600',
-          color: hovered ? '#FFFFFF' : '#05668d',
+          color: hovered ? '#FFFFFF' : '#003554',
           margin: '0 0 0.3rem',
           lineHeight: '1.3',
           transition: 'color 0.3s ease',
@@ -96,7 +96,7 @@ const SkillCard = ({ skill }) => {
         <div style={{
           height: '100%',
           width: `${skill.pct}%`,
-          backgroundColor: hovered ? '#679436' : '#1B3A5C',
+          backgroundColor: hovered ? '#B8860B' : '#1B3A5C',
           borderRadius: '0 2px 2px 0',
           transition: 'background-color 0.3s ease',
         }} />
@@ -136,13 +136,13 @@ const SkillsSection = () => {
               <h2 style={{
                 fontFamily: "'Poppins', sans-serif",
                 fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-                fontWeight: '800', color: '#05668d',
+                fontWeight: '800', color: '#003554',
                 margin: '0 0 0.75rem',
                 letterSpacing: '-0.4px',
               }}>
                 Areas of Expertise
               </h2>
-              <div style={{ height: '2px', width: '60px', backgroundColor: '#679436' }} />
+              <div style={{ height: '2px', width: '60px', backgroundColor: '#B8860B' }} />
             </div>
             <p style={{
               fontSize: '13px', color: '#9CA3AF',
