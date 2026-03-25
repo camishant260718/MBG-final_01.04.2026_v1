@@ -53,10 +53,9 @@ const QuadrantCard = ({ item, position }) => {
           fontStyle: 'italic',
           fontSize: '28px',
           fontWeight: '500',
-          color: '#1B3A5C',
+          color: '#C9A84C',
           display: 'block',
           marginBottom: '0.75rem',
-          opacity: 0.7,
         }}
       >
         {item.num}
@@ -193,35 +192,7 @@ const AboutSection = () => {
             </p>
           </div>
 
-          {/* Scroll to explore */}
-          <a
-            href="#skills"
-            onClick={(e) => {
-              e.preventDefault();
-              const el = document.querySelector('#skills');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              textDecoration: 'none',
-              marginTop: '1rem',
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontStyle: 'italic',
-                fontSize: '15px',
-                fontWeight: '500',
-                color: '#C9A84C',
-                letterSpacing: '0.3px',
-              }}
-            >
-              ······· Scroll to explore
-            </span>
-          </a>
+          {/* Scroll to explore - removed from left, moved below grid */}
         </div>
 
         {/* RIGHT: 2x2 Grid */}
@@ -236,6 +207,39 @@ const AboutSection = () => {
             <QuadrantCard key={item.num} item={item} position={i} />
           ))}
         </div>
+      </div>
+
+      {/* Scroll to explore - below the full grid */}
+      <div style={{ maxWidth: '1200px', margin: '0 auto', paddingTop: '2rem' }}>
+        <a
+          href="#skills"
+          data-testid="scroll-to-explore"
+          onClick={(e) => {
+            e.preventDefault();
+            const el = document.querySelector('#skills');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            textDecoration: 'none',
+            justifyContent: 'center',
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: 'italic',
+              fontSize: '15px',
+              fontWeight: '500',
+              color: '#C9A84C',
+              letterSpacing: '0.3px',
+            }}
+          >
+            ······· Scroll to explore
+          </span>
+        </a>
       </div>
 
       <style>{`
