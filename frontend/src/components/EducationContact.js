@@ -181,48 +181,54 @@ export const ContactSection = () => {
 
           {/* ── Left card: Info ─────────────────────────────── */}
           <div style={{ backgroundColor: '#FFFFFF', border: '1.5px solid #E5E7EB', borderRadius: '16px', padding: '2.25rem' }}>
-            <div style={{ marginBottom: '1.75rem' }}>
+            {/* Name & title */}
+            <div style={{ marginBottom: '2rem' }}>
               <h3 style={{ fontSize: '22px', fontWeight: '800', color: '#0F2244', margin: '0 0 0.3rem' }}>Mishant Gandhi</h3>
               <p style={{ fontSize: '13.5px', color: '#6B7280', margin: 0 }}>CA, CS — Finance &amp; Audit Professional</p>
             </div>
 
             {/* Contact items */}
-            {[
-              { Icon: Mail,   label: 'Email',    value: 'mishant.gandhi@gmail.com', href: 'mailto:mishant.gandhi@gmail.com' },
-              { Icon: Phone,  label: 'Phone',    value: '+971 52 507 6563',          href: 'tel:+971525076563' },
-              { Icon: MapPin, label: 'Location', value: 'Dubai, United Arab Emirates', href: null },
-            ].map(({ Icon, label, value, href }, i) => {
-              const Tag = href ? 'a' : 'div';
-              return (
-                <Tag key={i} href={href || undefined}
-                  style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem', textDecoration: 'none' }}
-                >
-                  <div style={{
-                    width: '46px', height: '46px', borderRadius: '10px',
-                    backgroundColor: '#0F2244',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                  }}>
-                    <Icon size={18} style={{ color: '#C9A84C' }} />
-                  </div>
-                  <div>
-                    <div style={{ fontSize: '11px', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '2px' }}>{label}</div>
-                    <div style={{ fontSize: '13.5px', fontWeight: '600', color: '#0F2244', lineHeight: '1.3' }}>{value}</div>
-                  </div>
-                </Tag>
-              );
-            })}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              {[
+                { Icon: Mail,   label: 'Email',    value: 'mishant.gandhi@gmail.com', href: 'mailto:mishant.gandhi@gmail.com' },
+                { Icon: Phone,  label: 'Phone (UAE)',  value: '+971 52 507 6563', href: 'tel:+971525076563' },
+                { Icon: Phone,  label: 'Phone (India)', value: '+91 98250 76563', href: 'tel:+919825076563' },
+                { Icon: MapPin, label: 'Location', value: 'Dubai, United Arab Emirates', href: null },
+              ].map(({ Icon, label, value, href }, i) => {
+                const Tag = href ? 'a' : 'div';
+                return (
+                  <Tag key={i} href={href || undefined}
+                    data-testid={`contact-item-${label.toLowerCase().replace(/[^a-z]/g, '-')}`}
+                    style={{ display: 'flex', alignItems: 'center', gap: '1rem', textDecoration: 'none' }}
+                  >
+                    <div style={{
+                      width: '44px', height: '44px', borderRadius: '10px',
+                      backgroundColor: '#0F2244',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                    }}>
+                      <Icon size={18} style={{ color: '#C9A84C' }} />
+                    </div>
+                    <div style={{ minWidth: 0 }}>
+                      <div style={{ fontSize: '11px', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '2px', fontWeight: '600' }}>{label}</div>
+                      <div style={{ fontSize: '13.5px', fontWeight: '600', color: '#0F2244', lineHeight: '1.3', wordBreak: 'break-word' }}>{value}</div>
+                    </div>
+                  </Tag>
+                );
+              })}
+            </div>
 
             {/* Divider */}
-            <div style={{ height: '1px', backgroundColor: '#F0EDE6', margin: '1.5rem 0 1.25rem' }} />
+            <div style={{ height: '1px', backgroundColor: '#F0EDE6', margin: '1.75rem 0 1.25rem' }} />
 
             {/* LinkedIn */}
             <p style={{ fontSize: '12px', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '1px', margin: '0 0 0.875rem', fontWeight: '600' }}>Connect with me</p>
             <a
               href="https://www.linkedin.com/in/camishant-0525076563"
               target="_blank" rel="noopener noreferrer"
+              data-testid="contact-linkedin"
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                width: '46px', height: '46px', borderRadius: '10px',
+                width: '44px', height: '44px', borderRadius: '10px',
                 backgroundColor: '#0F2244', textDecoration: 'none',
                 transition: 'background-color 0.3s ease, transform 0.2s ease',
               }}
