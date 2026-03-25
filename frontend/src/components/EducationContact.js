@@ -122,7 +122,7 @@ export const EducationSection = () => (
 /* ─── Contact Section ────────────────────────────────────────────── */
 
 export const ContactSection = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -177,10 +177,10 @@ export const ContactSection = () => {
         </div>
 
         {/* Two rounded cards */}
-        <div className="connect-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '1.5rem', alignItems: 'start' }}>
+        <div className="connect-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '1.5rem', alignItems: 'stretch' }}>
 
           {/* ── Left card: Info ─────────────────────────────── */}
-          <div style={{ backgroundColor: '#FFFFFF', border: '1.5px solid #E5E7EB', borderRadius: '16px', padding: '2.25rem' }}>
+          <div style={{ backgroundColor: '#FFFFFF', border: '1.5px solid #E5E7EB', borderRadius: '16px', padding: '2.25rem', display: 'flex', flexDirection: 'column' }}>
             {/* Name & title */}
             <div style={{ marginBottom: '2rem' }}>
               <h3 style={{ fontSize: '22px', fontWeight: '800', color: '#0F2244', margin: '0 0 0.3rem' }}>Mishant Gandhi</h3>
@@ -188,17 +188,16 @@ export const ContactSection = () => {
             </div>
 
             {/* Contact items */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', flex: 1 }}>
               {[
                 { Icon: Mail,   label: 'Email',    value: 'mishant.gandhi@gmail.com', href: 'mailto:mishant.gandhi@gmail.com' },
-                { Icon: Phone,  label: 'Phone (UAE)',  value: '+971 52 507 6563', href: 'tel:+971525076563' },
-                { Icon: Phone,  label: 'Phone (India)', value: '+91 98250 76563', href: 'tel:+919825076563' },
+                { Icon: Phone,  label: 'Phone',    value: '+971 52 507 6563', href: 'tel:+971525076563' },
                 { Icon: MapPin, label: 'Location', value: 'Dubai, United Arab Emirates', href: null },
               ].map(({ Icon, label, value, href }, i) => {
                 const Tag = href ? 'a' : 'div';
                 return (
                   <Tag key={i} href={href || undefined}
-                    data-testid={`contact-item-${label.toLowerCase().replace(/[^a-z]/g, '-')}`}
+                    data-testid={`contact-item-${label.toLowerCase()}`}
                     style={{ display: 'flex', alignItems: 'center', gap: '1rem', textDecoration: 'none' }}
                   >
                     <div style={{
@@ -240,21 +239,21 @@ export const ContactSection = () => {
           </div>
 
           {/* ── Right card: Form ─────────────────────────────── */}
-          <div style={{ backgroundColor: '#FFFFFF', border: '1.5px solid #E5E7EB', borderRadius: '16px', padding: '2.25rem' }}>
+          <div style={{ backgroundColor: '#FFFFFF', border: '1.5px solid #E5E7EB', borderRadius: '16px', padding: '2.25rem', display: 'flex', flexDirection: 'column' }}>
             {submitted ? (
-              <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
+              <div style={{ textAlign: 'center', padding: '3rem 1rem', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                 <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'rgba(201,168,76,0.1)', border: '2px solid #C9A84C', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem' }}>
                   <CheckCircle size={28} style={{ color: '#C9A84C' }} />
                 </div>
                 <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#0F2244', margin: '0 0 0.5rem' }}>Message Sent!</h3>
                 <p style={{ fontSize: '14px', color: '#6B7280', margin: '0 0 1.5rem' }}>Thank you — Mishant will get back to you shortly.</p>
-                <button onClick={() => { setSubmitted(false); setForm({ name: '', email: '', message: '' }); }}
+                <button onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', message: '' }); }}
                   style={{ backgroundColor: '#0F2244', color: '#FFFFFF', border: 'none', padding: '11px 28px', borderRadius: '50px', fontSize: '13.5px', fontWeight: '600', cursor: 'pointer', fontFamily: "'Poppins', sans-serif" }}>
                   Send Another
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem', flex: 1 }}>
                 {/* Name */}
                 <div>
                   <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '6px' }}>Your Name</label>
@@ -279,26 +278,37 @@ export const ContactSection = () => {
                   {errors.email && <div style={{ fontSize: '11.5px', color: '#e05c5c', marginTop: '4px' }}>{errors.email}</div>}
                 </div>
 
-                {/* Message */}
+                {/* Contact Number */}
                 <div>
+                  <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '6px' }}>Contact Number</label>
+                  <input type="tel" placeholder="+971 XX XXX XXXX" value={form.phone}
+                    onChange={(e) => handleChange('phone', e.target.value)}
+                    style={{ ...inputStyle }}
+                    onFocus={(e) => (e.target.style.borderColor = '#0F2244')}
+                    onBlur={(e) => (e.target.style.borderColor = '#E5E7EB')}
+                  />
+                </div>
+
+                {/* Message */}
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                   <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '6px' }}>Your Message</label>
                   <textarea placeholder="Tell me about your project" value={form.message}
                     onChange={(e) => handleChange('message', e.target.value)}
-                    rows={5}
-                    style={{ ...inputStyle, resize: 'vertical', minHeight: '130px' }}
+                    rows={4}
+                    style={{ ...inputStyle, resize: 'vertical', minHeight: '100px', flex: 1 }}
                     onFocus={(e) => (e.target.style.borderColor = '#0F2244')}
                     onBlur={(e) => (e.target.style.borderColor = '#E5E7EB')}
                   />
                 </div>
 
                 {/* Submit */}
-                <button type="submit" style={{
+                <button type="submit" data-testid="contact-submit" style={{
                   width: '100%', padding: '15px',
                   backgroundColor: '#0F2244', color: '#FFFFFF',
                   border: 'none', borderRadius: '10px',
                   fontSize: '15px', fontWeight: '700',
                   cursor: 'pointer', fontFamily: "'Poppins', sans-serif",
-                  letterSpacing: '0.3px',
+                  letterSpacing: '0.3px', marginTop: 'auto',
                   transition: 'background-color 0.3s ease, transform 0.2s ease',
                 }}
                   onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#C9A84C'; e.currentTarget.style.color = '#0F2244'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
