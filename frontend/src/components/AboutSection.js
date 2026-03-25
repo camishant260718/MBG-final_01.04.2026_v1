@@ -36,8 +36,8 @@ const QuadrantCard = ({ item, position }) => {
       onMouseLeave={() => setHovered(false)}
       style={{
         padding: '2rem 1.75rem',
-        borderBottom: isTop ? '1px solid rgba(27,58,92,0.15)' : 'none',
-        borderRight: isLeft ? '1px solid rgba(27,58,92,0.15)' : 'none',
+        borderBottom: isTop ? '1px solid rgba(33,97,161,0.15)' : 'none',
+        borderRight: isLeft ? '1px solid rgba(33,97,161,0.15)' : 'none',
         backgroundColor: hovered ? '#1B3A5C' : 'transparent',
         transform: hovered ? 'scale(1.02)' : 'scale(1)',
         boxShadow: hovered ? '0 8px 30px rgba(27,58,92,0.2)' : 'none',
@@ -94,7 +94,7 @@ const AboutSection = () => {
     <section
       id="about-me"
       data-testid="about-section"
-      style={{ backgroundColor: '#EAF1F7', padding: '5rem 2rem' }}
+      style={{ backgroundColor: '#d5e8f6', padding: '5rem 2rem' }}
     >
       <div
         className="about-grid"
@@ -112,7 +112,7 @@ const AboutSection = () => {
         <div
           style={{
             padding: '3rem 3rem 3rem 2.5rem',
-            borderRight: '1px solid rgba(27,58,92,0.15)',
+            borderRight: '1px solid rgba(33,97,161,0.15)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
@@ -132,7 +132,7 @@ const AboutSection = () => {
                 style={{
                   width: '40px',
                   height: '2px',
-                  backgroundColor: '#1B3A5C',
+                  backgroundColor: '#2161a1',
                   display: 'inline-block',
                 }}
               />
@@ -143,7 +143,7 @@ const AboutSection = () => {
                   fontWeight: '700',
                   letterSpacing: '2.5px',
                   textTransform: 'uppercase',
-                  color: '#1B3A5C',
+                  color: '#2161a1',
                 }}
               >
                 About Mishant
@@ -157,7 +157,7 @@ const AboutSection = () => {
                 fontFamily: "'Poppins', sans-serif",
                 fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
                 fontWeight: '800',
-                color: '#1B3A5C',
+                color: '#2161a1',
                 lineHeight: '1.35',
                 margin: '0 0 2rem',
                 letterSpacing: '-0.3px',

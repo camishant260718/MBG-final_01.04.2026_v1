@@ -30,13 +30,13 @@ const SkillCard = ({ skill }) => {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: hovered ? '#0F2244' : '#FFFFFF',
+        backgroundColor: hovered ? '#2161a1' : '#FFFFFF',
         border: '1px solid',
-        borderColor: hovered ? '#0F2244' : '#EAE7E0',
+        borderColor: hovered ? '#2161a1' : '#E5E7EB',
         borderRadius: '6px',
         boxShadow: hovered
-          ? '0 8px 24px rgba(15,34,68,0.15)'
-          : '0 1px 4px rgba(15,34,68,0.04)',
+          ? '0 8px 24px rgba(33,97,161,0.15)'
+          : '0 1px 4px rgba(33,97,161,0.04)',
         transition: 'background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease',
         transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
         cursor: 'default',
@@ -69,7 +69,7 @@ const SkillCard = ({ skill }) => {
       <div>
         <h3 style={{
           fontSize: '13.5px', fontWeight: '600',
-          color: hovered ? '#FFFFFF' : '#0F2244',
+          color: hovered ? '#FFFFFF' : '#2161a1',
           margin: '0 0 0.3rem',
           lineHeight: '1.3',
           transition: 'color 0.3s ease',
@@ -136,7 +136,7 @@ const SkillsSection = () => {
               <h2 style={{
                 fontFamily: "'Poppins', sans-serif",
                 fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-                fontWeight: '800', color: '#0F2244',
+                fontWeight: '800', color: '#2161a1',
                 margin: '0 0 0.75rem',
                 letterSpacing: '-0.4px',
               }}>

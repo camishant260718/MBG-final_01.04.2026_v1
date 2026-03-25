@@ -50,7 +50,7 @@ const SkillsRibbon = () => {
     <section
       data-testid="skills-ribbon"
       style={{
-        backgroundColor: '#1B3A5C',
+        backgroundColor: '#2161a1',
         padding: '1.75rem 0',
         overflow: 'hidden',
         position: 'relative',

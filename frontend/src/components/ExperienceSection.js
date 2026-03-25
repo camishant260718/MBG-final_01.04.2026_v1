@@ -59,7 +59,7 @@ const experiences = [
   },
   {
     Icon: GraduationCap,
-    color: '#0F2244',
+    color: '#2161a1',
     company: 'GOLS Academy',
     location: 'Mumbai, India',
     displayName: 'GOLS Academy',
@@ -106,7 +106,7 @@ const ExpCard = ({ exp }) => {
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{
-            fontSize: '12.5px', fontWeight: '600', color: '#0F2244',
+            fontSize: '12.5px', fontWeight: '600', color: '#2161a1',
             lineHeight: '1.3', whiteSpace: 'nowrap',
             overflow: 'hidden', textOverflow: 'ellipsis',
           }}>
@@ -130,7 +130,7 @@ const ExpCard = ({ exp }) => {
       {/* Bottom: Display name + role + desc */}
       <div>
         <div style={{
-          fontSize: '1rem', fontWeight: '700', color: '#0F2244',
+          fontSize: '1rem', fontWeight: '700', color: '#2161a1',
           margin: '0 0 0.3rem', lineHeight: '1.35',
         }}>
           {displayName}
@@ -173,7 +173,7 @@ const ExperienceSection = () => {
           <h2 style={{
             fontFamily: "'Poppins', sans-serif",
             fontSize: 'clamp(2.2rem, 4vw, 3rem)',
-            fontWeight: '800', color: '#0F2244',
+            fontWeight: '800', color: '#2161a1',
             margin: 0, letterSpacing: '-0.5px',
           }}>
             My Experience
