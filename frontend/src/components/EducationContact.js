@@ -162,8 +162,6 @@ export const ContactSection = () => {
 
   return (
     <section id="connect" style={{ backgroundColor: '#f7f4f3', padding: '6rem 2rem', position: 'relative', overflow: 'hidden' }}>
-      {/* Cursor-style decorative ring */}
-      <div style={{ position: 'absolute', top: '2.5rem', left: '2.5rem', width: '52px', height: '52px', borderRadius: '50%', border: '2px solid #B8860B', opacity: 0.2, pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         {/* Heading */}

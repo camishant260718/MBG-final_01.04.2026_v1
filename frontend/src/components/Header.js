@@ -4,18 +4,33 @@ import { Menu, X } from 'lucide-react';
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+
+      const sections = ['connect', 'experience', 'skills', 'about-me', 'hero'];
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120 && rect.bottom > 120) {
+            setActiveSection(id);
+            break;
+          }
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { label: 'Home', href: '#hero' },
-    { label: 'About', href: '#about-me' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Experience', href: '#experience' },
+    { label: 'Home', href: '#hero', id: 'hero' },
+    { label: 'About', href: '#about-me', id: 'about-me' },
+    { label: 'Skills', href: '#skills', id: 'skills' },
+    { label: 'Experience', href: '#experience', id: 'experience' },
   ];
 
   const scrollTo = (e, href) => {
@@ -28,6 +43,18 @@ const Header = () => {
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const linkStyle = (id) => ({
+    textDecoration: 'none',
+    color: activeSection === id ? '#FFFFFF' : 'rgba(255,255,255,0.7)',
+    fontFamily: "'Poppins', sans-serif",
+    fontSize: '14px',
+    fontWeight: activeSection === id ? '600' : '400',
+    letterSpacing: '0.3px',
+    paddingBottom: '4px',
+    borderBottom: activeSection === id ? '2px solid #B8860B' : '2px solid transparent',
+    transition: 'color 0.3s ease, border-color 0.3s ease',
+  });
 
   return (
     <>
@@ -55,7 +82,6 @@ const Header = () => {
             height: '60px',
           }}
         >
-          {/* Left: Green dot + Name */}
           <a
             href="#hero"
             onClick={(e) => scrollTo(e, '#hero')}
@@ -80,7 +106,7 @@ const Header = () => {
             <span
               style={{
                 fontFamily: "'Poppins', sans-serif",
-                fontSize: '22px',
+                fontSize: '20px',
                 fontWeight: '700',
                 color: '#FFFFFF',
                 letterSpacing: '0.5px',
@@ -90,7 +116,6 @@ const Header = () => {
             </span>
           </a>
 
-          {/* Desktop Nav */}
           <nav className="desktop-nav" style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
             {navLinks.map((link) => (
               <a
@@ -98,17 +123,13 @@ const Header = () => {
                 href={link.href}
                 onClick={(e) => scrollTo(e, link.href)}
                 data-testid={`nav-${link.label.toLowerCase()}`}
-                style={{
-                  textDecoration: 'none',
-                  color: 'rgba(255,255,255,0.85)',
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: '14px',
-                  fontWeight: '400',
-                  letterSpacing: '0.3px',
-                  transition: 'color 0.3s ease',
+                style={linkStyle(link.id)}
+                onMouseEnter={(e) => {
+                  if (activeSection !== link.id) e.currentTarget.style.color = '#FFFFFF';
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.85)')}
+                onMouseLeave={(e) => {
+                  if (activeSection !== link.id) e.currentTarget.style.color = 'rgba(255,255,255,0.7)';
+                }}
               >
                 {link.label}
               </a>
@@ -119,22 +140,16 @@ const Header = () => {
               onClick={(e) => scrollTo(e, '#connect')}
               data-testid="nav-lets-collaborate"
               style={{
-                textDecoration: 'none',
-                color: '#FFFFFF',
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: '14px',
-                fontWeight: '500',
-                letterSpacing: '0.3px',
-                transition: 'color 0.3s ease',
+                ...linkStyle('connect'),
+                fontWeight: activeSection === 'connect' ? '600' : '500',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#F0C94B')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#FFFFFF')}
+              onMouseEnter={(e) => { e.currentTarget.style.color = '#B8860B'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = activeSection === 'connect' ? '#FFFFFF' : '#FFFFFF'; }}
             >
               Let's collaborate
             </a>
           </nav>
 
-          {/* Mobile toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="mobile-menu-btn"
@@ -153,7 +168,6 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile full-screen overlay nav */}
       {menuOpen && (
         <div
           data-testid="mobile-nav-overlay"
@@ -173,7 +187,6 @@ const Header = () => {
             animation: 'fadeInNav 0.3s ease',
           }}
         >
-          {/* Close button at top right */}
           <button
             onClick={() => setMenuOpen(false)}
             data-testid="mobile-menu-close"
@@ -198,10 +211,10 @@ const Header = () => {
               onClick={(e) => scrollTo(e, link.href)}
               style={{
                 textDecoration: 'none',
-                color: '#FFFFFF',
+                color: activeSection === link.id ? '#B8860B' : '#FFFFFF',
                 fontFamily: "'Poppins', sans-serif",
                 fontSize: '24px',
-                fontWeight: '500',
+                fontWeight: activeSection === link.id ? '700' : '500',
                 letterSpacing: '0.5px',
                 transition: 'color 0.3s ease',
               }}

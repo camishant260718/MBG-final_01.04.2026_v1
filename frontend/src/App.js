@@ -7,7 +7,7 @@ import SkillsRibbon from "./components/SkillsRibbon";
 import AboutSection from "./components/AboutSection";
 import SkillsSection from "./components/SkillsSection";
 import ExperienceSection from "./components/ExperienceSection";
-import { EducationSection, ContactSection } from "./components/EducationContact";
+import { ContactSection } from "./components/EducationContact";
 
 const Footer = () => (
   <footer
@@ -64,7 +64,6 @@ function App() {
       <AboutSection />
       <SkillsSection />
       <ExperienceSection />
-      <EducationSection />
       <ContactSection />
       <Footer />
     </div>
