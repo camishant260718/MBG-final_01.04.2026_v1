@@ -38,9 +38,9 @@ const QuadrantCard = ({ item, position }) => {
         padding: '2rem 1.75rem',
         borderBottom: isTop ? '1px solid rgba(27,58,92,0.15)' : 'none',
         borderRight: isLeft ? '1px solid rgba(27,58,92,0.15)' : 'none',
-        backgroundColor: hovered ? 'rgba(27,58,92,0.08)' : 'transparent',
+        backgroundColor: hovered ? '#1B3A5C' : 'transparent',
         transform: hovered ? 'scale(1.02)' : 'scale(1)',
-        boxShadow: hovered ? '0 8px 30px rgba(27,58,92,0.12)' : 'none',
+        boxShadow: hovered ? '0 8px 30px rgba(27,58,92,0.2)' : 'none',
         transition: 'background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease',
         cursor: 'default',
         position: 'relative',
@@ -53,9 +53,10 @@ const QuadrantCard = ({ item, position }) => {
           fontStyle: 'italic',
           fontSize: '28px',
           fontWeight: '500',
-          color: '#C9A84C',
+          color: hovered ? '#E8B931' : '#C9A84C',
           display: 'block',
           marginBottom: '0.75rem',
+          transition: 'color 0.3s ease',
         }}
       >
         {item.num}
@@ -65,8 +66,9 @@ const QuadrantCard = ({ item, position }) => {
           fontFamily: "'Poppins', sans-serif",
           fontSize: '17px',
           fontWeight: '700',
-          color: '#1B3A5C',
+          color: hovered ? '#FFFFFF' : '#1B3A5C',
           margin: '0 0 1rem',
+          transition: 'color 0.3s ease',
         }}
       >
         {item.title}
@@ -75,9 +77,10 @@ const QuadrantCard = ({ item, position }) => {
         style={{
           fontFamily: "'Poppins', sans-serif",
           fontSize: '13.5px',
-          color: '#4A5568',
+          color: hovered ? 'rgba(255,255,255,0.75)' : '#4A5568',
           lineHeight: '1.75',
           margin: 0,
+          transition: 'color 0.3s ease',
         }}
       >
         {item.desc}
