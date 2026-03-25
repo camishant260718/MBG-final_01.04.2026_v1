@@ -177,14 +177,14 @@ export const ContactSection = () => {
         </div>
 
         {/* Two rounded cards */}
-        <div className="connect-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '1.5rem', alignItems: 'stretch' }}>
+        <div className="connect-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', alignItems: 'stretch' }}>
 
           {/* ── Left card: Info ─────────────────────────────── */}
           <div style={{ backgroundColor: '#FFFFFF', border: '1.5px solid #E5E7EB', borderRadius: '16px', padding: '2.25rem', display: 'flex', flexDirection: 'column' }}>
             {/* Name & title */}
             <div style={{ marginBottom: '2rem' }}>
               <h3 style={{ fontSize: '22px', fontWeight: '800', color: '#0F2244', margin: '0 0 0.3rem' }}>Mishant Gandhi</h3>
-              <p style={{ fontSize: '13.5px', color: '#6B7280', margin: 0 }}>CA, CS — Finance &amp; Audit Professional</p>
+              <p style={{ fontSize: '13.5px', color: '#6B7280', margin: 0 }}>Senior Finance Professional</p>
             </div>
 
             {/* Contact items */}
@@ -266,36 +266,36 @@ export const ContactSection = () => {
                   {errors.name && <div style={{ fontSize: '11.5px', color: '#e05c5c', marginTop: '4px' }}>{errors.name}</div>}
                 </div>
 
-                {/* Email */}
-                <div>
-                  <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '6px' }}>Email Address</label>
-                  <input type="email" placeholder="Enter your email" value={form.email}
-                    onChange={(e) => handleChange('email', e.target.value)}
-                    style={{ ...inputStyle, borderColor: errors.email ? '#e05c5c' : '#E5E7EB' }}
-                    onFocus={(e) => (e.target.style.borderColor = '#0F2244')}
-                    onBlur={(e) => (e.target.style.borderColor = errors.email ? '#e05c5c' : '#E5E7EB')}
-                  />
-                  {errors.email && <div style={{ fontSize: '11.5px', color: '#e05c5c', marginTop: '4px' }}>{errors.email}</div>}
-                </div>
-
-                {/* Contact Number */}
-                <div>
-                  <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '6px' }}>Contact Number</label>
-                  <input type="tel" placeholder="+971 XX XXX XXXX" value={form.phone}
-                    onChange={(e) => handleChange('phone', e.target.value)}
-                    style={{ ...inputStyle }}
-                    onFocus={(e) => (e.target.style.borderColor = '#0F2244')}
-                    onBlur={(e) => (e.target.style.borderColor = '#E5E7EB')}
-                  />
+                {/* Email + Contact Number in same row */}
+                <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '6px' }}>Email Address</label>
+                    <input type="email" placeholder="Enter your email" value={form.email}
+                      onChange={(e) => handleChange('email', e.target.value)}
+                      style={{ ...inputStyle, borderColor: errors.email ? '#e05c5c' : '#E5E7EB' }}
+                      onFocus={(e) => (e.target.style.borderColor = '#0F2244')}
+                      onBlur={(e) => (e.target.style.borderColor = errors.email ? '#e05c5c' : '#E5E7EB')}
+                    />
+                    {errors.email && <div style={{ fontSize: '11.5px', color: '#e05c5c', marginTop: '4px' }}>{errors.email}</div>}
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '6px' }}>Contact Number</label>
+                    <input type="tel" placeholder="+971 XX XXX XXXX" value={form.phone}
+                      onChange={(e) => handleChange('phone', e.target.value)}
+                      style={{ ...inputStyle }}
+                      onFocus={(e) => (e.target.style.borderColor = '#0F2244')}
+                      onBlur={(e) => (e.target.style.borderColor = '#E5E7EB')}
+                    />
+                  </div>
                 </div>
 
                 {/* Message */}
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                <div>
                   <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#0F2244', marginBottom: '6px' }}>Your Message</label>
                   <textarea placeholder="Tell me about your project" value={form.message}
                     onChange={(e) => handleChange('message', e.target.value)}
-                    rows={4}
-                    style={{ ...inputStyle, resize: 'vertical', minHeight: '100px', flex: 1 }}
+                    rows={3}
+                    style={{ ...inputStyle, resize: 'vertical', minHeight: '80px' }}
                     onFocus={(e) => (e.target.style.borderColor = '#0F2244')}
                     onBlur={(e) => (e.target.style.borderColor = '#E5E7EB')}
                   />
@@ -324,6 +324,7 @@ export const ContactSection = () => {
 
       <style>{`
         @media (max-width: 900px) { .connect-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 540px) { .form-row { grid-template-columns: 1fr !important; } }
         input::placeholder, textarea::placeholder { color: #B0AAA0 !important; }
         textarea { font-family: 'Poppins', sans-serif !important; }
       `}</style>
