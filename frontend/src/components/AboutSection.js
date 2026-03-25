@@ -91,7 +91,7 @@ const AboutSection = () => {
     <section
       id="about-me"
       data-testid="about-section"
-      style={{ backgroundColor: '#DAE6EF', padding: '5rem 2rem' }}
+      style={{ backgroundColor: '#EAF1F7', padding: '5rem 2rem' }}
     >
       <div
         className="about-grid"
