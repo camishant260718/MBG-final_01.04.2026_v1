@@ -111,9 +111,7 @@ const HeroSection = () => {
                 fontFamily: "'Poppins', sans-serif",
               }}
             >
-              I am a <strong style={{ color: '#003554', fontWeight: '700' }}>Chartered Accountant</strong> and <strong style={{ color: '#003554', fontWeight: '700' }}>Company Secretary</strong> with 13+ years of experience
-              across multinational corporations — driving financial consolidation, IFRS reporting,
-              and tax governance across 9 countries and 4 sectors.
+              A <strong style={{ color: '#003554', fontWeight: '700' }}>Chartered Accountant</strong> and <strong style={{ color: '#003554', fontWeight: '700' }}>Company Secretary</strong> with 13+ years across multinationals — I help organisations turn complex financial data into structured control, clear reporting, and decisions that drive performance.
             </p>
 
             <p
