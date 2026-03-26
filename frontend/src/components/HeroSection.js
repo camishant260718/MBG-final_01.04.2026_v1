@@ -58,7 +58,7 @@ const HeroSection = () => {
               transition: 'opacity 0.5s ease, transform 0.5s ease',
             }}
           >
-            Welcome to my profile!
+            Turning financial complexity into boardroom clarity.
           </p>
 
           {/* Main heading */}
@@ -111,8 +111,9 @@ const HeroSection = () => {
                 fontFamily: "'Poppins', sans-serif",
               }}
             >
-              I'm a senior finance professional based in Dubai, UAE, specialising in
-              translating complex financial data into concise, decision-ready insights.
+              I am a Chartered Accountant and Company Secretary with 13+ years of experience
+              across multinational corporations — driving financial consolidation, IFRS reporting,
+              and tax governance across 9 countries and 4 sectors.
             </p>
 
             <p
@@ -128,7 +129,7 @@ const HeroSection = () => {
                 paddingLeft: '16px',
               }}
             >
-              I believe finance is not just about accuracy — it's about <strong style={{ fontWeight: '700' }}>insight</strong>.
+              I believe numbers should not just report the past — they should illuminate the <strong style={{ fontWeight: '700' }}>path forward</strong>.
             </p>
 
             <p
@@ -141,9 +142,10 @@ const HeroSection = () => {
                 fontFamily: "'Poppins', sans-serif",
               }}
             >
-              I've had the pleasure to work with companies such as{' '}
-              <strong style={{ color: '#003554', fontWeight: '700' }}>Al Futtaim, Reliance, Essar, Phoenix Group (UAE)</strong>,
-              Investors family offices, and many more. Currently, I'm working with Dubai Electricity and Water Authority.
+              I have worked with organisations including{' '}
+              <strong style={{ color: '#003554', fontWeight: '700' }}>Al Futtaim Engineering, Essar Group, Reliance Communications</strong>,
+              and <strong style={{ color: '#003554', fontWeight: '700' }}>UAE Investor Family Office</strong>.
+              Currently serving as Senior Manager — Finance & Audit at Dubai Electricity and Water Authority (DEWA).
             </p>
           </div>
 
@@ -258,7 +260,7 @@ const HeroSection = () => {
                   width: '8px',
                   height: '8px',
                   borderRadius: '50%',
-                  backgroundColor: '#B8860B',
+                  backgroundColor: '#4ADE80',
                   display: 'inline-block',
                 }}
               />
