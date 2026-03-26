@@ -161,16 +161,21 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="connect" style={{ backgroundColor: '#f7f4f3', padding: '6rem 2rem', position: 'relative', overflow: 'hidden' }}>
+    <section id="connect" style={{ backgroundColor: '#0A1F33', padding: '6rem 2rem', position: 'relative', overflow: 'hidden' }}>
 
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         {/* Heading */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-          <h2 style={{ fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: '800', color: '#003554', margin: '0 0 0.875rem', letterSpacing: '-0.3px' }}>
-            Get in Touch With Me
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '1.5rem' }}>
+            <span style={{ width: '40px', height: '2px', backgroundColor: '#B8860B', display: 'inline-block' }} />
+            <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: '12px', fontWeight: '700', letterSpacing: '3px', textTransform: 'uppercase', color: '#B8860B' }}>Get in Touch</span>
+            <span style={{ width: '40px', height: '2px', backgroundColor: '#B8860B', display: 'inline-block' }} />
+          </div>
+          <h2 style={{ fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: '800', color: '#FFFFFF', margin: '0 0 1.25rem', letterSpacing: '-0.3px' }}>
+            Let's Connect
           </h2>
-          <p style={{ fontSize: '15px', color: '#6B7280', margin: 0 }}>
-            I'm available to discuss projects, ideas, or opportunities anytime via contact form.
+          <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.5)', margin: 0, fontStyle: 'italic', maxWidth: '550px', marginLeft: 'auto', marginRight: 'auto', lineHeight: '1.7' }}>
+            Open to leadership roles, consulting engagements, and strategic partnerships. Reach out via any channel below.
           </p>
         </div>
 
