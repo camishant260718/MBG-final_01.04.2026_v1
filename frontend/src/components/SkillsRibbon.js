@@ -1,21 +1,14 @@
 import React from 'react';
 
 const skills = [
-  'Financial Reporting',
-  'IFRS Compliance',
-  'Group Consolidation',
-  'Budgeting & Forecasting',
-  'SAP Implementation',
+  'Financial Reporting & IFRS',
+  'Group Consolidation & Audit',
+  'Financial Planning & Analysis',
+  'ERP Implementation (SAP, D365)',
+  'Power BI & Dashboarding',
   'Business Partnering',
-  'Strategic Planning',
-  'Cost Optimization',
-  'Power BI Dashboards',
-  'Internal Controls',
-  'Corporate Compliance',
-  'ERP Systems',
-  'Financial Analysis',
-  'Audit Coordination',
-  'Decision Support',
+  'ICV Audit — UAE & Qatar',
+  'VAT & Tax Compliance',
 ];
 
 const SkillsRibbon = () => {

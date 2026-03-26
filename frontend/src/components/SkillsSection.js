@@ -1,22 +1,18 @@
 import React from 'react';
 import {
-  BarChart2, TrendingUp, FileCheck, PieChart, LayoutDashboard,
-  Database, Users, Search, Shield, Scale, DollarSign, Target,
+  BarChart2, FileCheck, PieChart, LayoutDashboard,
+  Database, Users, Shield, Scale,
 } from 'lucide-react';
 
 const skills = [
   { icon: BarChart2,     title: 'Financial Reporting & IFRS',      desc: 'End-to-end IFRS-compliant financial reporting across multiple entities', pct: 95 },
-  { icon: TrendingUp,    title: 'Budgeting & Forecasting',          desc: 'Annual budgets, rolling forecasts & meaningful variance analysis', pct: 90 },
   { icon: FileCheck,     title: 'Group Consolidation & Audit',      desc: 'Multi-entity consolidations and statutory audit coordination', pct: 92 },
-  { icon: PieChart,      title: 'Financial Planning & Analysis',    desc: 'FP&A delivering strategic & operational insights to leadership', pct: 88 },
-  { icon: LayoutDashboard, title: 'Power BI & Dashboarding',        desc: 'Real-time business intelligence dashboards for decision-making', pct: 85 },
+  { icon: PieChart,      title: 'Financial Planning & Analysis',    desc: 'Budgets, forecasts, variance analysis & strategic insights to leadership', pct: 90 },
   { icon: Database,      title: 'ERP Implementation (SAP, D365)',   desc: 'SAP and Microsoft Dynamics 365 finance module rollouts', pct: 87 },
+  { icon: LayoutDashboard, title: 'Power BI & Dashboarding',        desc: 'Real-time business intelligence dashboards for decision-making', pct: 85 },
   { icon: Users,         title: 'Business Partnering',              desc: 'Trusted strategic finance partner to cross-functional leadership teams', pct: 90 },
-  { icon: Search,        title: 'Feasibility Studies',              desc: 'Investment viability analysis and multi-year financial projections', pct: 86 },
-  { icon: Shield,        title: 'Internal Controls',                desc: 'Robust internal control framework design and implementation', pct: 88 },
-  { icon: Scale,         title: 'Corporate Compliance',             desc: 'Regulatory reporting and corporate governance oversight', pct: 85 },
-  { icon: DollarSign,    title: 'Cost Optimization',                desc: 'Structural cost reduction programs and operational efficiency', pct: 89 },
-  { icon: Target,        title: 'Strategic Decision Support',       desc: 'Data-backed financial insights driving C-suite decisions', pct: 91 },
+  { icon: Shield,        title: 'ICV Audit — UAE & Qatar',          desc: 'In-Country Value economic contribution audits and compliance certification', pct: 88 },
+  { icon: Scale,         title: 'VAT & Tax Compliance',             desc: 'UAE VAT returns, refunds, and multi-jurisdiction tax governance', pct: 86 },
 ];
 
 const SkillCard = ({ skill }) => {
@@ -159,7 +155,7 @@ const SkillsSection = () => {
           className="skills-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
+            gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '1rem',
           }}
         >
@@ -170,7 +166,10 @@ const SkillsSection = () => {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+          .skills-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 640px) {
           .skills-grid { grid-template-columns: 1fr !important; }
           .skills-header-row p { text-align: left !important; }
         }
