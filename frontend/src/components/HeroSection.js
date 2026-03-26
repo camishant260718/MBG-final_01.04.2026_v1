@@ -111,7 +111,7 @@ const HeroSection = () => {
                 fontFamily: "'Poppins', sans-serif",
               }}
             >
-              I am a Chartered Accountant and Company Secretary with 13+ years of experience
+              I am a <strong style={{ color: '#003554', fontWeight: '700' }}>Chartered Accountant</strong> and <strong style={{ color: '#003554', fontWeight: '700' }}>Company Secretary</strong> with 13+ years of experience
               across multinational corporations — driving financial consolidation, IFRS reporting,
               and tax governance across 9 countries and 4 sectors.
             </p>
@@ -145,75 +145,11 @@ const HeroSection = () => {
               I have worked with organisations including{' '}
               <strong style={{ color: '#003554', fontWeight: '700' }}>Al Futtaim Engineering, Essar Group, Reliance Communications</strong>,
               and <strong style={{ color: '#003554', fontWeight: '700' }}>UAE Investor Family Office</strong>.
-              Currently serving as Senior Manager — Finance & Audit at Dubai Electricity and Water Authority (DEWA).
+              Currently serving as Senior Manager — Finance & Audit at <strong style={{ color: '#003554', fontWeight: '700' }}>Dubai Electricity and Water Authority (DEWA)</strong>.
             </p>
           </div>
 
-          {/* Qualification buttons */}
-          <div
-            style={{
-              display: 'flex',
-              gap: '1rem',
-              flexWrap: 'wrap',
-              marginBottom: '1.5rem',
-              opacity: visible ? 1 : 0,
-              transform: visible ? 'translateY(0)' : 'translateY(12px)',
-              transition: 'opacity 0.6s ease 0.35s, transform 0.6s ease 0.35s',
-            }}
-          >
-            <button
-              data-testid="hero-ca-btn"
-              style={{
-                backgroundColor: '#003554',
-                color: '#FFFFFF',
-                border: 'none',
-                padding: '12px 28px',
-                borderRadius: '8px',
-                fontSize: '15px',
-                fontWeight: '600',
-                cursor: 'pointer',
-                fontFamily: "'Poppins', sans-serif",
-                transition: 'background-color 0.3s ease, transform 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#B8860B';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#003554';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              Chartered Accountant
-            </button>
-            <button
-              data-testid="hero-cs-btn"
-              style={{
-                backgroundColor: '#003554',
-                color: '#FFFFFF',
-                border: 'none',
-                padding: '12px 28px',
-                borderRadius: '8px',
-                fontSize: '15px',
-                fontWeight: '600',
-                cursor: 'pointer',
-                fontFamily: "'Poppins', sans-serif",
-                transition: 'background-color 0.3s ease, transform 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#B8860B';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#003554';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              Company Secretary
-            </button>
-          </div>
-
-          {/* Send a Message button */}
+          {/* CTA buttons */}
           <div
             style={{
               display: 'flex',
