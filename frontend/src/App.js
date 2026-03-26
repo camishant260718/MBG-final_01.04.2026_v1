@@ -97,7 +97,6 @@ function App() {
       <ExperienceSection />
       <ContactSection />
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 }
