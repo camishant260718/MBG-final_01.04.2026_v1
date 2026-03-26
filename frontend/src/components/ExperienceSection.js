@@ -41,7 +41,7 @@ const experiences = [
   {
     Icon: GraduationCap, color: '#003554',
     company: 'GOLS Academy', location: 'Mumbai, India',
-    displayName: 'GOLS Academy', years: '2012 — 2016',
+    displayName: 'GOLS Academy', years: '2012 — 2015',
     role: 'Accounts Manager',
     description: 'Managed Government Grant accounting, working capital, MIS, cash flow, budgetary analysis, fixed assets and logistics operations.',
   },
