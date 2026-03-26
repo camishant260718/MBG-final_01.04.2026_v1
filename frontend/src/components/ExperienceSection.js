@@ -7,7 +7,7 @@ const experiences = [
     Icon: Zap, color: '#0891B2',
     company: 'Dubai Electricity and Water Authority', location: 'Dubai, UAE',
     displayName: 'Dubai Electricity & Water Authority', years: '2024 — Present',
-    role: 'Sr. Manager — Finance, Accounts & Taxation',
+    role: 'Sr. Manager — Finance and Audit',
     description: "Complete financial reporting and internal & external audit management for DEWA's subsidiary. Stakeholder reporting, corporate governance, and regulatory compliance including VAT returns and refunds.",
   },
   {
@@ -20,7 +20,7 @@ const experiences = [
   {
     Icon: Building2, color: '#B8860B',
     company: 'Essar Group', location: 'Dubai, UAE',
-    displayName: 'Essar Group', years: '2017 — 2021',
+    displayName: 'Essar Group', years: '2017 — 2022',
     role: 'Sr. Manager — Financial Reporting',
     description: 'Financial consolidation and reporting, secretarial compliance and corporate governance across the Essar Group.',
   },
@@ -41,7 +41,7 @@ const experiences = [
   {
     Icon: GraduationCap, color: '#003554',
     company: 'GOLS Academy', location: 'Mumbai, India',
-    displayName: 'GOLS Academy', years: '2012 — 2014',
+    displayName: 'GOLS Academy', years: '2012 — 2015',
     role: 'Accounts Manager',
     description: 'Managed Government Grant accounting, working capital, MIS, cash flow, budgetary analysis, fixed assets and logistics operations.',
   },
@@ -49,10 +49,10 @@ const experiences = [
 
 /* ─── Education Data ─── */
 const credentials = [
-  { Icon: Award, title: 'Chartered Accountant', institution: 'The Institute of Chartered Accountants of India', status: null },
-  { Icon: Award, title: 'Company Secretary', institution: 'The Institute of Company Secretaries of India', status: null },
-  { Icon: GraduationCap, title: 'Bachelor of Commerce', institution: 'S. P. B. English Medium College of Commerce', status: null },
-  { Icon: Clock, title: 'Association of Chartered Certified Accountants', institution: 'ACCA Global', status: 'Pursuing' },
+  { Icon: Award, title: 'Chartered Accountant (2012)', institution: 'The Institute of Chartered Accountants of India', status: null },
+  { Icon: Award, title: 'Company Secretary (2012)', institution: 'The Institute of Company Secretaries of India', status: null },
+  { Icon: GraduationCap, title: 'Bachelor of Commerce (2008)', institution: 'S. P. B. English Medium College of Commerce', status: null },
+  { Icon: Clock, title: 'ACCA, IFRS Diploma (2021)', institution: 'ACCA Global', status: null },
 ];
 
 /* ─── Experience Card ─── */

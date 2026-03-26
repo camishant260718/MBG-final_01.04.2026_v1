@@ -143,7 +143,7 @@ const HeroSection = () => {
             >
               I've had the pleasure to work with companies such as{' '}
               <strong style={{ color: '#003554', fontWeight: '700' }}>Al Futtaim, Reliance, Essar, Phoenix Group (UAE)</strong>,
-              Investors family offices, and many more. Currently, I'm working with Dubai based Public Utility.
+              Investors family offices, and many more. Currently, I'm working with Dubai Electricity and Water Authority.
             </p>
           </div>
 
@@ -214,6 +214,10 @@ const HeroSection = () => {
           {/* Send a Message button */}
           <div
             style={{
+              display: 'flex',
+              gap: '1rem',
+              flexWrap: 'wrap',
+              alignItems: 'center',
               marginBottom: '2rem',
               opacity: visible ? 1 : 0,
               transform: visible ? 'translateY(0)' : 'translateY(12px)',
@@ -258,8 +262,43 @@ const HeroSection = () => {
                   display: 'inline-block',
                 }}
               />
-              Send a Message
+              Let's Collaborate
             </button>
+            <a
+              href="/Mishant_Gandhi_CV.pdf"
+              download
+              data-testid="hero-download-cv-btn"
+              style={{
+                backgroundColor: 'transparent',
+                color: '#003554',
+                border: '2px solid #003554',
+                padding: '9px 22px',
+                borderRadius: '8px',
+                fontSize: '12px',
+                fontWeight: '700',
+                cursor: 'pointer',
+                fontFamily: "'Poppins', sans-serif",
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                textDecoration: 'none',
+                transition: 'background-color 0.3s ease, color 0.3s ease, transform 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#003554';
+                e.currentTarget.style.color = '#FFFFFF';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = '#003554';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              Download CV
+            </a>
           </div>
 
           {/* LinkedIn stats */}

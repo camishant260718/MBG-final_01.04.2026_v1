@@ -4,22 +4,22 @@ const quadrants = [
   {
     num: '01',
     title: 'Financial Control',
-    desc: 'Bringing discipline to financial systems (Establishing strong controls, governance, and reporting frameworks to ensure accuracy, compliance, and reliability).',
+    desc: 'Establishing strong controls, governance, and reporting frameworks to ensure accuracy, compliance, and reliability across financial systems.',
   },
   {
     num: '02',
     title: 'Group Consolidation',
-    desc: 'Managing complexity with structure (Overseeing multi-entity financials, intercompany reconciliations, and group reporting with clarity and consistency).',
+    desc: 'Overseeing multi-entity financials, intercompany reconciliations, and group reporting with clarity and consistency.',
   },
   {
     num: '03',
     title: 'Performance & Planning',
-    desc: 'Driving business decisions with insight (Building budgets, forecasts, and performance analysis that enable management to act with confidence).',
+    desc: 'Building budgets, forecasts, and performance analysis that enable management to act with confidence.',
   },
   {
     num: '04',
     title: 'Process & Transformation',
-    desc: 'Designing finance that scales (Improving systems, automating workflows, and strengthening processes to create efficient and future-ready finance functions).',
+    desc: 'Improving systems, automating workflows, and strengthening processes to create efficient and future-ready finance functions.',
   },
 ];
 

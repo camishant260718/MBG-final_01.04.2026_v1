@@ -189,7 +189,7 @@ export const ContactSection = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', flex: 1 }}>
               {[
                 { Icon: Mail,   label: 'Email',    value: 'mishant.gandhi@gmail.com', href: 'mailto:mishant.gandhi@gmail.com' },
-                { Icon: Phone,  label: 'Phone',    value: '+971 52 507 6563', href: 'tel:+971525076563' },
+                { Icon: Phone,  label: 'Phone',    value: '+971 52 507 6563 (WhatsApp as well)', href: 'tel:+971525076563' },
                 { Icon: MapPin, label: 'Location', value: 'Dubai, United Arab Emirates', href: null },
               ].map(({ Icon, label, value, href }, i) => {
                 const Tag = href ? 'a' : 'div';
@@ -290,7 +290,7 @@ export const ContactSection = () => {
                 {/* Message */}
                 <div>
                   <label style={{ display: 'block', fontSize: '13.5px', fontWeight: '600', color: '#003554', marginBottom: '6px' }}>Your Message</label>
-                  <textarea placeholder="Tell me about your project" value={form.message}
+                  <textarea placeholder="Tell me about the opportunity" value={form.message}
                     onChange={(e) => handleChange('message', e.target.value)}
                     rows={3}
                     style={{ ...inputStyle, resize: 'vertical', minHeight: '80px' }}

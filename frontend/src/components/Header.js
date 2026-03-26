@@ -98,7 +98,7 @@ const Header = () => {
                 width: '10px',
                 height: '10px',
                 borderRadius: '50%',
-                backgroundColor: '#B8860B',
+                backgroundColor: '#4ADE80',
                 display: 'inline-block',
                 flexShrink: 0,
               }}
