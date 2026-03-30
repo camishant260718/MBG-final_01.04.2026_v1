@@ -298,23 +298,34 @@ const HeroSection = () => {
           className="hero-photo-area"
           style={{
             display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            justifyContent: 'flex-end',
+            alignItems: 'flex-end',
             opacity: visible ? 1 : 0,
             transform: visible ? 'scale(1)' : 'scale(0.95)',
             transition: 'opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s',
+            marginRight: '-2rem',
+            alignSelf: 'stretch',
+            position: 'relative',
           }}
         >
+          {/* Left fade overlay — blends photo into background */}
+          <div style={{
+            position: 'absolute',
+            top: 0, bottom: 0, left: '-1px',
+            width: '200px',
+            background: 'linear-gradient(to right, #f5f1ed 0%, rgba(245,241,237,0.7) 40%, transparent 100%)',
+            zIndex: 2,
+            pointerEvents: 'none',
+          }} />
           <div
             data-testid="hero-photo-placeholder"
             style={{
               width: '100%',
-              maxWidth: '380px',
-              aspectRatio: '3/4',
+              maxWidth: '420px',
+              height: '100%',
               display: 'flex',
-              alignItems: 'center',
+              alignItems: 'flex-end',
               justifyContent: 'center',
-              borderRadius: '12px',
               overflow: 'hidden',
             }}
           >
@@ -325,7 +336,7 @@ const HeroSection = () => {
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                borderRadius: '12px',
+                objectPosition: 'top center',
               }}
             />
           </div>
