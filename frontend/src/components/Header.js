@@ -101,6 +101,7 @@ const Header = () => {
                 backgroundColor: '#4ADE80',
                 display: 'inline-block',
                 flexShrink: 0,
+                animation: 'greenPulse 2s ease-in-out infinite',
               }}
             />
             <span
@@ -240,6 +241,10 @@ const Header = () => {
       )}
 
       <style>{`
+        @keyframes greenPulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
+          50% { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+        }
         @keyframes fadeInNav {
           from { opacity: 0; }
           to { opacity: 1; }

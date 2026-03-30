@@ -196,6 +196,7 @@ const HeroSection = () => {
                   borderRadius: '50%',
                   backgroundColor: '#4ADE80',
                   display: 'inline-block',
+                  animation: 'greenPulse 2s ease-in-out infinite',
                 }}
               />
               Let's Collaborate
@@ -331,6 +332,10 @@ const HeroSection = () => {
       </div>
 
       <style>{`
+        @keyframes greenPulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
+          50% { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+        }
         @media (max-width: 900px) {
           .hero-main-grid {
             grid-template-columns: 1fr !important;
