@@ -305,13 +305,14 @@ const HeroSection = () => {
             opacity: visible ? 1 : 0,
             transform: visible ? 'scale(1)' : 'scale(0.95)',
             transition: 'opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s',
+            marginBottom: '-1.75rem',
           }}
         >
           <div
             data-testid="hero-photo-placeholder"
             style={{
               width: '100%',
-              maxWidth: '420px',
+              maxWidth: '480px',
               display: 'flex',
               alignItems: 'flex-end',
               justifyContent: 'center',
@@ -324,7 +325,7 @@ const HeroSection = () => {
                 width: '100%',
                 height: 'auto',
                 objectFit: 'contain',
-                maxHeight: '500px',
+                maxHeight: '600px',
               }}
             />
           </div>
