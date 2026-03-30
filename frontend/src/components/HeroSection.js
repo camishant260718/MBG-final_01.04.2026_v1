@@ -299,7 +299,7 @@ const HeroSection = () => {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-end',
             opacity: visible ? 1 : 0,
             transform: visible ? 'scale(1)' : 'scale(0.95)',
             transition: 'opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s',
@@ -309,25 +309,22 @@ const HeroSection = () => {
             data-testid="hero-photo-placeholder"
             style={{
               width: '100%',
-              maxWidth: '380px',
-              aspectRatio: '3/4',
+              maxWidth: '340px',
               display: 'flex',
-              alignItems: 'center',
+              alignItems: 'flex-end',
               justifyContent: 'center',
-              borderRadius: '12px',
             }}
           >
-            <p
+            <img
+              src="/mishant-photo.png"
+              alt="Mishant Gandhi"
               style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontStyle: 'italic',
-                fontSize: '18px',
-                color: '#7A7A7A',
-                textAlign: 'center',
+                width: '100%',
+                height: 'auto',
+                objectFit: 'contain',
+                maxHeight: '480px',
               }}
-            >
-              Photo in .PNG format.
-            </p>
+            />
           </div>
         </div>
       </div>
