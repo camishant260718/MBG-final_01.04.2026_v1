@@ -18,7 +18,7 @@ const HeroSection = () => {
       id="hero"
       data-testid="hero-section"
       style={{
-        minHeight: '100vh',
+        minHeight: 'auto',
         backgroundColor: '#f5f1ed',
         display: 'flex',
         flexDirection: 'column',
@@ -32,7 +32,7 @@ const HeroSection = () => {
         style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '4rem 2rem 2rem',
+          padding: '1.5rem 2rem 0.5rem',
           width: '100%',
           boxSizing: 'border-box',
           display: 'grid',
@@ -52,7 +52,7 @@ const HeroSection = () => {
               fontStyle: 'italic',
               fontSize: '16px',
               color: '#003554',
-              margin: '0 0 1.5rem',
+              margin: '0 0 1rem',
               opacity: visible ? 1 : 0,
               transform: visible ? 'translateY(0)' : 'translateY(10px)',
               transition: 'opacity 0.5s ease, transform 0.5s ease',
@@ -135,7 +135,7 @@ const HeroSection = () => {
                 fontSize: '15px',
                 color: '#3A3A3A',
                 lineHeight: '1.8',
-                margin: '0 0 2rem',
+                margin: '0 0 1.5rem',
                 maxWidth: '500px',
                 fontFamily: "'Poppins', sans-serif",
               }}
@@ -237,7 +237,7 @@ const HeroSection = () => {
             </a>
           </div>
 
-          {/* LinkedIn stats */}
+          {/* LinkedIn stats - inline */}
           <div
             data-testid="hero-linkedin-stats"
             style={{
@@ -247,6 +247,7 @@ const HeroSection = () => {
               flexWrap: 'wrap',
               opacity: visible ? 1 : 0,
               transition: 'opacity 0.6s ease 0.55s',
+              marginBottom: '0.5rem',
             }}
           >
             <a
@@ -322,7 +323,7 @@ const HeroSection = () => {
                 width: '100%',
                 height: 'auto',
                 objectFit: 'contain',
-                maxHeight: '560px',
+                maxHeight: '500px',
               }}
             />
           </div>
