@@ -139,6 +139,9 @@ export const ContactSection = () => {
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
+    const subject = encodeURIComponent(`Portfolio Enquiry from ${form.name}`);
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone || 'Not provided'}\n\nMessage:\n${form.message || 'No message'}`);
+    window.open(`mailto:mishant.gandhi@gmail.com?subject=${subject}&body=${body}`, '_blank');
     setSubmitted(true);
   };
 
