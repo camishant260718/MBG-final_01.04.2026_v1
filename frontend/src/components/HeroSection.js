@@ -306,8 +306,22 @@ const HeroSection = () => {
             transform: visible ? 'scale(1)' : 'scale(0.95)',
             transition: 'opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s',
             marginBottom: '-1.75rem',
+            position: 'relative',
           }}
         >
+          {/* Blue fog backdrop */}
+          <div style={{
+            position: 'absolute',
+            top: '15%',
+            right: '-10%',
+            width: '320px',
+            height: '320px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(0,53,84,0.15) 0%, rgba(0,53,84,0.05) 50%, transparent 70%)',
+            filter: 'blur(40px)',
+            pointerEvents: 'none',
+            zIndex: 0,
+          }} />
           <div
             data-testid="hero-photo-placeholder"
             style={{
@@ -316,6 +330,8 @@ const HeroSection = () => {
               display: 'flex',
               alignItems: 'flex-end',
               justifyContent: 'center',
+              position: 'relative',
+              zIndex: 1,
             }}
           >
             <img
