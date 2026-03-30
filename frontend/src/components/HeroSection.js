@@ -315,19 +315,19 @@ const HeroSection = () => {
               alignItems: 'center',
               justifyContent: 'center',
               borderRadius: '12px',
+              overflow: 'hidden',
             }}
           >
-            <p
+            <img
+              src="/mishant-photo.jpg"
+              alt="Mishant Gandhi"
               style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontStyle: 'italic',
-                fontSize: '18px',
-                color: '#7A7A7A',
-                textAlign: 'center',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: '12px',
               }}
-            >
-              Photo in .PNG format.
-            </p>
+            />
           </div>
         </div>
       </div>
