@@ -309,7 +309,7 @@ const HeroSection = () => {
             data-testid="hero-photo-placeholder"
             style={{
               width: '100%',
-              maxWidth: '340px',
+              maxWidth: '420px',
               display: 'flex',
               alignItems: 'flex-end',
               justifyContent: 'center',
@@ -322,7 +322,7 @@ const HeroSection = () => {
                 width: '100%',
                 height: 'auto',
                 objectFit: 'contain',
-                maxHeight: '480px',
+                maxHeight: '560px',
               }}
             />
           </div>
