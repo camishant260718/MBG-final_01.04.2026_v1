@@ -66,7 +66,7 @@ const HeroSection = () => {
             data-testid="hero-heading"
             style={{
               fontFamily: "'Poppins', sans-serif",
-              fontSize: 'clamp(2.6rem, 5vw, 4.3rem)',
+              fontSize: 'clamp(2.4rem, 4.5vw, 4.1rem)',
               fontWeight: '700',
               color: '#003554',
               lineHeight: '1.1',
