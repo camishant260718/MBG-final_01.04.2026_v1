@@ -177,8 +177,7 @@ const AboutSection = () => {
               }}
             >
               I bring clarity and structure to complex financial environments.
-              With over a decade of experience in IFRS, consolidation, and reporting,
-              I transform financial data into insights that drive business decisions.
+              With over a decade of experience in IFRS, consolidation, and reporting.
             </p>
             <p
               style={{
