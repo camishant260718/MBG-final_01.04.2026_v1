@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Linkedin, MessageCircle } from 'lucide-react';
 
 const NAV_LINKS = [
   { label: 'Home', href: '#hero', id: 'hero' },
@@ -150,40 +150,68 @@ const Header = () => {
             height: '60px',
           }}
         >
-          <a
-            href="#hero"
-            onClick={(e) => scrollTo(e, '#hero')}
-            data-testid="header-logo"
-            style={{
-              textDecoration: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-            }}
-          >
-            <span
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <a
+              href="https://www.linkedin.com/in/camishant-0525076563"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="header-linkedin"
               style={{
-                width: '10px',
-                height: '10px',
-                borderRadius: '50%',
-                backgroundColor: '#4ADE80',
-                display: 'inline-block',
-                flexShrink: 0,
-                animation: 'greenPulse 2s ease-in-out infinite',
+                width: '30px', height: '30px', borderRadius: '6px',
+                backgroundColor: 'rgba(255,255,255,0.12)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                textDecoration: 'none', transition: 'background-color 0.25s ease',
               }}
-            />
-            <span
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#0077b5'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.12)'; }}
+            >
+              <Linkedin size={16} color="#FFFFFF" />
+            </a>
+            <a
+              href="https://wa.me/971525076563"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="header-whatsapp"
               style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: '20px',
-                fontWeight: '700',
-                color: '#FFFFFF',
-                letterSpacing: '0.5px',
+                width: '30px', height: '30px', borderRadius: '6px',
+                backgroundColor: 'rgba(255,255,255,0.12)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                textDecoration: 'none', transition: 'background-color 0.25s ease',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#25D366'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.12)'; }}
+            >
+              <MessageCircle size={16} color="#FFFFFF" />
+            </a>
+
+            <a
+              href="#hero"
+              onClick={(e) => scrollTo(e, '#hero')}
+              data-testid="header-logo"
+              style={{
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
               }}
             >
-              Mishant Gandhi
-            </span>
-          </a>
+              <span
+                style={{
+                  width: '10px', height: '10px', borderRadius: '50%',
+                  backgroundColor: '#4ADE80', display: 'inline-block', flexShrink: 0,
+                  animation: 'greenPulse 2s ease-in-out infinite',
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: "'Poppins', sans-serif", fontSize: '20px',
+                  fontWeight: '700', color: '#FFFFFF', letterSpacing: '0.5px',
+                }}
+              >
+                Mishant Gandhi
+              </span>
+            </a>
+          </div>
 
           <nav className="desktop-nav" style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
             {NAV_LINKS.map((link) => (
