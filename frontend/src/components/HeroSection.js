@@ -202,8 +202,8 @@ const HeroSection = () => {
               Let's Collaborate
             </button>
             <a
-              href="/Mishant_Gandhi_CV.pdf"
-              download
+              href="#skills"
+              onClick={(e) => { e.preventDefault(); const el = document.querySelector('#skills'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}
               data-testid="hero-download-cv-btn"
               style={{
                 backgroundColor: 'transparent',
@@ -234,7 +234,7 @@ const HeroSection = () => {
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              Download CV
+              Explore My Work
             </a>
           </div>
 
@@ -264,7 +264,7 @@ const HeroSection = () => {
                 fontFamily: "'Poppins', sans-serif",
               }}
             >
-              3,214 followers
+              5,214 followers
             </a>
             <span style={{ color: '#8A8577', fontSize: '14px' }}>·</span>
             <a
@@ -280,7 +280,7 @@ const HeroSection = () => {
                 fontFamily: "'Poppins', sans-serif",
               }}
             >
-              500+ connections
+              5,000+ connections
             </a>
             <span
               style={{
