@@ -13,7 +13,7 @@ const skills = [
 
 const SkillsRibbon = () => {
   const ribbonContent = [...skills, ...skills].map((skill, i) => (
-    <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5rem' }}>
+    <span key={`${skill}-${i}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5rem' }}>
       <span
         style={{
           fontFamily: "'Poppins', sans-serif",

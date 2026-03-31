@@ -23,8 +23,9 @@ const Header = () => {
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [setScrolled, setActiveSection]);
 
   const navLinks = [
     { label: 'Home', href: '#hero', id: 'hero' },

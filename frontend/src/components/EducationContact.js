@@ -202,7 +202,7 @@ export const ContactSection = () => {
               ].map(({ Icon, label, value, href }, i) => {
                 const Tag = href ? 'a' : 'div';
                 return (
-                  <Tag key={i} href={href || undefined}
+                  <Tag key={label} href={href || undefined}
                     data-testid={`contact-item-${label.toLowerCase()}`}
                     style={{ display: 'flex', alignItems: 'center', gap: '1rem', textDecoration: 'none' }}
                   >

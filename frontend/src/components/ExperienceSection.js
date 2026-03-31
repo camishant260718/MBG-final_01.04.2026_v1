@@ -194,7 +194,7 @@ const ExperienceSection = () => {
         {tab === 'experience' && (
           <div className="exp-card-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
             {experiences.map((exp, i) => (
-              <ExpCard key={i} exp={exp} />
+              <ExpCard key={exp.company + exp.role} exp={exp} />
             ))}
           </div>
         )}
@@ -212,7 +212,7 @@ const ExperienceSection = () => {
             </div>
             <div className="cred-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
               {credentials.map((cred, i) => (
-                <CredCard key={i} cred={cred} />
+                <CredCard key={cred.title} cred={cred} />
               ))}
             </div>
           </div>

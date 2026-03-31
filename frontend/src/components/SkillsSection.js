@@ -160,7 +160,7 @@ const SkillsSection = () => {
           }}
         >
           {skills.map((skill, i) => (
-            <SkillCard key={i} skill={skill} />
+            <SkillCard key={skill.title} skill={skill} />
           ))}
         </div>
       </div>
