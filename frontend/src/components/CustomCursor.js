@@ -11,10 +11,15 @@ const CustomCursor = () => {
 
   useEffect(() => {
     const lerp = (a, b, t) => a + (b - a) * t;
+    const mouseRef = mouse;
+    const ringPos = ring;
+    const dotEl = dotRef;
+    const ringEl = ringRef;
+    const rafRef = raf;
 
     const onMove = (e) => {
-      mouse.current.x = e.clientX;
-      mouse.current.y = e.clientY;
+      mouseRef.current.x = e.clientX;
+      mouseRef.current.y = e.clientY;
     };
     const onLeave  = () => setHidden(true);
     const onEnter  = () => setHidden(false);
@@ -28,20 +33,20 @@ const CustomCursor = () => {
     window.addEventListener('mouseup', onUp);
 
     const animate = () => {
-      ring.current.x = lerp(ring.current.x, mouse.current.x, 0.1);
-      ring.current.y = lerp(ring.current.y, mouse.current.y, 0.1);
+      ringPos.current.x = lerp(ringPos.current.x, mouseRef.current.x, 0.1);
+      ringPos.current.y = lerp(ringPos.current.y, mouseRef.current.y, 0.1);
 
-      if (dotRef.current) {
-        dotRef.current.style.left  = `${mouse.current.x}px`;
-        dotRef.current.style.top   = `${mouse.current.y}px`;
+      if (dotEl.current) {
+        dotEl.current.style.left  = `${mouseRef.current.x}px`;
+        dotEl.current.style.top   = `${mouseRef.current.y}px`;
       }
-      if (ringRef.current) {
-        ringRef.current.style.left = `${ring.current.x}px`;
-        ringRef.current.style.top  = `${ring.current.y}px`;
+      if (ringEl.current) {
+        ringEl.current.style.left = `${ringPos.current.x}px`;
+        ringEl.current.style.top  = `${ringPos.current.y}px`;
       }
-      raf.current = requestAnimationFrame(animate);
+      rafRef.current = requestAnimationFrame(animate);
     };
-    raf.current = requestAnimationFrame(animate);
+    rafRef.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('mousemove', onMove);
@@ -49,9 +54,9 @@ const CustomCursor = () => {
       document.removeEventListener('mouseenter', onEnter);
       window.removeEventListener('mousedown', onDown);
       window.removeEventListener('mouseup', onUp);
-      cancelAnimationFrame(raf.current);
+      cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [mouse, ring, dotRef, ringRef, raf]);
 
   const base = {
     position: 'fixed',

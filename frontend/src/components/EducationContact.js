@@ -53,7 +53,7 @@ export const EducationSection = () => (
           const Icon = cred.Icon;
           return (
             <div
-              key={i}
+              key={cred.title}
               style={{
                 backgroundColor: '#F4F5F8',
                 borderRadius: '16px',

@@ -1,5 +1,93 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X } from 'lucide-react';
+
+const NAV_LINKS = [
+  { label: 'Home', href: '#hero', id: 'hero' },
+  { label: 'About', href: '#about-me', id: 'about-me' },
+  { label: 'Skills', href: '#skills', id: 'skills' },
+  { label: 'Experience', href: '#experience', id: 'experience' },
+];
+
+const SECTION_IDS = ['connect', 'experience', 'skills', 'about-me', 'hero'];
+
+const getLinkStyle = (activeSection, id) => ({
+  textDecoration: 'none',
+  color: activeSection === id ? '#FFFFFF' : 'rgba(255,255,255,0.7)',
+  fontFamily: "'Poppins', sans-serif",
+  fontSize: '14px',
+  fontWeight: activeSection === id ? '600' : '400',
+  letterSpacing: '0.3px',
+  paddingBottom: '4px',
+  borderBottom: activeSection === id ? '2px solid #B8860B' : '2px solid transparent',
+  transition: 'color 0.3s ease, border-color 0.3s ease',
+});
+
+const NavLink = ({ link, activeSection, onNavigate }) => (
+  <a
+    href={link.href}
+    onClick={(e) => onNavigate(e, link.href)}
+    data-testid={`nav-${link.label.toLowerCase()}`}
+    style={getLinkStyle(activeSection, link.id)}
+    onMouseEnter={(e) => {
+      if (activeSection !== link.id) e.currentTarget.style.color = '#FFFFFF';
+    }}
+    onMouseLeave={(e) => {
+      if (activeSection !== link.id) e.currentTarget.style.color = 'rgba(255,255,255,0.7)';
+    }}
+  >
+    {link.label}
+  </a>
+);
+
+const MobileOverlay = ({ activeSection, onNavigate, onClose }) => (
+  <div
+    data-testid="mobile-nav-overlay"
+    style={{
+      position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+      zIndex: 999, backgroundColor: '#003554',
+      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+      gap: '2rem', animation: 'fadeInNav 0.3s ease',
+    }}
+  >
+    <button
+      onClick={onClose}
+      data-testid="mobile-menu-close"
+      style={{
+        position: 'absolute', top: '18px', right: '2rem',
+        background: 'none', border: 'none', color: '#FFFFFF', cursor: 'pointer', padding: '4px',
+      }}
+    >
+      <X size={28} />
+    </button>
+    {NAV_LINKS.map((link) => (
+      <a
+        key={link.href}
+        href={link.href}
+        onClick={(e) => onNavigate(e, link.href)}
+        style={{
+          textDecoration: 'none',
+          color: activeSection === link.id ? '#B8860B' : '#FFFFFF',
+          fontFamily: "'Poppins', sans-serif", fontSize: '24px',
+          fontWeight: activeSection === link.id ? '700' : '500',
+          letterSpacing: '0.5px', transition: 'color 0.3s ease',
+        }}
+      >
+        {link.label}
+      </a>
+    ))}
+    <a
+      href="#connect"
+      onClick={(e) => onNavigate(e, '#connect')}
+      style={{
+        textDecoration: 'none', color: '#B8860B',
+        fontFamily: "'Poppins', sans-serif", fontSize: '24px',
+        fontWeight: '600', letterSpacing: '0.5px',
+      }}
+    >
+      Let's collaborate
+    </a>
+  </div>
+);
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -9,9 +97,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-
-      const sections = ['connect', 'experience', 'skills', 'about-me', 'hero'];
-      for (const id of sections) {
+      for (const id of SECTION_IDS) {
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
@@ -25,16 +111,9 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [setScrolled, setActiveSection]);
+  }, []);
 
-  const navLinks = [
-    { label: 'Home', href: '#hero', id: 'hero' },
-    { label: 'About', href: '#about-me', id: 'about-me' },
-    { label: 'Skills', href: '#skills', id: 'skills' },
-    { label: 'Experience', href: '#experience', id: 'experience' },
-  ];
-
-  const scrollTo = (e, href) => {
+  const scrollTo = useCallback((e, href) => {
     e.preventDefault();
     setMenuOpen(false);
     if (href === '#hero') {
@@ -43,19 +122,7 @@ const Header = () => {
       const el = document.querySelector(href);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
-  };
-
-  const linkStyle = (id) => ({
-    textDecoration: 'none',
-    color: activeSection === id ? '#FFFFFF' : 'rgba(255,255,255,0.7)',
-    fontFamily: "'Poppins', sans-serif",
-    fontSize: '14px',
-    fontWeight: activeSection === id ? '600' : '400',
-    letterSpacing: '0.3px',
-    paddingBottom: '4px',
-    borderBottom: activeSection === id ? '2px solid #B8860B' : '2px solid transparent',
-    transition: 'color 0.3s ease, border-color 0.3s ease',
-  });
+  }, []);
 
   return (
     <>
@@ -119,22 +186,8 @@ const Header = () => {
           </a>
 
           <nav className="desktop-nav" style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => scrollTo(e, link.href)}
-                data-testid={`nav-${link.label.toLowerCase()}`}
-                style={linkStyle(link.id)}
-                onMouseEnter={(e) => {
-                  if (activeSection !== link.id) e.currentTarget.style.color = '#FFFFFF';
-                }}
-                onMouseLeave={(e) => {
-                  if (activeSection !== link.id) e.currentTarget.style.color = 'rgba(255,255,255,0.7)';
-                }}
-              >
-                {link.label}
-              </a>
+            {NAV_LINKS.map((link) => (
+              <NavLink key={link.href} link={link} activeSection={activeSection} onNavigate={scrollTo} />
             ))}
 
             <a
@@ -142,7 +195,7 @@ const Header = () => {
               onClick={(e) => scrollTo(e, '#connect')}
               data-testid="nav-lets-collaborate"
               style={{
-                ...linkStyle('connect'),
+                ...getLinkStyle(activeSection, 'connect'),
                 fontWeight: activeSection === 'connect' ? '600' : '500',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = '#B8860B'; }}
@@ -171,74 +224,7 @@ const Header = () => {
       </header>
 
       {menuOpen && (
-        <div
-          data-testid="mobile-nav-overlay"
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            zIndex: 999,
-            backgroundColor: '#003554',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '2rem',
-            animation: 'fadeInNav 0.3s ease',
-          }}
-        >
-          <button
-            onClick={() => setMenuOpen(false)}
-            data-testid="mobile-menu-close"
-            style={{
-              position: 'absolute',
-              top: '18px',
-              right: '2rem',
-              background: 'none',
-              border: 'none',
-              color: '#FFFFFF',
-              cursor: 'pointer',
-              padding: '4px',
-            }}
-          >
-            <X size={28} />
-          </button>
-
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => scrollTo(e, link.href)}
-              style={{
-                textDecoration: 'none',
-                color: activeSection === link.id ? '#B8860B' : '#FFFFFF',
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: '24px',
-                fontWeight: activeSection === link.id ? '700' : '500',
-                letterSpacing: '0.5px',
-                transition: 'color 0.3s ease',
-              }}
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="#connect"
-            onClick={(e) => scrollTo(e, '#connect')}
-            style={{
-              textDecoration: 'none',
-              color: '#B8860B',
-              fontFamily: "'Poppins', sans-serif",
-              fontSize: '24px',
-              fontWeight: '600',
-              letterSpacing: '0.5px',
-            }}
-          >
-            Let's collaborate
-          </a>
-        </div>
+        <MobileOverlay activeSection={activeSection} onNavigate={scrollTo} onClose={() => setMenuOpen(false)} />
       )}
 
       <style>{`

@@ -12,25 +12,25 @@ Build an elegant, minimal, and professional portfolio website for Mishant Gandhi
 - [x] Header - Navy blue #003554, pulsing green dot, gold underline active state, mobile responsive
 - [x] Hero Section - Beige #f5f1ed, profile photo (transparent PNG), italic quote, company names, Let's Collaborate + Explore My Work buttons, LinkedIn stats
 - [x] Skills Ribbon - Navy blue marquee with gold italic text (8 finance skills)
-- [x] About Section - Soft beige #efece6, 2x2 interactive grid with hover effects (Financial Control, Group Consolidation, Performance & Planning, Process & Transformation)
-- [x] Skills Section - 4-column grid, 8 skill cards with hover effects (navy->white transition), progress bars at bottom
-- [x] Experience/Education - Tabbed interface with 6 experience cards (DEWA, Al Futtaim, Essar, UAE Family Office, Reliance, GOLS Academy) + 4 education cards (CA, CS, B.Com, ACCA)
-- [x] Contact Section - "Let's Connect" heading, left info card (email, phone, location, LinkedIn/WhatsApp), right contact form (mailto:mishant.gandhi@gmail.com)
-- [x] Footer - Dark navy with MG monogram, quote, copyright
-- [x] WhatsApp floating button (bottom-right FAB)
-- [x] Custom cursor (ring + dot)
-- [x] Mobile responsive (all sections)
+- [x] About Section - Soft beige #efece6, 2x2 interactive grid with hover effects
+- [x] Skills Section - 4-column grid, 8 skill cards with hover effects, progress bars
+- [x] Experience/Education - Tabbed interface with 6 experience cards + 4 education cards
+- [x] Contact Section - mailto form, LinkedIn/WhatsApp links
+- [x] Footer - Dark navy with MG monogram
+- [x] WhatsApp floating button
+- [x] Custom cursor
 
-## Code Restored From Git
-All component files restored from commit `389ee76` (the last known good state before workspace wipe).
-
-## Components
-- App.js, Header.js, HeroSection.js, SkillsRibbon.js, AboutSection.js, SkillsSection.js, ExperienceSection.js, EducationContact.js, CustomCursor.js, WorkedWithSection.js
+## Code Quality Improvements (Feb 2026)
+- [x] Fixed React key prop anti-pattern in EducationContact.js (key={i} → key={cred.title})
+- [x] Fixed useEffect dependency arrays in Header.js, HeroSection.js, CustomCursor.js
+- [x] Extracted sub-components: NavLink, MobileOverlay (Header), HeroTextContent, HeroBodyText, HeroCTAButtons, HeroLinkedInStats, HeroPhotoArea (HeroSection)
+- [x] Reduced cyclomatic complexity in Header (19→~8) and HeroSection (15→~3)
+- [x] Hoisted constants outside render (NAV_LINKS, SECTION_IDS, getLinkStyle)
+- [x] Used useCallback for stable scroll handler
 
 ## MOCKED
 - Contact form uses `mailto:` protocol (opens email client, no backend API submission)
 
 ## Backlog
-- P2: Mobile responsive testing/refinements
-- P3: SEO meta tags optimization
-- P3: Performance optimizations (image lazy loading)
+- P2: Mobile responsive testing
+- P3: SEO meta tags & favicon
