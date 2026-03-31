@@ -148,42 +148,47 @@ const Header = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             height: '60px',
+            position: 'relative',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <a
-              href="https://www.linkedin.com/in/camishant-0525076563"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="header-linkedin"
-              style={{
-                width: '30px', height: '30px', borderRadius: '6px',
-                backgroundColor: 'rgba(255,255,255,0.12)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                textDecoration: 'none', transition: 'background-color 0.25s ease',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#0077b5'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.12)'; }}
-            >
-              <Linkedin size={16} color="#FFFFFF" />
-            </a>
-            <a
-              href="https://wa.me/971525076563"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="header-whatsapp"
-              style={{
-                width: '30px', height: '30px', borderRadius: '6px',
-                backgroundColor: 'rgba(255,255,255,0.12)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                textDecoration: 'none', transition: 'background-color 0.25s ease',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#25D366'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.12)'; }}
-            >
-              <MessageCircle size={16} color="#FFFFFF" />
-            </a>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            {/* Icons sit outside the content area */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginRight: '20px', marginLeft: '-76px' }}>
+              <a
+                href="https://www.linkedin.com/in/camishant-0525076563"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="header-linkedin"
+                style={{
+                  width: '28px', height: '28px', borderRadius: '6px',
+                  backgroundColor: 'rgba(255,255,255,0.12)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  textDecoration: 'none', transition: 'background-color 0.25s ease',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#0077b5'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.12)'; }}
+              >
+                <Linkedin size={15} color="#FFFFFF" />
+              </a>
+              <a
+                href="https://wa.me/971525076563"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="header-whatsapp"
+                style={{
+                  width: '28px', height: '28px', borderRadius: '6px',
+                  backgroundColor: 'rgba(255,255,255,0.12)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  textDecoration: 'none', transition: 'background-color 0.25s ease',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#25D366'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.12)'; }}
+              >
+                <MessageCircle size={15} color="#FFFFFF" />
+              </a>
+            </div>
 
+            {/* Name aligned with hero content */}
             <a
               href="#hero"
               onClick={(e) => scrollTo(e, '#hero')}
