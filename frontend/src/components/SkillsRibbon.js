@@ -1,63 +1,74 @@
 import React from 'react';
 
 const skills = [
-  'Financial Reporting',
-  'IFRS Standards',
-  'Group Consolidation',
-  'Audit & Assurance',
-  'Tax Advisory',
-  'Financial Analysis',
-  'ICV Audit',
-  'VAT Compliance',
+  'Financial Reporting & IFRS',
+  'Group Consolidation & Audit',
+  'Financial Planning & Analysis',
+  'ERP Implementation (SAP, D365)',
+  'Power BI & Dashboarding',
+  'Business Partnering',
+  'ICV Audit — UAE & Qatar',
+  'VAT & Tax Compliance',
 ];
 
-export default function SkillsRibbon() {
-  const repeated = [...skills, ...skills, ...skills];
+const SkillsRibbon = () => {
+  const ribbonContent = [...skills, ...skills].map((skill, i) => (
+    <span key={`${skill}-${i}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '2.5rem' }}>
+      <span
+        style={{
+          fontFamily: "'Poppins', sans-serif",
+          fontStyle: 'italic',
+          fontSize: 'clamp(16px, 2vw, 20px)',
+          color: '#B8860B',
+          whiteSpace: 'nowrap',
+          letterSpacing: '0.5px',
+        }}
+      >
+        {skill}
+      </span>
+      <span
+        style={{
+          width: '6px',
+          height: '6px',
+          borderRadius: '50%',
+          backgroundColor: '#FFFFFF',
+          display: 'inline-block',
+          flexShrink: 0,
+        }}
+      />
+    </span>
+  ));
 
   return (
-    <div
+    <section
       data-testid="skills-ribbon"
       style={{
         backgroundColor: '#003554',
-        padding: '14px 0',
+        padding: '1.75rem 0',
         overflow: 'hidden',
-        whiteSpace: 'nowrap',
         position: 'relative',
       }}
     >
       <div
         style={{
-          display: 'inline-flex',
-          animation: 'marquee 30s linear infinite',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '2.5rem',
+          animation: 'skillsScroll 40s linear infinite',
+          width: 'max-content',
         }}
       >
-        {repeated.map((skill, i) => (
-          <span
-            key={`${skill}-${i}`}
-            style={{
-              color: '#d4a843',
-              fontSize: 15,
-              fontWeight: 500,
-              fontStyle: 'italic',
-              fontFamily: "'Georgia', serif",
-              marginRight: 40,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 40,
-            }}
-          >
-            {skill}
-            <span style={{ color: '#d4a843', opacity: 0.5 }}>&#9679;</span>
-          </span>
-        ))}
+        {ribbonContent}
       </div>
 
       <style>{`
-        @keyframes marquee {
+        @keyframes skillsScroll {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-33.33%); }
+          100% { transform: translateX(-50%); }
         }
       `}</style>
-    </div>
+    </section>
   );
-}
+};
+
+export default SkillsRibbon;

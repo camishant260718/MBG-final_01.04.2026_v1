@@ -1,125 +1,258 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const areas = [
+const quadrants = [
   {
     num: '01',
     title: 'Financial Control',
-    desc: 'Bringing discipline to financial systems — establishing strong controls, governance, and reporting frameworks to ensure accuracy, compliance, and reliability.',
+    desc: 'Establishing strong controls, governance, and reporting frameworks to ensure accuracy, compliance, and reliability across financial systems.',
   },
   {
     num: '02',
     title: 'Group Consolidation',
-    desc: 'Managing complexity with structure — overseeing multi-entity financials, intercompany reconciliations, and group reporting with clarity and consistency.',
+    desc: 'Overseeing multi-entity financials, intercompany reconciliations, and group reporting with clarity and consistency.',
   },
   {
     num: '03',
     title: 'Performance & Planning',
-    desc: 'Driving business decisions with insight — building budgets, forecasts, and performance analysis that enable management to act with confidence.',
+    desc: 'Building budgets, forecasts, and performance analysis that enable management to act with confidence.',
   },
   {
     num: '04',
     title: 'Process & Transformation',
-    desc: 'Designing finance that scales — improving systems, automating workflows, and strengthening processes to create efficient and future-ready finance functions.',
+    desc: 'Improving systems, automating workflows, and strengthening processes to create efficient and future-ready finance functions.',
   },
 ];
 
-export default function AboutSection() {
+const QuadrantCard = ({ item, position }) => {
+  const [hovered, setHovered] = useState(false);
+
+  const isTop = position < 2;
+  const isLeft = position % 2 === 0;
+
   return (
-    <section
-      id="about"
-      data-testid="about-section"
+    <div
+      data-testid={`quadrant-${item.num}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
-        backgroundColor: '#efece6',
-        padding: '80px 60px',
-        display: 'flex',
-        gap: 60,
+        padding: '2rem 1.75rem',
+        borderBottom: isTop ? '1px solid rgba(66,86,100,0.15)' : 'none',
+        borderRight: isLeft ? '1px solid rgba(66,86,100,0.15)' : 'none',
+        backgroundColor: hovered ? '#1B3A5C' : 'transparent',
+        transform: hovered ? 'scale(1.02)' : 'scale(1)',
+        boxShadow: hovered ? '0 8px 30px rgba(27,58,92,0.2)' : 'none',
+        transition: 'background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease',
+        cursor: 'default',
+        position: 'relative',
+        zIndex: hovered ? 2 : 1,
       }}
     >
-      <div style={{ flex: 1, maxWidth: 480 }}>
-        <p
-          style={{
-            fontSize: 12,
-            fontWeight: 600,
-            letterSpacing: 2,
-            color: '#888',
-            textTransform: 'uppercase',
-            marginBottom: 24,
-          }}
-        >
-          About Mishant
-        </p>
-        <h2
-          data-testid="about-heading"
-          style={{
-            fontSize: 32,
-            fontWeight: 700,
-            color: '#1a1a1a',
-            lineHeight: 1.3,
-            marginBottom: 24,
-          }}
-        >
-          I am a finance professional driven by clarity, precision, and impact.
-        </h2>
-        <p style={{ fontSize: 15, color: '#555', lineHeight: 1.8, marginBottom: 16 }}>
-          With over a decade of experience in IFRS, financial consolidation, and reporting, I bring
-          structure to complex financial environments.
-        </p>
-        <p style={{ fontSize: 15, color: '#555', lineHeight: 1.8, marginBottom: 16 }}>
-          I translate data into clear, decision-ready insights that support business strategy and
-          performance.
-        </p>
-        <p style={{ fontSize: 15, color: '#555', lineHeight: 1.8, marginBottom: 32 }}>
-          My approach is collaborative — partnering with stakeholders to turn numbers into meaningful
-          outcomes.
-        </p>
-        <p style={{ fontSize: 13, color: '#aaa', borderTop: '1px solid #ccc', paddingTop: 16 }}>
-          Scroll to explore
-        </p>
-      </div>
-
-      <div
+      <span
         style={{
-          flex: 1,
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 1,
-          backgroundColor: '#ddd',
+          fontFamily: "'Poppins', sans-serif",
+          fontStyle: 'italic',
+          fontSize: '28px',
+          fontWeight: '500',
+          color: hovered ? '#E8B931' : '#B8860B',
+          display: 'block',
+          marginBottom: '0.75rem',
+          transition: 'color 0.3s ease',
         }}
       >
-        {areas.map((area) => (
-          <div
-            key={area.num}
-            data-testid={`about-area-${area.num}`}
+        {item.num}
+      </span>
+      <h3
+        style={{
+          fontFamily: "'Poppins', sans-serif",
+          fontSize: '17px',
+          fontWeight: '700',
+          color: hovered ? '#FFFFFF' : '#1B3A5C',
+          margin: '0 0 1rem',
+          transition: 'color 0.3s ease',
+        }}
+      >
+        {item.title}
+      </h3>
+      <p
+        style={{
+          fontFamily: "'Poppins', sans-serif",
+          fontSize: '13.5px',
+          color: hovered ? 'rgba(255,255,255,0.75)' : '#4A5568',
+          lineHeight: '1.75',
+          margin: 0,
+          transition: 'color 0.3s ease',
+        }}
+      >
+        {item.desc}
+      </p>
+    </div>
+  );
+};
+
+const AboutSection = () => {
+  return (
+    <section
+      id="about-me"
+      data-testid="about-section"
+      style={{ backgroundColor: '#efece6', padding: '5rem 2rem' }}
+    >
+      <div
+        className="about-grid"
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 0,
+          borderRadius: '8px',
+          overflow: 'hidden',
+        }}
+      >
+        {/* LEFT: Intro text */}
+        <div
+          style={{
+            padding: '3rem 3rem 3rem 2.5rem',
+            borderRight: '1px solid rgba(66,86,100,0.15)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}
+        >
+          <div>
+            {/* Section label */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                marginBottom: '2rem',
+              }}
+            >
+              <span
+                style={{
+                  width: '40px',
+                  height: '2px',
+                  backgroundColor: '#003554',
+                  display: 'inline-block',
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: '12px',
+                  fontWeight: '700',
+                  letterSpacing: '2.5px',
+                  textTransform: 'uppercase',
+                  color: '#003554',
+                }}
+              >
+                About Mishant
+              </span>
+            </div>
+
+            {/* Main heading */}
+            <h2
+              data-testid="about-heading"
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
+                fontWeight: '800',
+                color: '#003554',
+                lineHeight: '1.35',
+                margin: '0 0 2rem',
+                letterSpacing: '-0.3px',
+              }}
+            >
+              I am a finance professional driven by clarity, precision, and impact.
+            </h2>
+
+            {/* Body paragraphs */}
+            <p
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: '15px',
+                color: '#3A4A5C',
+                lineHeight: '1.8',
+                margin: '0 0 1.25rem',
+              }}
+            >
+              I bring clarity and structure to complex financial environments.
+              With over a decade of experience in IFRS, consolidation, and reporting.
+            </p>
+            <p
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: '15px',
+                color: '#3A4A5C',
+                lineHeight: '1.8',
+                margin: '0 0 2rem',
+              }}
+            >
+              My focus is on moving beyond reporting to enable performance, control,
+              and strategic alignment. I work closely with stakeholders to turn financial
+              information into outcomes that matter.
+            </p>
+          </div>
+
+          {/* Scroll to explore - removed from left, moved below grid */}
+        </div>
+
+        {/* RIGHT: 2x2 Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gridTemplateRows: '1fr 1fr',
+          }}
+        >
+          {quadrants.map((item, i) => (
+            <QuadrantCard key={item.num} item={item} position={i} />
+          ))}
+        </div>
+      </div>
+
+      {/* Scroll to explore - below the full grid */}
+      <div style={{ maxWidth: '1200px', margin: '0 auto', paddingTop: '2rem' }}>
+        <a
+          href="#skills"
+          data-testid="scroll-to-explore"
+          onClick={(e) => {
+            e.preventDefault();
+            const el = document.querySelector('#skills');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            textDecoration: 'none',
+            justifyContent: 'center',
+          }}
+        >
+          <span
             style={{
-              backgroundColor: '#efece6',
-              padding: 32,
+              fontFamily: "'Poppins', sans-serif",
+              fontStyle: 'italic',
+              fontSize: '15px',
+              fontWeight: '500',
+              color: '#B8860B',
+              letterSpacing: '0.3px',
             }}
           >
-            <span
-              style={{
-                fontSize: 28,
-                fontWeight: 700,
-                color: '#d4a843',
-                display: 'block',
-                marginBottom: 12,
-              }}
-            >
-              {area.num}
-            </span>
-            <h3
-              style={{
-                fontSize: 18,
-                fontWeight: 600,
-                color: '#1a1a1a',
-                marginBottom: 10,
-              }}
-            >
-              {area.title}
-            </h3>
-            <p style={{ fontSize: 13, color: '#666', lineHeight: 1.7 }}>{area.desc}</p>
-          </div>
-        ))}
+            ······· Scroll to explore
+          </span>
+        </a>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .about-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
-}
+};
+
+export default AboutSection;

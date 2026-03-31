@@ -1,14 +1,15 @@
-import React from 'react';
-import { Linkedin } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 
-export default function HeroSection() {
-  const scrollToContact = () => {
-    const el = document.getElementById('contact');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+const HeroSection = () => {
+  const [visible, setVisible] = useState(false);
 
-  const scrollToExperience = () => {
-    const el = document.getElementById('experience');
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), 80);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const scrollTo = (href) => {
+    const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -17,205 +18,339 @@ export default function HeroSection() {
       id="hero"
       data-testid="hero-section"
       style={{
+        minHeight: 'auto',
         backgroundColor: '#f5f1ed',
-        minHeight: '100vh',
-        paddingTop: 64,
         display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
         position: 'relative',
-        overflow: 'hidden',
+        paddingTop: '60px',
       }}
     >
       <div
+        className="hero-main-grid"
         style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '1.5rem 2rem 0.5rem',
+          width: '100%',
+          boxSizing: 'border-box',
+          display: 'grid',
+          gridTemplateColumns: '1.2fr 0.8fr',
+          gap: '3rem',
+          alignItems: 'center',
           flex: 1,
-          padding: '80px 60px 0',
-          maxWidth: 680,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
         }}
       >
-        <p
-          style={{
-            fontSize: 14,
-            color: '#666',
-            fontWeight: 400,
-            marginBottom: 12,
-            fontStyle: 'italic',
-          }}
-        >
-          Welcome to my profile!
-        </p>
-
-        <h1
-          data-testid="hero-title"
-          style={{
-            fontSize: 52,
-            fontWeight: 700,
-            color: '#1a1a1a',
-            lineHeight: 1.15,
-            marginBottom: 8,
-          }}
-        >
-          Hello, I'm{' '}
-          <span
+        {/* LEFT: Text content */}
+        <div>
+          {/* Welcome text */}
+          <p
+            data-testid="hero-welcome"
             style={{
-              display: 'inline-block',
-              borderBottom: '3px solid #d4a843',
-              paddingBottom: 2,
+              fontFamily: "'Poppins', sans-serif",
+              fontStyle: 'italic',
+              fontSize: '16px',
+              color: '#003554',
+              margin: '0 0 1rem',
+              opacity: visible ? 1 : 0,
+              transform: visible ? 'translateY(0)' : 'translateY(10px)',
+              transition: 'opacity 0.5s ease, transform 0.5s ease',
             }}
           >
-            Mishant.
-          </span>
-        </h1>
+            Turning financial complexity into boardroom clarity.
+          </p>
 
-        <div style={{ display: 'flex', gap: 12, margin: '16px 0 24px' }}>
-          <span
+          {/* Main heading */}
+          <h1
+            data-testid="hero-heading"
             style={{
-              backgroundColor: '#003554',
-              color: '#fff',
-              padding: '8px 20px',
-              borderRadius: 6,
-              fontSize: 13,
-              fontWeight: 500,
+              fontFamily: "'Poppins', sans-serif",
+              fontSize: 'clamp(2.4rem, 4.5vw, 4.1rem)',
+              fontWeight: '700',
+              color: '#003554',
+              lineHeight: '1.1',
+              margin: '0 0 0.5rem',
+              letterSpacing: '-0.5px',
+              opacity: visible ? 1 : 0,
+              transform: visible ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s',
             }}
           >
-            Chartered Accountant
-          </span>
-          <span
+            Hello, I'm Mishant.
+          </h1>
+
+          {/* Yellow underline accent */}
+          <div
             style={{
-              backgroundColor: '#003554',
-              color: '#fff',
-              padding: '8px 20px',
-              borderRadius: 6,
-              fontSize: 13,
-              fontWeight: 500,
+              width: '200px',
+              height: '4px',
+              backgroundColor: '#B8860B',
+              borderRadius: '2px',
+              marginBottom: '2rem',
+              opacity: visible ? 1 : 0,
+              transition: 'opacity 0.5s ease 0.2s',
+            }}
+          />
+
+          {/* Body paragraphs */}
+          <div
+            style={{
+              opacity: visible ? 1 : 0,
+              transform: visible ? 'translateY(0)' : 'translateY(12px)',
+              transition: 'opacity 0.6s ease 0.25s, transform 0.6s ease 0.25s',
             }}
           >
-            Company Secretary
-          </span>
-        </div>
+            <p
+              style={{
+                fontSize: '15px',
+                color: '#3A3A3A',
+                lineHeight: '1.8',
+                margin: '0 0 1rem',
+                maxWidth: '500px',
+                fontFamily: "'Poppins', sans-serif",
+              }}
+            >
+              A <strong style={{ color: '#003554', fontWeight: '700' }}>Chartered Accountant</strong> and <strong style={{ color: '#003554', fontWeight: '700' }}>Company Secretary</strong> with 13+ years across multinationals — I help organisations turn complex financial data into structured control, clear reporting, and decisions that drive performance.
+            </p>
 
-        <p
-          style={{
-            fontSize: 15,
-            color: '#444',
-            lineHeight: 1.75,
-            marginBottom: 32,
-            maxWidth: 540,
-          }}
-        >
-          A Senior Finance Professional with over a decade of experience across IFRS reporting,
-          financial consolidation, and strategic analysis. Specializing in building structured
-          financial frameworks for multinational organizations. Former auditor at{' '}
-          <strong>Deloitte</strong> and <strong>PwC</strong>, now driving financial excellence in
-          Dubai, UAE.
-        </p>
+            <p
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontStyle: 'italic',
+                fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
+                color: '#003554',
+                lineHeight: '1.7',
+                margin: '0 0 1rem',
+                maxWidth: '500px',
+                borderLeft: '3px solid #B8860B',
+                paddingLeft: '16px',
+              }}
+            >
+              I believe numbers should not just report the past — they should illuminate the <strong style={{ fontWeight: '700' }}>path forward</strong>.
+            </p>
 
-        <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginBottom: 40 }}>
-          <button
-            data-testid="send-message-btn"
-            onClick={scrollToContact}
+            <p
+              style={{
+                fontSize: '15px',
+                color: '#3A3A3A',
+                lineHeight: '1.8',
+                margin: '0 0 1.5rem',
+                maxWidth: '500px',
+                fontFamily: "'Poppins', sans-serif",
+              }}
+            >
+              I have worked with organisations including{' '}
+              <strong style={{ color: '#003554', fontWeight: '700' }}>Al Futtaim Engineering, Essar Group, Reliance Communications</strong>,
+              and <strong style={{ color: '#003554', fontWeight: '700' }}>UAE Investor Family Office</strong>.
+              Currently serving as Senior Manager — Finance & Audit at <strong style={{ color: '#003554', fontWeight: '700' }}>Dubai Electricity and Water Authority (DEWA)</strong>.
+            </p>
+          </div>
+
+          {/* CTA buttons */}
+          <div
+            style={{
+              display: 'flex',
+              gap: '1rem',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              marginBottom: '2rem',
+              opacity: visible ? 1 : 0,
+              transform: visible ? 'translateY(0)' : 'translateY(12px)',
+              transition: 'opacity 0.6s ease 0.45s, transform 0.6s ease 0.45s',
+            }}
+          >
+            <button
+              data-testid="hero-send-message-btn"
+              onClick={() => scrollTo('#connect')}
+              style={{
+                backgroundColor: '#003554',
+                color: '#FFFFFF',
+                border: 'none',
+                padding: '10px 22px',
+                borderRadius: '8px',
+                fontSize: '12px',
+                fontWeight: '700',
+                cursor: 'pointer',
+                fontFamily: "'Poppins', sans-serif",
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                transition: 'background-color 0.3s ease, transform 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#003554';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#003554';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <span
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  backgroundColor: '#4ADE80',
+                  display: 'inline-block',
+                  animation: 'greenPulse 2s ease-in-out infinite',
+                }}
+              />
+              Let's Collaborate
+            </button>
+            <a
+              href="#skills"
+              onClick={(e) => { e.preventDefault(); const el = document.querySelector('#skills'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}
+              data-testid="hero-download-cv-btn"
+              style={{
+                backgroundColor: 'transparent',
+                color: '#003554',
+                border: '2px solid #003554',
+                padding: '9px 22px',
+                borderRadius: '8px',
+                fontSize: '12px',
+                fontWeight: '700',
+                cursor: 'pointer',
+                fontFamily: "'Poppins', sans-serif",
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                textDecoration: 'none',
+                transition: 'background-color 0.3s ease, color 0.3s ease, transform 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#003554';
+                e.currentTarget.style.color = '#FFFFFF';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = '#003554';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              Explore My Work
+            </a>
+          </div>
+
+          {/* LinkedIn stats - inline */}
+          <div
+            data-testid="hero-linkedin-stats"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 8,
-              backgroundColor: '#003554',
-              color: '#fff',
-              border: 'none',
-              padding: '12px 28px',
-              borderRadius: 8,
-              fontSize: 14,
-              fontWeight: 600,
-              cursor: 'pointer',
-              fontFamily: "'Poppins', sans-serif",
-              transition: 'transform 0.2s',
+              gap: '0.5rem',
+              flexWrap: 'wrap',
+              opacity: visible ? 1 : 0,
+              transition: 'opacity 0.6s ease 0.55s',
+              marginBottom: '0.5rem',
             }}
           >
+            <a
+              href="https://www.linkedin.com/in/camishant-0525076563"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '14px',
+                fontWeight: '700',
+                color: '#003554',
+                textDecoration: 'underline',
+                textUnderlineOffset: '3px',
+                fontFamily: "'Poppins', sans-serif",
+              }}
+            >
+              5,214 followers
+            </a>
+            <span style={{ color: '#8A8577', fontSize: '14px' }}>·</span>
+            <a
+              href="https://www.linkedin.com/in/camishant-0525076563"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '14px',
+                fontWeight: '700',
+                color: '#003554',
+                textDecoration: 'underline',
+                textUnderlineOffset: '3px',
+                fontFamily: "'Poppins', sans-serif",
+              }}
+            >
+              5,000+ connections
+            </a>
             <span
               style={{
-                width: 8,
-                height: 8,
-                borderRadius: '50%',
-                backgroundColor: '#22c55e',
-                animation: 'pulse-green 2s infinite',
+                fontSize: '13px',
+                color: '#8A8577',
+                marginLeft: '4px',
+                fontFamily: "'Poppins', sans-serif",
               }}
-            />
-            SEND A MESSAGE
-          </button>
-          <button
-            data-testid="explore-work-btn"
-            onClick={scrollToExperience}
-            style={{
-              backgroundColor: 'transparent',
-              color: '#003554',
-              border: '2px solid #003554',
-              padding: '12px 28px',
-              borderRadius: 8,
-              fontSize: 14,
-              fontWeight: 600,
-              cursor: 'pointer',
-              fontFamily: "'Poppins', sans-serif",
-              transition: 'all 0.2s',
-            }}
-          >
-            Explore My Work
-          </button>
+            >
+              on LinkedIn
+            </span>
+          </div>
         </div>
 
+        {/* RIGHT: Photo placeholder */}
         <div
-          data-testid="hero-stats"
+          className="hero-photo-area"
           style={{
             display: 'flex',
-            gap: 40,
-            alignItems: 'center',
-            paddingTop: 20,
-            borderTop: '1px solid rgba(0,0,0,0.1)',
+            justifyContent: 'center',
+            alignItems: 'flex-end',
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'scale(1)' : 'scale(0.95)',
+            transition: 'opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s',
+            marginBottom: '-1.75rem',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <Linkedin size={18} color="#0077b5" />
-            <div>
-              <span style={{ fontWeight: 700, fontSize: 18, color: '#1a1a1a' }}>5,214</span>
-              <span style={{ fontSize: 13, color: '#666', marginLeft: 6 }}>Followers</span>
-            </div>
-          </div>
-          <div>
-            <span style={{ fontWeight: 700, fontSize: 18, color: '#1a1a1a' }}>5,000+</span>
-            <span style={{ fontSize: 13, color: '#666', marginLeft: 6 }}>Connections</span>
+          <div
+            data-testid="hero-photo-placeholder"
+            style={{
+              width: '100%',
+              maxWidth: '480px',
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'center',
+            }}
+          >
+            <img
+              src="/mishant-photo.png"
+              alt="Mishant Gandhi"
+              style={{
+                width: '100%',
+                height: 'auto',
+                objectFit: 'contain',
+                maxHeight: '600px',
+              }}
+            />
           </div>
         </div>
-      </div>
-
-      <div
-        style={{
-          flex: 1,
-          display: 'flex',
-          alignItems: 'flex-end',
-          justifyContent: 'center',
-          position: 'relative',
-        }}
-      >
-        <img
-          data-testid="hero-photo"
-          src="/mishant-photo.png"
-          alt="Mishant Gandhi"
-          style={{
-            height: '85vh',
-            maxHeight: 650,
-            objectFit: 'contain',
-            objectPosition: 'bottom',
-            filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.15))',
-          }}
-        />
       </div>
 
       <style>{`
-        @keyframes pulse-green {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.6; transform: scale(1.3); }
+        @keyframes greenPulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
+          50% { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+        }
+        @media (max-width: 900px) {
+          .hero-main-grid {
+            grid-template-columns: 1fr !important;
+            padding-top: 2rem !important;
+          }
+          .hero-photo-area {
+            order: -1;
+            max-width: 280px;
+            margin: 0 auto;
+          }
         }
       `}</style>
     </section>
   );
-}
+};
+
+export default HeroSection;
