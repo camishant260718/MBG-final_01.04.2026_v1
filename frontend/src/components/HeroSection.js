@@ -89,9 +89,8 @@ const HeroCTAButtons = ({ visible }) => (
       Let's Collaborate
     </button>
     <a
-      href="#skills"
-      onClick={(e) => { e.preventDefault(); scrollTo('#skills'); }}
-      data-testid="hero-download-cv-btn"
+      href="mailto:meet@mishantgandhi.com?subject=CV%20Request&body=Hi%20Mishant%2C%0A%0AI%20would%20like%20to%20request%20your%20CV.%0A%0ARegards"
+      data-testid="hero-request-cv-btn"
       style={{
         backgroundColor: 'transparent', color: '#003554', border: '2px solid #003554',
         padding: '9px 22px', borderRadius: '8px', fontSize: '12px', fontWeight: '700',
@@ -110,7 +109,7 @@ const HeroCTAButtons = ({ visible }) => (
         e.currentTarget.style.transform = 'translateY(0)';
       }}
     >
-      Explore My Work
+      Request My CV
     </a>
   </div>
 );
