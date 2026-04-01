@@ -89,7 +89,7 @@ const HeroCTAButtons = ({ visible }) => (
       Let's Collaborate
     </button>
     <a
-      href="mailto:meet@mishantgandhi.com?subject=CV%20Request&body=Hi%20Mishant%2C%0A%0AI%20would%20like%20to%20request%20your%20CV.%0A%0ARegards"
+      href="mailto:mishant.gandhi@gmail.com?subject=CV%20Request&body=Hi%20Mishant%2C%0A%0AI%20would%20like%20to%20request%20your%20CV.%0A%0ARegards"
       data-testid="hero-request-cv-btn"
       style={{
         backgroundColor: 'transparent', color: '#003554', border: '2px solid #003554',

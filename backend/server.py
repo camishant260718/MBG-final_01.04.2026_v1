@@ -1,9 +1,12 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
 from typing import List
@@ -37,6 +40,12 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+class ContactFormRequest(BaseModel):
+    name: str
+    email: str
+    phone: str = ""
+    message: str = ""
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root() -> dict:
@@ -65,6 +74,39 @@ async def get_status_checks() -> List[StatusCheck]:
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+@api_router.post("/contact")
+async def send_contact_email(req: ContactFormRequest):
+    smtp_email = os.environ.get('SMTP_EMAIL')
+    smtp_password = os.environ.get('SMTP_PASSWORD')
+    recipient = os.environ.get('CONTACT_RECIPIENT', smtp_email)
+
+    msg = MIMEMultipart()
+    msg['From'] = smtp_email
+    msg['To'] = recipient
+    msg['Subject'] = f"Portfolio Inquiry from {req.name}"
+
+    body = f"""New inquiry from your portfolio website:
+
+Name: {req.name}
+Email: {req.email}
+Phone: {req.phone or 'Not provided'}
+
+Message:
+{req.message or 'No message provided'}
+"""
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        with smtplib.SMTP('smtp.gmail.com', 587) as server:
+            server.starttls()
+            server.login(smtp_email, smtp_password)
+            server.send_message(msg)
+        logger.info(f"Contact email sent from {req.name} ({req.email})")
+        return {"status": "success", "message": "Your message has been sent successfully."}
+    except Exception as e:
+        logger.error(f"Failed to send contact email: {e}")
+        raise HTTPException(status_code=500, detail="Failed to send message. Please try again later.")
 
 # Include the router in the main app
 app.include_router(api_router)
