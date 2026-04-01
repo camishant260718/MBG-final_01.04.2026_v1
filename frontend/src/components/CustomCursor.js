@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+const Z_INDEX_CURSOR = 99999;
+const LERP_FACTOR = 0.1;
+
 const CustomCursor = () => {
   const dotRef   = useRef(null);
   const ringRef  = useRef(null);
@@ -10,16 +13,11 @@ const CustomCursor = () => {
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
-    const lerp = (a, b, t) => a + (b - a) * t;
-    const mouseRef = mouse;
-    const ringPos = ring;
-    const dotEl = dotRef;
-    const ringEl = ringRef;
-    const rafRef = raf;
+    const lerp = (start, end, t) => start + (end - start) * t;
 
     const onMove = (e) => {
-      mouseRef.current.x = e.clientX;
-      mouseRef.current.y = e.clientY;
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
     };
     const onLeave  = () => setHidden(true);
     const onEnter  = () => setHidden(false);
@@ -33,20 +31,20 @@ const CustomCursor = () => {
     window.addEventListener('mouseup', onUp);
 
     const animate = () => {
-      ringPos.current.x = lerp(ringPos.current.x, mouseRef.current.x, 0.1);
-      ringPos.current.y = lerp(ringPos.current.y, mouseRef.current.y, 0.1);
+      ring.current.x = lerp(ring.current.x, mouse.current.x, LERP_FACTOR);
+      ring.current.y = lerp(ring.current.y, mouse.current.y, LERP_FACTOR);
 
-      if (dotEl.current) {
-        dotEl.current.style.left  = `${mouseRef.current.x}px`;
-        dotEl.current.style.top   = `${mouseRef.current.y}px`;
+      if (dotRef.current) {
+        dotRef.current.style.left  = `${mouse.current.x}px`;
+        dotRef.current.style.top   = `${mouse.current.y}px`;
       }
-      if (ringEl.current) {
-        ringEl.current.style.left = `${ringPos.current.x}px`;
-        ringEl.current.style.top  = `${ringPos.current.y}px`;
+      if (ringRef.current) {
+        ringRef.current.style.left = `${ring.current.x}px`;
+        ringRef.current.style.top  = `${ring.current.y}px`;
       }
-      rafRef.current = requestAnimationFrame(animate);
+      raf.current = requestAnimationFrame(animate);
     };
-    rafRef.current = requestAnimationFrame(animate);
+    raf.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('mousemove', onMove);
@@ -54,15 +52,17 @@ const CustomCursor = () => {
       document.removeEventListener('mouseenter', onEnter);
       window.removeEventListener('mousedown', onDown);
       window.removeEventListener('mouseup', onUp);
-      cancelAnimationFrame(rafRef.current);
+      cancelAnimationFrame(raf.current);
     };
-  }, [mouse, ring, dotRef, ringRef, raf]);
+    // Refs are stable across renders — mount-only effect is intentional
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const base = {
     position: 'fixed',
     borderRadius: '50%',
     pointerEvents: 'none',
-    zIndex: 99999,
+    zIndex: Z_INDEX_CURSOR,
     transform: 'translate(-50%, -50%)',
     opacity: hidden ? 0 : 1,
     transition: 'opacity 0.3s ease',

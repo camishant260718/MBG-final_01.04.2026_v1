@@ -4,16 +4,55 @@ import {
   Database, Users, Shield, Scale,
 } from 'lucide-react';
 
+const SKILL_LEVELS = {
+  FINANCIAL_REPORTING: 95,
+  GROUP_CONSOLIDATION: 92,
+  FINANCIAL_PLANNING: 90,
+  ERP_IMPLEMENTATION: 87,
+  POWER_BI: 85,
+  BUSINESS_PARTNERING: 90,
+  ICV_AUDIT: 88,
+  VAT_TAX: 86,
+};
+
 const skills = [
-  { icon: BarChart2,     title: 'Financial Reporting & IFRS',      desc: 'End-to-end IFRS-compliant financial reporting across multiple entities', pct: 95 },
-  { icon: FileCheck,     title: 'Group Consolidation & Audit',      desc: 'Multi-entity consolidations and statutory audit coordination', pct: 92 },
-  { icon: PieChart,      title: 'Financial Planning & Analysis',    desc: 'Budgets, forecasts, variance analysis & strategic insights to leadership', pct: 90 },
-  { icon: Database,      title: 'ERP Implementation (SAP, D365)',   desc: 'SAP and Microsoft Dynamics 365 finance module rollouts', pct: 87 },
-  { icon: LayoutDashboard, title: 'Power BI & Dashboarding',        desc: 'Real-time business intelligence dashboards for decision-making', pct: 85 },
-  { icon: Users,         title: 'Business Partnering',              desc: 'Trusted strategic finance partner to cross-functional leadership teams', pct: 90 },
-  { icon: Shield,        title: 'ICV Audit — UAE & Qatar',          desc: 'In-Country Value economic contribution audits and compliance certification', pct: 88 },
-  { icon: Scale,         title: 'VAT & Tax Compliance',             desc: 'UAE VAT returns, refunds, and multi-jurisdiction tax governance', pct: 86 },
+  { icon: BarChart2,     title: 'Financial Reporting & IFRS',      desc: 'End-to-end IFRS-compliant financial reporting across multiple entities', pct: SKILL_LEVELS.FINANCIAL_REPORTING },
+  { icon: FileCheck,     title: 'Group Consolidation & Audit',      desc: 'Multi-entity consolidations and statutory audit coordination', pct: SKILL_LEVELS.GROUP_CONSOLIDATION },
+  { icon: PieChart,      title: 'Financial Planning & Analysis',    desc: 'Budgets, forecasts, variance analysis & strategic insights to leadership', pct: SKILL_LEVELS.FINANCIAL_PLANNING },
+  { icon: Database,      title: 'ERP Implementation (SAP, D365)',   desc: 'SAP and Microsoft Dynamics 365 finance module rollouts', pct: SKILL_LEVELS.ERP_IMPLEMENTATION },
+  { icon: LayoutDashboard, title: 'Power BI & Dashboarding',        desc: 'Real-time business intelligence dashboards for decision-making', pct: SKILL_LEVELS.POWER_BI },
+  { icon: Users,         title: 'Business Partnering',              desc: 'Trusted strategic finance partner to cross-functional leadership teams', pct: SKILL_LEVELS.BUSINESS_PARTNERING },
+  { icon: Shield,        title: 'ICV Audit — UAE & Qatar',          desc: 'In-Country Value economic contribution audits and compliance certification', pct: SKILL_LEVELS.ICV_AUDIT },
+  { icon: Scale,         title: 'VAT & Tax Compliance',             desc: 'UAE VAT returns, refunds, and multi-jurisdiction tax governance', pct: SKILL_LEVELS.VAT_TAX },
 ];
+
+const getCardStyle = (hovered) => ({
+  display: 'flex', flexDirection: 'column',
+  backgroundColor: hovered ? '#003554' : '#FFFFFF',
+  border: '1px solid', borderColor: hovered ? '#003554' : '#E5E7EB',
+  borderRadius: '6px',
+  boxShadow: hovered ? '0 8px 24px rgba(66,86,100,0.15)' : '0 1px 4px rgba(66,86,100,0.04)',
+  transition: 'background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease',
+  transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
+  cursor: 'default', overflow: 'hidden',
+});
+
+const SkillCardIcon = ({ Icon, hovered }) => (
+  <div style={{
+    flexShrink: 0, width: '42px', height: '42px',
+    backgroundColor: hovered ? 'rgba(201,168,76,0.15)' : '#F5F2EA',
+    borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+    transition: 'background-color 0.3s ease',
+  }}>
+    <Icon size={19} style={{ color: '#B8860B', transition: 'transform 0.3s ease', transform: hovered ? 'scale(1.15)' : 'scale(1)' }} />
+  </div>
+);
+
+const SkillCardBar = ({ pct, hovered }) => (
+  <div style={{ height: '3px', backgroundColor: hovered ? 'rgba(255,255,255,0.1)' : '#F0EDE6', marginTop: 'auto', transition: 'background-color 0.3s ease' }}>
+    <div style={{ height: '100%', width: `${pct}%`, backgroundColor: hovered ? '#B8860B' : '#1B3A5C', borderRadius: '0 2px 2px 0', transition: 'background-color 0.3s ease' }} />
+  </div>
+);
 
 const SkillCard = ({ skill }) => {
   const Icon = skill.icon;
@@ -23,80 +62,30 @@ const SkillCard = ({ skill }) => {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: hovered ? '#003554' : '#FFFFFF',
-        border: '1px solid',
-        borderColor: hovered ? '#003554' : '#E5E7EB',
-        borderRadius: '6px',
-        boxShadow: hovered
-          ? '0 8px 24px rgba(66,86,100,0.15)'
-          : '0 1px 4px rgba(66,86,100,0.04)',
-        transition: 'background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease',
-        transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
-        cursor: 'default',
-        overflow: 'hidden',
-      }}
+      style={getCardStyle(hovered)}
     >
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', padding: '1.4rem 1.5rem' }}>
-      {/* Icon container */}
-      <div
-        style={{
-          flexShrink: 0,
-          width: '42px', height: '42px',
-          backgroundColor: hovered ? 'rgba(201,168,76,0.15)' : '#F5F2EA',
-          borderRadius: '8px',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          transition: 'background-color 0.3s ease',
-        }}
-      >
-        <Icon
-          size={19}
-          style={{
-            color: '#B8860B',
-            transition: 'transform 0.3s ease',
-            transform: hovered ? 'scale(1.15)' : 'scale(1)',
-          }}
-        />
+        <SkillCardIcon Icon={Icon} hovered={hovered} />
+        <div>
+          <h3 style={{
+            fontSize: '13.5px', fontWeight: '600',
+            color: hovered ? '#FFFFFF' : '#003554',
+            margin: '0 0 0.3rem', lineHeight: '1.3',
+            transition: 'color 0.3s ease',
+          }}>
+            {skill.title}
+          </h3>
+          <p style={{
+            fontSize: '12px',
+            color: hovered ? 'rgba(255,255,255,0.58)' : '#6B7280',
+            margin: 0, lineHeight: '1.55',
+            transition: 'color 0.3s ease',
+          }}>
+            {skill.desc}
+          </p>
+        </div>
       </div>
-
-      {/* Text */}
-      <div>
-        <h3 style={{
-          fontSize: '13.5px', fontWeight: '600',
-          color: hovered ? '#FFFFFF' : '#003554',
-          margin: '0 0 0.3rem',
-          lineHeight: '1.3',
-          transition: 'color 0.3s ease',
-        }}>
-          {skill.title}
-        </h3>
-        <p style={{
-          fontSize: '12px',
-          color: hovered ? 'rgba(255,255,255,0.58)' : '#6B7280',
-          margin: 0, lineHeight: '1.55',
-          transition: 'color 0.3s ease',
-        }}>
-          {skill.desc}
-        </p>
-      </div>
-      </div>
-
-      {/* Bottom progress bar */}
-      <div style={{
-        height: '3px',
-        backgroundColor: hovered ? 'rgba(255,255,255,0.1)' : '#F0EDE6',
-        marginTop: 'auto',
-      }}>
-        <div style={{
-          height: '100%',
-          width: `${skill.pct}%`,
-          backgroundColor: hovered ? '#B8860B' : '#1B3A5C',
-          borderRadius: '0 2px 2px 0',
-          transition: 'background-color 0.3s ease',
-        }} />
-      </div>
+      <SkillCardBar pct={skill.pct} hovered={hovered} />
     </div>
   );
 };

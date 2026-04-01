@@ -161,7 +161,9 @@ const HeroSection = () => {
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 80);
     return () => clearTimeout(timer);
-  }, [setVisible]);
+    // Mount-only animation trigger
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section

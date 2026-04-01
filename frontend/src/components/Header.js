@@ -9,6 +9,9 @@ const NAV_LINKS = [
 ];
 
 const SECTION_IDS = ['connect', 'experience', 'skills', 'about-me', 'hero'];
+const SCROLL_THRESHOLD = 20;
+const SCROLL_OFFSET = 120;
+const Z_INDEX_HEADER = 1000;
 
 const getLinkStyle = (activeSection, id) => ({
   textDecoration: 'none',
@@ -96,12 +99,12 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > SCROLL_THRESHOLD);
       for (const id of SECTION_IDS) {
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 120 && rect.bottom > 120) {
+          if (rect.top <= SCROLL_OFFSET && rect.bottom > SCROLL_OFFSET) {
             setActiveSection(id);
             break;
           }
@@ -111,6 +114,8 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
+    // SECTION_IDS is a module-level const, state setters are stable
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const scrollTo = useCallback((e, href) => {
@@ -119,9 +124,11 @@ const Header = () => {
     if (href === '#hero') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     }
+    // setMenuOpen is a stable state setter
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -133,7 +140,7 @@ const Header = () => {
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 1000,
+          zIndex: Z_INDEX_HEADER,
           backgroundColor: '#003554',
           boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.25)' : 'none',
           transition: 'box-shadow 0.4s ease',
