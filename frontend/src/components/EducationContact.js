@@ -124,9 +124,7 @@ export const EducationSection = () => (
 export const ContactSection = () => {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
-  const [sending, setSending] = useState(false);
   const [errors, setErrors] = useState({});
-  const [submitError, setSubmitError] = useState('');
 
   const validate = () => {
     const errs = {};
@@ -136,27 +134,15 @@ export const ContactSection = () => {
     return errs;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
-    setSending(true);
-    setSubmitError('');
-    try {
-      const API = process.env.REACT_APP_BACKEND_URL;
-      const res = await fetch(`${API}/api/contact`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error('Failed to send');
-      setSubmitted(true);
-    } catch {
-      setSubmitError('Failed to send message. Please try again.');
-    } finally {
-      setSending(false);
-    }
+    const subject = encodeURIComponent(`Portfolio Enquiry from ${form.name}`);
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone || 'Not provided'}\n\nMessage:\n${form.message || 'No message'}`);
+    window.open(`mailto:mishant.gandhi@gmail.com?subject=${subject}&body=${body}`, '_blank');
+    setSubmitted(true);
   };
 
   const handleChange = (field, val) => {
@@ -340,23 +326,20 @@ export const ContactSection = () => {
                   />
                 </div>
 
-                {submitError && <div style={{ fontSize: '13px', color: '#e05c5c', textAlign: 'center', padding: '8px', backgroundColor: 'rgba(224,92,92,0.08)', borderRadius: '8px' }}>{submitError}</div>}
-
                 {/* Submit */}
-                <button type="submit" disabled={sending} data-testid="contact-submit" style={{
+                <button type="submit" data-testid="contact-submit" style={{
                   width: '100%', padding: '15px',
-                  backgroundColor: sending ? '#6B7280' : '#003554', color: '#FFFFFF',
+                  backgroundColor: '#003554', color: '#FFFFFF',
                   border: 'none', borderRadius: '10px',
                   fontSize: '15px', fontWeight: '700',
-                  cursor: sending ? 'not-allowed' : 'pointer', fontFamily: "'Poppins', sans-serif",
+                  cursor: 'pointer', fontFamily: "'Poppins', sans-serif",
                   letterSpacing: '0.3px', marginTop: 'auto',
                   transition: 'background-color 0.3s ease, transform 0.2s ease',
-                  opacity: sending ? 0.7 : 1,
                 }}
-                  onMouseEnter={(e) => { if (!sending) { e.currentTarget.style.backgroundColor = '#B8860B'; e.currentTarget.style.color = '#003554'; e.currentTarget.style.transform = 'translateY(-1px)'; } }}
-                  onMouseLeave={(e) => { if (!sending) { e.currentTarget.style.backgroundColor = '#003554'; e.currentTarget.style.color = '#FFFFFF'; e.currentTarget.style.transform = 'translateY(0)'; } }}
+                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#B8860B'; e.currentTarget.style.color = '#003554'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#003554'; e.currentTarget.style.color = '#FFFFFF'; e.currentTarget.style.transform = 'translateY(0)'; }}
                 >
-                  {sending ? 'Sending...' : 'Send Message'}
+                  Send Message
                 </button>
               </form>
             )}

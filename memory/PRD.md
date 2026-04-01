@@ -1,36 +1,35 @@
 # Mishant Gandhi Portfolio - PRD
 
 ## Original Problem Statement
-Build an elegant, minimal, and professional portfolio website for Mishant Gandhi, a senior finance professional (CA, CS) based in Dubai, UAE. Navy Blue (#003554) and Beige (#f5f1ed) color theme, transparent PNG profile photo, tabbed Experience/Education section, contact form redirects to email client via mailto.
+Build an elegant, minimal, and professional portfolio website for Mishant Gandhi, a senior finance professional (CA, CS) based in Dubai, UAE. Navy Blue (#003554) and Beige (#f5f1ed) color theme, transparent PNG profile photo, tabbed Experience/Education section, contact form via mailto.
 
 ## Architecture
 - **Frontend**: React 19 + Tailwind CSS (via craco) + Inline styles + Lucide React icons
 - **Backend**: FastAPI + MongoDB (stub endpoints)
-- **Database**: MongoDB (test_database)
+- **Standalone HTML**: portfolio-standalone.html (for Netlify deployment)
 
 ## What's Been Implemented
-- [x] Header - Navy blue #003554, pulsing green dot, gold underline active state, mobile responsive
-- [x] Hero Section - Beige #f5f1ed, profile photo (transparent PNG), italic quote, company names, Let's Collaborate + Explore My Work buttons, LinkedIn stats
-- [x] Skills Ribbon - Navy blue marquee with gold italic text (8 finance skills)
-- [x] About Section - Soft beige #efece6, 2x2 interactive grid with hover effects
-- [x] Skills Section - 4-column grid, 8 skill cards with hover effects, progress bars
-- [x] Experience/Education - Tabbed interface with 6 experience cards + 4 education cards
-- [x] Contact Section - mailto form, LinkedIn/WhatsApp links
+- [x] Header - Navy blue, LinkedIn + WhatsApp icons, pulsing green dot, gold underline active nav
+- [x] Hero Section - Beige background, profile photo, "Let's Collaborate" + "Request My CV" buttons
+- [x] Skills Ribbon - Navy blue marquee with gold italic text
+- [x] About Section - Soft beige, 2x2 interactive grid with hover effects
+- [x] Skills Section - 4-column grid, 8 skill cards with progress bars
+- [x] Experience/Education - Tabbed interface (6 experience + 4 education cards)
+- [x] Contact Section - mailto form to mishant.gandhi@gmail.com, LinkedIn/WhatsApp links
 - [x] Footer - Dark navy with MG monogram
-- [x] WhatsApp floating button
+- [x] WhatsApp floating FAB button
 - [x] Custom cursor
+- [x] Code quality fixes (hook deps, key props, component extraction)
+- [x] Standalone HTML for Netlify deployment
 
-## Code Quality Improvements (Feb 2026)
-- [x] Fixed React key prop anti-pattern in EducationContact.js (key={i} → key={cred.title})
-- [x] Fixed useEffect dependency arrays in Header.js, HeroSection.js, CustomCursor.js
-- [x] Extracted sub-components: NavLink, MobileOverlay (Header), HeroTextContent, HeroBodyText, HeroCTAButtons, HeroLinkedInStats, HeroPhotoArea (HeroSection)
-- [x] Reduced cyclomatic complexity in Header (19→~8) and HeroSection (15→~3)
-- [x] Hoisted constants outside render (NAV_LINKS, SECTION_IDS, getLinkStyle)
-- [x] Used useCallback for stable scroll handler
+## Key Emails
+- Request My CV → mailto:mishant.gandhi@gmail.com
+- Contact Form → mailto:mishant.gandhi@gmail.com
 
 ## MOCKED
-- Contact form uses `mailto:` protocol (opens email client, no backend API submission)
+- Contact form uses `mailto:` protocol (opens visitor's email client)
 
 ## Backlog
 - P2: Mobile responsive testing
 - P3: SEO meta tags & favicon
+- P3: Direct email sending integration (SendGrid) when ready
