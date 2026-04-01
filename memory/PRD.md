@@ -19,12 +19,12 @@ Build an elegant, minimal, and professional portfolio website for Mishant Gandhi
 - [x] Footer - Dark navy with MG monogram
 - [x] WhatsApp floating FAB button
 - [x] Custom cursor
-- [x] Code quality fixes (hook deps, key props, component extraction)
+- [x] Code quality fixes (hook deps, magic numbers, sub-component extraction, useCallback)
 - [x] Standalone HTML for Netlify deployment
 
 ## Key Emails
-- Request My CV → mailto:mishant.gandhi@gmail.com
-- Contact Form → mailto:mishant.gandhi@gmail.com
+- Request My CV -> mailto:mishant.gandhi@gmail.com
+- Contact Form -> mailto:mishant.gandhi@gmail.com
 
 ## MOCKED
 - Contact form uses `mailto:` protocol (opens visitor's email client)
