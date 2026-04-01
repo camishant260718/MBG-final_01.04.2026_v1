@@ -7,7 +7,6 @@ import AboutSection from "./components/AboutSection";
 import SkillsSection from "./components/SkillsSection";
 import ExperienceSection from "./components/ExperienceSection";
 import { ContactSection } from "./components/EducationContact";
-import CustomCursor from "./components/CustomCursor";
 
 const Footer = () => (
   <footer
@@ -89,7 +88,6 @@ const WhatsAppButton = () => (
 function App() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif" }}>
-      <CustomCursor />
       <Header />
       <HeroSection />
       <SkillsRibbon />
