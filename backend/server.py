@@ -98,7 +98,9 @@ Message:
     msg.attach(MIMEText(body, 'plain'))
 
     try:
-        with smtplib.SMTP('smtp.gmail.com', 587) as server:
+        smtp_host = os.environ.get('SMTP_HOST', 'smtp-mail.outlook.com')
+        smtp_port = int(os.environ.get('SMTP_PORT', '587'))
+        with smtplib.SMTP(smtp_host, smtp_port) as server:
             server.starttls()
             server.login(smtp_email, smtp_password)
             server.send_message(msg)
